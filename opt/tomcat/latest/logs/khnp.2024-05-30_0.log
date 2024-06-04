@@ -1,0 +1,1398 @@
+INFO  2024-05-30 09:10:12.293 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 9960 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 09:10:12.305 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 09:10:12.309 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 09:10:13.027 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 09:10:13.028 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 09:10:14.584 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 09:10:15.349 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 09:10:15.369 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:10:15.374 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 09:10:15.374 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 09:10:15.476 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 09:10:15.477 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 2446 ms
+INFO  2024-05-30 09:10:15.688 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 09:10:15.874 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@33e74e40
+INFO  2024-05-30 09:10:15.877 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 09:10:15.892 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 09:10:26.409 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 09:10:26.424 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:10:26.440 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 09:10:26.456 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 15.862 seconds (process running for 18.231)
+INFO  2024-05-30 09:10:26.718 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 09:10:26.718 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 09:10:26.718 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 0 ms
+DEBUG 2024-05-30 09:10:26.751 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:10:26.751 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /
+DEBUG 2024-05-30 09:10:26.751 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:10:31.216 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:10:31.216 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /login/proc
+DEBUG 2024-05-30 09:10:31.334 [http-nio-8081-exec-3] [ArgumentResolver:56] - ##### key : userid, value : test #####
+DEBUG 2024-05-30 09:10:31.334 [http-nio-8081-exec-3] [ArgumentResolver:56] - ##### key : userpwd, value : 1111 #####
+DEBUG 2024-05-30 09:10:31.334 [http-nio-8081-exec-3] [AbstractDAO:15] - 	 QueryId  	:  Login.login_proc
+DEBUG 2024-05-30 09:10:31.384 [http-nio-8081-exec-3] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. select seq, userid, userpwd
+        from account
+        where userid = 'test'
+          and userpwd =SHA2('1111', 256)
+          and del_yn = 0
+
+INFO  2024-05-30 09:10:31.450 [http-nio-8081-exec-3] [WebSessionListener:88] - setSession 실행
+DEBUG 2024-05-30 09:10:31.511 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:10:31.531 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:10:31.532 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 09:10:31.533 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:10:33.547 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:10:33.548 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /favicon.ico
+DEBUG 2024-05-30 09:10:33.575 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:10:33.575 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /error
+DEBUG 2024-05-30 09:10:33.635 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:10:37.141 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:10:37.141 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:10:37.142 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:10:41.041 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:10:41.042 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 09:10:41.042 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:10:43.848 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:10:43.848 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:10:43.849 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 09:11:05.111 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 09:11:05.114 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 09:11:10.161 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 8444 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 09:11:10.164 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 09:11:10.165 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 09:11:10.452 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 09:11:10.452 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 09:11:10.963 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 09:11:11.216 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 09:11:11.221 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:11:11.222 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 09:11:11.223 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 09:11:11.252 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 09:11:11.253 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 798 ms
+INFO  2024-05-30 09:11:11.316 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 09:11:11.366 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@35134630
+INFO  2024-05-30 09:11:11.368 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 09:11:11.373 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 09:11:14.083 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 09:11:14.099 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:11:14.115 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 09:11:14.115 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 4.595 seconds (process running for 5.272)
+INFO  2024-05-30 09:11:29.622 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 09:11:29.623 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 09:11:29.624 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-30 09:11:29.636 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:11:29.637 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:11:29.642 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:11:32.567 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:11:32.567 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 09:11:32.567 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:11:33.954 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:11:33.954 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 09:11:33.955 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:11:34.710 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:11:34.711 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:11:34.711 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:11:35.289 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:11:35.290 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 09:11:35.290 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:11:36.097 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:11:36.098 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:11:36.098 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:11:36.700 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:11:36.700 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 09:11:36.700 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:11:45.833 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:11:45.833 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 09:11:45.858 [http-nio-8081-exec-7] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 09:12:06.901 [http-nio-8081-exec-7] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 09:12:06.905 [http-nio-8081-exec-7] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 09:12:06.925 [http-nio-8081-exec-7] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (4, 'DISPLAY-BUEND:TGRP=123,FORMAT=S;', NULL, 'test', NOW())
+
+DEBUG 2024-05-30 09:12:06.939 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 09:12:11.367 [Catalina-utility-1] [WebSessionListener:124] - updateUserCloseTime test 
+DEBUG 2024-05-30 09:14:36.615 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:14:36.615 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 09:14:36.616 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 09:15:01.533 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:15:01.533 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 09:15:01.534 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+WARN  2024-05-30 09:29:42.901 [HikariPool-1 housekeeper] [HikariPool:804] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m31s116ms654µs99ns).
+DEBUG 2024-05-30 09:31:25.756 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:31:25.756 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:31:25.770 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 09:40:43.650 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 09:40:43.652 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 09:40:53.010 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 10040 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 09:40:53.010 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 09:40:53.010 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 09:40:53.184 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 09:40:53.184 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 09:40:53.740 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 09:40:53.990 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 09:40:53.997 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:40:53.998 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 09:40:53.998 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 09:40:54.032 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 09:40:54.032 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 848 ms
+INFO  2024-05-30 09:40:54.096 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 09:40:54.150 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@570893b0
+INFO  2024-05-30 09:40:54.151 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 09:40:54.157 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 09:40:57.084 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 09:40:57.107 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:40:57.128 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 09:40:57.142 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 4.529 seconds (process running for 8.137)
+INFO  2024-05-30 09:40:59.217 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 09:40:59.217 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 09:40:59.218 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-30 09:40:59.231 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:40:59.232 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:40:59.238 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 09:53:17.337 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 09:53:17.344 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 09:53:27.669 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 2704 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 09:53:27.669 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 09:53:27.669 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 09:53:28.096 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 09:53:28.096 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 09:53:28.954 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 09:53:29.691 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 09:53:29.707 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:53:29.722 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 09:53:29.722 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 09:53:29.850 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 09:53:29.850 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1754 ms
+INFO  2024-05-30 09:53:30.024 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 09:53:30.198 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@5540aee7
+INFO  2024-05-30 09:53:30.198 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 09:53:30.214 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 09:53:38.019 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 09:53:38.041 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:53:38.063 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 09:53:38.078 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 11.454 seconds (process running for 12.588)
+INFO  2024-05-30 09:53:38.203 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 09:53:38.203 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 09:53:38.204 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-30 09:53:38.230 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:53:38.230 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:53:38.240 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 09:56:17.143 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 09:56:17.148 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 09:56:26.335 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 8216 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 09:56:26.339 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 09:56:26.341 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 09:56:26.796 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 09:56:26.797 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 09:56:27.535 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 09:56:27.883 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 09:56:27.890 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:56:27.892 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 09:56:27.892 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 09:56:27.936 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 09:56:27.936 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1138 ms
+INFO  2024-05-30 09:56:28.020 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 09:56:28.092 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3a4c37d7
+INFO  2024-05-30 09:56:28.094 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 09:56:28.101 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 09:56:31.222 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 09:56:31.233 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 09:56:31.245 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 09:56:31.252 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 6.136 seconds (process running for 13.19)
+INFO  2024-05-30 09:56:52.899 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 09:56:52.900 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 09:56:52.901 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-30 09:56:52.919 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 09:56:52.920 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 09:56:52.927 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 10:05:46.819 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 10:05:46.823 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 10:05:58.693 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 18652 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 10:05:58.693 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 10:05:58.709 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 10:05:59.116 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 10:05:59.116 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 10:05:59.785 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 10:06:00.175 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 10:06:00.175 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 10:06:00.190 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 10:06:00.190 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 10:06:00.237 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 10:06:00.237 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1121 ms
+INFO  2024-05-30 10:06:00.315 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 10:06:00.393 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@6564ffde
+INFO  2024-05-30 10:06:00.393 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 10:06:00.393 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 10:06:04.913 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 10:06:04.935 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 10:06:04.952 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 10:06:04.966 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 7.121 seconds (process running for 8.393)
+INFO  2024-05-30 10:06:05.783 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 10:06:05.783 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 10:06:05.783 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 0 ms
+DEBUG 2024-05-30 10:06:05.816 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:06:05.816 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:06:05.816 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:35:03.369 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:35:03.371 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 10:35:03.371 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:35:16.747 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:35:16.748 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 10:35:16.748 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 10:35:47.461 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 10:35:47.466 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 10:35:54.023 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 12560 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 10:35:54.027 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 10:35:54.030 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 10:35:54.429 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 10:35:54.430 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 10:35:55.203 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 10:35:55.600 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 10:35:55.609 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 10:35:55.611 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 10:35:55.612 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 10:35:55.661 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 10:35:55.662 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1231 ms
+INFO  2024-05-30 10:35:55.744 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 10:35:55.819 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@6a8c5888
+INFO  2024-05-30 10:35:55.821 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 10:35:55.829 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 10:35:59.006 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 10:35:59.019 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 10:35:59.031 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 10:35:59.038 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 6.007 seconds (process running for 7.06)
+INFO  2024-05-30 10:37:04.883 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 10:37:04.883 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 10:37:04.883 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 0 ms
+DEBUG 2024-05-30 10:37:04.899 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:04.899 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:37:04.915 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:38.137 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:38.138 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:37:38.138 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:40.099 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:40.099 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:37:40.099 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:41.644 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:41.644 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:37:41.644 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:42.313 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:42.313 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 10:37:42.314 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:42.964 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:42.966 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 10:37:42.966 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:44.822 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:44.822 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:37:44.822 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:46.736 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:46.736 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 10:37:46.736 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:48.017 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:48.018 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:37:48.018 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:48.754 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:48.754 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 10:37:48.754 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:50.225 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:50.226 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:37:50.226 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:37:59.657 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:37:59.657 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:37:59.658 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:38:00.257 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:38:00.258 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 10:38:00.258 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:38:01.225 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:38:01.226 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:38:01.226 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:38:01.762 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:38:01.762 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 10:38:01.762 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:38:02.529 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:38:02.529 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:38:02.530 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 10:39:23.295 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 10:39:23.298 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 10:39:26.952 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 17892 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 10:39:26.954 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 10:39:26.956 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 10:39:27.192 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 10:39:27.192 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 10:39:27.697 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 10:39:27.946 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 10:39:27.951 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 10:39:27.952 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 10:39:27.953 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 10:39:27.989 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 10:39:27.989 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 797 ms
+INFO  2024-05-30 10:39:28.050 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 10:39:28.102 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@485126df
+INFO  2024-05-30 10:39:28.103 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 10:39:28.108 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 10:39:30.993 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 10:39:30.993 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 10:39:31.010 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 10:39:31.010 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 4.603 seconds (process running for 5.195)
+INFO  2024-05-30 10:39:36.655 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 10:39:36.655 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 10:39:36.655 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 0 ms
+DEBUG 2024-05-30 10:39:36.674 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:39:36.674 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:39:36.675 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 10:41:06.972 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 10:41:06.975 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 10:41:15.178 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 7460 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 10:41:15.182 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 10:41:15.184 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 10:41:15.546 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 10:41:15.547 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 10:41:16.249 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 10:41:16.642 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 10:41:16.658 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 10:41:16.658 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 10:41:16.658 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 10:41:16.716 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 10:41:16.716 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1169 ms
+INFO  2024-05-30 10:41:16.807 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 10:41:16.891 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@607bad97
+INFO  2024-05-30 10:41:16.893 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 10:41:16.902 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 10:41:20.526 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 10:41:20.526 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 10:41:20.543 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 10:41:20.559 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 6.153 seconds (process running for 6.897)
+INFO  2024-05-30 10:41:20.793 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 10:41:20.793 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 10:41:20.793 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 0 ms
+DEBUG 2024-05-30 10:41:20.812 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:20.812 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 10:41:20.817 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:23.913 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:23.914 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:41:23.914 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:25.181 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:25.182 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 10:41:25.182 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:26.645 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:26.645 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:41:26.645 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:27.663 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:27.663 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 10:41:27.664 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:28.306 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:28.307 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:41:28.307 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:29.000 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:29.001 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 10:41:29.001 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:29.605 [http-nio-8081-exec-6] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:29.605 [http-nio-8081-exec-6] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:41:29.605 [http-nio-8081-exec-6] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:30.302 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:30.302 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:41:30.303 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:30.861 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:30.862 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 10:41:30.862 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:41:32.062 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:41:32.062 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 10:41:32.062 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:45:02.749 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:45:02.749 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 10:45:02.749 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 10:45:03.385 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 10:45:03.385 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 10:45:03.385 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 11:15:18.923 [Catalina-utility-2] [WebSessionListener:124] - updateUserCloseTime test 
+WARN  2024-05-30 12:54:30.177 [HikariPool-1 housekeeper] [HikariPool:804] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h34m12s352ms831µs).
+WARN  2024-05-30 13:11:12.599 [HikariPool-1 housekeeper] [HikariPool:804] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m42s257ms750µs100ns).
+DEBUG 2024-05-30 13:25:22.420 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:25:22.420 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /login/proc
+DEBUG 2024-05-30 13:25:22.464 [http-nio-8081-exec-8] [ArgumentResolver:56] - ##### key : userid, value : test #####
+DEBUG 2024-05-30 13:25:22.464 [http-nio-8081-exec-8] [ArgumentResolver:56] - ##### key : userpwd, value : 1111 #####
+DEBUG 2024-05-30 13:25:22.465 [http-nio-8081-exec-8] [AbstractDAO:15] - 	 QueryId  	:  Login.login_proc
+DEBUG 2024-05-30 13:25:22.486 [http-nio-8081-exec-8] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+81. select seq, userid, userpwd
+        from account
+        where userid = 'test'
+          and userpwd =SHA2('1111', 256)
+          and del_yn = 0
+
+INFO  2024-05-30 13:25:22.506 [http-nio-8081-exec-8] [WebSessionListener:88] - setSession 실행
+DEBUG 2024-05-30 13:25:22.526 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:25:22.534 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:25:22.535 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:25:22.535 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:28.999 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:28.999 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:38:28.999 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:31.237 [http-nio-8081-exec-6] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:31.237 [http-nio-8081-exec-6] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 13:38:31.237 [http-nio-8081-exec-6] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:32.256 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:32.256 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:38:32.257 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:33.167 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:33.167 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 13:38:33.168 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:34.448 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:34.448 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:38:34.448 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:35.116 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:35.117 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 13:38:35.117 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:35.699 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:35.700 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:38:35.700 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:37.451 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:37.452 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:38:37.452 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:38.067 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:38.067 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 13:38:38.067 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:38:43.339 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:38:43.339 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 13:38:43.339 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:39:05.101 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:39:05.102 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /logout
+INFO  2024-05-30 13:39:05.102 [http-nio-8081-exec-7] [WebSessionListener:106] - removeSession 실행
+INFO  2024-05-30 13:39:05.102 [http-nio-8081-exec-7] [WebSessionListener:124] - updateUserCloseTime test 
+DEBUG 2024-05-30 13:39:05.105 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:39:09.024 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:39:09.024 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /login/proc
+DEBUG 2024-05-30 13:39:09.039 [http-nio-8081-exec-7] [ArgumentResolver:56] - ##### key : userid, value : test #####
+DEBUG 2024-05-30 13:39:09.040 [http-nio-8081-exec-7] [ArgumentResolver:56] - ##### key : userpwd, value : 1111 #####
+DEBUG 2024-05-30 13:39:09.040 [http-nio-8081-exec-7] [AbstractDAO:15] - 	 QueryId  	:  Login.login_proc
+DEBUG 2024-05-30 13:39:09.040 [http-nio-8081-exec-7] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+91. select seq, userid, userpwd
+        from account
+        where userid = 'test'
+          and userpwd =SHA2('1111', 256)
+          and del_yn = 0
+
+INFO  2024-05-30 13:39:09.040 [http-nio-8081-exec-7] [WebSessionListener:88] - setSession 실행
+DEBUG 2024-05-30 13:39:09.040 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:39:09.040 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:39:09.040 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:39:09.040 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 13:40:32.943 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 13:40:32.947 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 13:40:36.530 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 18280 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 13:40:36.533 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 13:40:36.534 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 13:40:36.823 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 13:40:36.823 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 13:40:37.410 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 13:40:37.676 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 13:40:37.682 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 13:40:37.683 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 13:40:37.683 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 13:40:37.725 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 13:40:37.725 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 901 ms
+INFO  2024-05-30 13:40:37.787 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 13:40:37.843 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@443b2187
+INFO  2024-05-30 13:40:37.844 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 13:40:37.850 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 13:40:41.126 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 13:40:41.142 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 13:40:41.159 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 13:40:41.168 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 5.255 seconds (process running for 5.87)
+INFO  2024-05-30 13:40:44.253 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 13:40:44.253 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 13:40:44.254 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-30 13:40:44.269 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:44.269 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:44.275 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:46.672 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:46.672 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:46.672 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:47.355 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:47.355 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:47.355 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:49.024 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:49.024 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /index.html
+DEBUG 2024-05-30 13:40:49.040 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:49.040 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /error
+DEBUG 2024-05-30 13:40:49.040 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:52.652 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:52.652 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:52.652 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:53.605 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:53.605 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:53.605 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:54.042 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:54.042 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:54.043 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:54.319 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:54.319 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:54.319 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:54.858 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:54.858 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:54.858 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:56.196 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:56.197 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 13:40:56.197 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:40:56.996 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:40:56.997 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:40:56.997 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 13:41:31.656 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 13:41:31.663 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-30 13:41:42.579 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 16892 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-30 13:41:42.583 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-30 13:41:42.584 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-30 13:41:43.088 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-30 13:41:43.088 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-30 13:41:44.055 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-30 13:41:44.549 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-30 13:41:44.559 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 13:41:44.561 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-30 13:41:44.562 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-30 13:41:44.621 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-30 13:41:44.621 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1532 ms
+INFO  2024-05-30 13:41:44.719 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-30 13:41:44.808 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@4b127bb6
+INFO  2024-05-30 13:41:44.811 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-30 13:41:44.822 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-30 13:41:50.051 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-30 13:41:50.076 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-30 13:41:50.103 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-30 13:41:50.118 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 8.538 seconds (process running for 10.074)
+INFO  2024-05-30 13:41:50.231 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-30 13:41:50.232 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-30 13:41:50.234 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 2 ms
+DEBUG 2024-05-30 13:41:50.257 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:41:50.258 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:41:50.268 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:41:54.367 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:41:54.368 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:41:54.368 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:41:54.994 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:41:54.994 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:41:54.994 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:41:59.381 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:41:59.381 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:41:59.381 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:00.500 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:00.500 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:42:00.500 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:01.300 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:01.300 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 13:42:01.300 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:02.011 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:02.011 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:42:02.011 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:04.424 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:04.424 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 13:42:04.424 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:04.841 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:04.842 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 13:42:04.842 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:07.238 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:07.238 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:42:07.238 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:08.467 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:08.468 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:42:08.468 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:09.041 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:09.041 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:42:09.041 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:09.638 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:09.638 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:42:09.638 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:10.412 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:10.412 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 13:42:10.413 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:11.205 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:11.205 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 13:42:11.205 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:31.870 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:31.870 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:42:31.870 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:33.724 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:33.724 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 13:42:33.724 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:34.263 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:34.263 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:42:34.263 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:34.861 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:34.862 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 13:42:34.862 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:35.701 [http-nio-8081-exec-6] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:35.701 [http-nio-8081-exec-6] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 13:42:35.702 [http-nio-8081-exec-6] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:36.816 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:36.816 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:42:36.816 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:37.518 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:37.518 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:42:37.518 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:41.286 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:41.286 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 13:42:41.287 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:42:51.773 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:42:51.773 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 13:42:51.806 [http-nio-8081-exec-7] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 13:43:12.857 [http-nio-8081-exec-7] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 13:43:12.858 [http-nio-8081-exec-7] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 13:43:12.876 [http-nio-8081-exec-7] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (2, 'REGENERATE-AUN:TYPE=1231,GRNO=12312;', NULL, 'test', NOW())
+
+DEBUG 2024-05-30 13:43:12.891 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:48:32.247 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:48:32.247 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /logout
+INFO  2024-05-30 13:48:32.247 [http-nio-8081-exec-5] [WebSessionListener:106] - removeSession 실행
+INFO  2024-05-30 13:48:32.247 [http-nio-8081-exec-5] [WebSessionListener:124] - updateUserCloseTime test 
+DEBUG 2024-05-30 13:48:32.247 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:48:37.072 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:48:37.072 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /login/proc
+DEBUG 2024-05-30 13:48:37.119 [http-nio-8081-exec-5] [ArgumentResolver:56] - ##### key : userid, value : 1000 #####
+DEBUG 2024-05-30 13:48:37.119 [http-nio-8081-exec-5] [ArgumentResolver:56] - ##### key : userpwd, value : 1111 #####
+DEBUG 2024-05-30 13:48:37.119 [http-nio-8081-exec-5] [AbstractDAO:15] - 	 QueryId  	:  Login.login_proc
+DEBUG 2024-05-30 13:48:37.119 [http-nio-8081-exec-5] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. select seq, userid, userpwd
+        from account
+        where userid = '1000'
+          and userpwd =SHA2('1111', 256)
+          and del_yn = 0
+
+INFO  2024-05-30 13:48:37.119 [http-nio-8081-exec-5] [WebSessionListener:88] - setSession 실행
+DEBUG 2024-05-30 13:48:37.134 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:48:37.134 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:48:37.134 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 13:48:37.134 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:48:38.950 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:48:38.950 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 13:48:38.950 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 13:48:59.641 [http-nio-8081-exec-6] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:48:59.641 [http-nio-8081-exec-6] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 13:48:59.641 [http-nio-8081-exec-6] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 13:49:20.666 [http-nio-8081-exec-6] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 13:49:20.667 [http-nio-8081-exec-6] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 13:49:20.667 [http-nio-8081-exec-6] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (3, 'DISPLAY-LDAT:LROUTE=6322,TGRP=122,ODR=3212,LAUTH=32,DNNO=1-100-2,LATTR=31232;', NULL, '1000', NOW())
+
+DEBUG 2024-05-30 13:49:20.675 [http-nio-8081-exec-6] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 13:55:45.802 [Catalina-utility-1] [WebSessionListener:76] - currentSessionUserList -> userid 1000 
+DEBUG 2024-05-30 13:57:24.656 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 13:57:24.657 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 13:57:24.658 [http-nio-8081-exec-3] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 13:57:45.684 [http-nio-8081-exec-3] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 13:57:45.684 [http-nio-8081-exec-3] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 13:57:45.685 [http-nio-8081-exec-3] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+11. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (3, 'DISPLAY-LDAT:LROUTE=6322,TGRP=122,ODR=3212,LAUTH=32,DNNO=1-100-2,LATTR=31232;', NULL, '1000', NOW())
+
+DEBUG 2024-05-30 13:57:45.694 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:03:12.237 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:03:12.238 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 14:03:12.238 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:03:48.014 [http-nio-8081-exec-6] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:03:48.014 [http-nio-8081-exec-6] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 14:03:48.014 [http-nio-8081-exec-6] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:03:49.315 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:03:49.315 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-30 14:03:49.315 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:03:52.880 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:03:52.882 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 14:03:52.882 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:03:54.333 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:03:54.333 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 14:03:54.333 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:03:57.985 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:03:57.985 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 14:03:57.985 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:08:49.016 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:08:49.016 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /tollbackup
+DEBUG 2024-05-30 14:08:49.017 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:08:56.712 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:08:56.713 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 14:08:56.713 [http-nio-8081-exec-2] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 14:09:17.753 [http-nio-8081-exec-2] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 14:09:17.754 [http-nio-8081-exec-2] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 14:09:17.754 [http-nio-8081-exec-2] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+21. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (4, 'DISPLAY-TDCSU:PEN1=LTU,TGRP=511,FORMAT=S;', NULL, '1000', NOW())
+
+DEBUG 2024-05-30 14:09:17.756 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:09:30.461 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:09:30.461 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /backup
+DEBUG 2024-05-30 14:09:30.462 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:09:39.418 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:09:39.418 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 14:09:39.419 [http-nio-8081-exec-1] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 14:10:00.452 [http-nio-8081-exec-1] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 14:10:00.452 [http-nio-8081-exec-1] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 14:10:00.453 [http-nio-8081-exec-1] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+21. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (2, 'DISPLAY-SA:CD=3224;', NULL, '1000', NOW())
+
+DEBUG 2024-05-30 14:10:00.455 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:18:13.372 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:18:13.373 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-30 14:18:13.374 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:18:18.480 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:18:18.480 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 14:18:18.480 [http-nio-8081-exec-1] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 14:18:39.525 [http-nio-8081-exec-1] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 14:18:39.525 [http-nio-8081-exec-1] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 14:18:39.526 [http-nio-8081-exec-1] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+31. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (1, 'DISPLAY-SCSU:STNO=324;', NULL, '1000', NOW())
+
+DEBUG 2024-05-30 14:18:39.528 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:23:47.918 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:23:47.918 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 14:23:47.918 [http-nio-8081-exec-5] [SocketController:89] - Socket Connecting
+DEBUG 2024-05-30 14:24:02.598 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:24:02.598 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 14:24:02.600 [http-nio-8081-exec-4] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 14:24:08.966 [http-nio-8081-exec-5] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 14:24:08.967 [http-nio-8081-exec-5] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 14:24:08.968 [http-nio-8081-exec-5] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (1, 'REGENERATE-AUN:TYPE=123,GRNO=1111;', NULL, '1000', NOW())
+
+DEBUG 2024-05-30 14:24:08.976 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+ERROR 2024-05-30 14:24:23.642 [http-nio-8081-exec-4] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 14:24:23.642 [http-nio-8081-exec-4] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 14:24:23.643 [http-nio-8081-exec-4] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (1, 'REGENERATE-AUN:TYPE=123,GRNO=1111;', NULL, '1000', NOW())
+
+DEBUG 2024-05-30 14:24:23.644 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-30 14:25:18.076 [http-nio-8081-exec-6] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-30 14:25:18.077 [http-nio-8081-exec-6] [LoggerInterceptor:21] - Request URI ===> /sendCommand
+INFO  2024-05-30 14:25:18.077 [http-nio-8081-exec-6] [SocketController:89] - Socket Connecting
+ERROR 2024-05-30 14:25:39.119 [http-nio-8081-exec-6] [SocketController:103] - Connection timed out: connect
+java.net.ConnectException: Connection timed out: connect
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:579)
+	at java.base/sun.nio.ch.Net.connect(Net.java:568)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/java.net.Socket.connect(Socket.java:583)
+	at java.base/java.net.Socket.<init>(Socket.java:507)
+	at java.base/java.net.Socket.<init>(Socket.java:287)
+	at com.vdc.khnp.web.controller.SocketController.socketClient(SocketController.java:90)
+	at com.vdc.khnp.web.controller.SocketController.sendCommand(SocketController.java:40)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+INFO  2024-05-30 14:25:39.120 [http-nio-8081-exec-6] [SocketController:109] - Socket Close
+DEBUG 2024-05-30 14:25:39.121 [http-nio-8081-exec-6] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+41. INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (1, 'CHANGE-SCSU:STNO=2342,DPLN=15,ITR=15,COS1=111,COS2=123,LCOSV1=123,LCOSV2=123,LCOSD1=333,LCOSV1=331,CCTIDX=1,DIAL=VAR,TEXTSEL=ENGLISH,INS=YES,SSTNO=YES,FLASH=YES;', NULL, '1000', NOW())
+
+DEBUG 2024-05-30 14:25:39.122 [http-nio-8081-exec-6] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-30 14:38:28.864 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-30 14:38:28.864 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.

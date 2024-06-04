@@ -1,0 +1,606 @@
+INFO  2024-05-13 09:25:00.617 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 14828 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 09:25:00.621 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 09:25:00.622 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 09:25:01.033 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 09:25:01.034 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 09:25:02.131 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 09:25:02.677 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 09:25:02.687 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 09:25:02.688 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 09:25:02.689 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 09:25:02.742 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 09:25:02.743 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1708 ms
+INFO  2024-05-13 09:25:02.823 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 09:25:02.903 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@739628f8
+INFO  2024-05-13 09:25:02.905 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 09:25:02.912 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 09:25:07.558 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 09:25:07.571 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 09:25:07.585 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 09:25:07.594 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 7.573 seconds (process running for 11.194)
+INFO  2024-05-13 09:25:12.838 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 09:25:12.838 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 09:25:12.839 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 09:25:12.855 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 09:25:12.856 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /
+DEBUG 2024-05-13 09:25:12.856 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 09:25:16.978 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 09:25:16.978 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /login/proc
+DEBUG 2024-05-13 09:25:17.039 [http-nio-8081-exec-4] [ArgumentResolver:56] - ##### key : userid, value : test #####
+DEBUG 2024-05-13 09:25:17.039 [http-nio-8081-exec-4] [ArgumentResolver:56] - ##### key : userpwd, value : 1111 #####
+DEBUG 2024-05-13 09:25:17.040 [http-nio-8081-exec-4] [AbstractDAO:15] - 	 QueryId  	:  login.login_proc
+DEBUG 2024-05-13 09:25:17.069 [http-nio-8081-exec-4] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. select seq, userid, userpwd
+        from account
+        where userid = 'test'
+          and userpwd =SHA2('1111', 256)
+          and del_yn = 0
+
+INFO  2024-05-13 09:25:17.088 [http-nio-8081-exec-4] [WebSessionListener:88] - setSession 실행
+DEBUG 2024-05-13 09:25:17.109 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 09:25:17.117 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 09:25:17.117 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-13 09:25:17.117 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 09:25:19.556 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 09:25:19.556 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /favicon.ico
+DEBUG 2024-05-13 09:25:19.566 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 09:25:19.567 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /error
+DEBUG 2024-05-13 09:25:19.584 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 09:38:31.997 [http-nio-8081-exec-5] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 09:38:31.998 [http-nio-8081-exec-5] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-13 09:38:31.999 [http-nio-8081-exec-5] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 09:56:04.592 [Catalina-utility-2] [WebSessionListener:76] - currentSessionUserList -> userid test 
+DEBUG 2024-05-13 10:05:24.948 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 10:05:24.949 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-13 10:05:24.949 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 10:36:06.628 [Catalina-utility-1] [WebSessionListener:124] - updateUserCloseTime test 
+DEBUG 2024-05-13 15:11:45.861 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:11:45.890 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /
+DEBUG 2024-05-13 15:11:45.892 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 15:11:48.753 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:11:48.753 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /login/proc
+DEBUG 2024-05-13 15:11:48.758 [http-nio-8081-exec-4] [ArgumentResolver:56] - ##### key : userid, value : test #####
+DEBUG 2024-05-13 15:11:48.759 [http-nio-8081-exec-4] [ArgumentResolver:56] - ##### key : userpwd, value : 1111 #####
+DEBUG 2024-05-13 15:11:48.760 [http-nio-8081-exec-4] [AbstractDAO:15] - 	 QueryId  	:  login.login_proc
+DEBUG 2024-05-13 15:11:48.768 [http-nio-8081-exec-4] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+361. select seq, userid, userpwd
+        from account
+        where userid = 'test'
+          and userpwd =SHA2('1111', 256)
+          and del_yn = 0
+
+INFO  2024-05-13 15:11:48.773 [http-nio-8081-exec-4] [WebSessionListener:88] - setSession 실행
+DEBUG 2024-05-13 15:11:48.785 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 15:11:48.797 [http-nio-8081-exec-9] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:11:48.798 [http-nio-8081-exec-9] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-13 15:11:48.798 [http-nio-8081-exec-9] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 15:11:51.968 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:11:51.968 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:11:51.970 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:13:45.902 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:13:45.905 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:14:00.457 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 8332 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:14:00.459 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:14:00.460 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:14:00.720 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:14:00.721 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:14:01.570 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:14:02.021 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:14:02.031 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:14:02.033 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:14:02.033 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:14:02.093 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:14:02.095 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1372 ms
+INFO  2024-05-13 15:14:02.207 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:14:02.304 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@18da0f9e
+INFO  2024-05-13 15:14:02.306 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:14:02.316 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:14:06.719 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:14:06.738 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:14:06.756 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:14:06.768 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 6.927 seconds (process running for 13.747)
+INFO  2024-05-13 15:20:13.034 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:20:13.038 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:20:16.110 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 5444 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:20:16.113 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:20:16.114 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:20:16.486 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:20:16.487 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:20:17.895 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:20:18.913 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:20:18.926 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:20:18.929 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:20:18.930 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:20:19.015 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:20:19.015 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 2528 ms
+INFO  2024-05-13 15:20:19.172 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:20:19.318 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@5963fb01
+INFO  2024-05-13 15:20:19.321 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:20:19.336 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:20:24.137 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:20:24.164 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:20:24.190 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:20:24.205 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 8.704 seconds (process running for 9.189)
+INFO  2024-05-13 15:20:27.895 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:20:27.895 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:20:27.896 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:20:27.913 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:20:27.913 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:20:27.920 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:31:26.499 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:31:26.502 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:31:31.568 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 9760 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:31:31.571 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:31:31.573 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:31:31.962 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:31:31.962 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:31:32.690 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:31:33.058 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:31:33.067 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:31:33.069 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:31:33.069 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:31:33.114 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:31:33.115 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1152 ms
+INFO  2024-05-13 15:31:33.194 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:31:33.267 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@5aeaadbe
+INFO  2024-05-13 15:31:33.269 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:31:33.276 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:31:39.640 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:31:39.660 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:31:39.680 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:31:39.696 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 9.02 seconds (process running for 9.844)
+INFO  2024-05-13 15:31:55.205 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:31:55.206 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:31:55.207 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:31:55.228 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:31:55.228 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-13 15:31:55.236 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 15:33:53.493 [http-nio-8081-exec-6] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:33:53.494 [http-nio-8081-exec-6] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-13 15:33:53.494 [http-nio-8081-exec-6] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 15:33:59.569 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:33:59.569 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:33:59.569 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:35:14.363 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:35:14.368 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:35:19.724 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 14396 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:35:19.728 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:35:19.730 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:35:20.112 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:35:20.113 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:35:20.876 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:35:21.273 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:35:21.281 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:35:21.283 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:35:21.283 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:35:21.328 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:35:21.329 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1215 ms
+INFO  2024-05-13 15:35:21.408 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:35:21.480 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@5b0160d5
+INFO  2024-05-13 15:35:21.482 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:35:21.489 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:35:25.139 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:35:25.156 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:35:25.172 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:35:25.181 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 6.363 seconds (process running for 7.193)
+INFO  2024-05-13 15:35:30.588 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:35:30.589 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:35:30.590 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:35:30.626 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:35:30.627 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:35:30.638 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:38:52.345 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:38:52.349 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:38:55.611 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 8672 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:38:55.613 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:38:55.613 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:38:55.876 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:38:55.876 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:38:56.308 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:38:56.600 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:38:56.607 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:38:56.608 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:38:56.608 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:38:56.650 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:38:56.651 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 775 ms
+INFO  2024-05-13 15:38:56.724 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:38:56.789 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@660a9dd4
+INFO  2024-05-13 15:38:56.791 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:38:56.799 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:39:02.189 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:39:02.204 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:39:02.218 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:39:02.227 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 7.097 seconds (process running for 7.565)
+INFO  2024-05-13 15:39:02.282 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:39:02.282 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:39:02.283 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:39:02.297 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:39:02.298 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:39:02.304 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 15:39:16.116 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:39:16.116 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:39:16.116 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:41:38.589 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:41:38.593 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:41:40.722 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 8256 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:41:40.724 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:41:40.725 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:41:40.977 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:41:40.978 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:41:41.481 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:41:41.737 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:41:41.743 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:41:41.744 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:41:41.744 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:41:41.777 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:41:41.777 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 799 ms
+INFO  2024-05-13 15:41:41.840 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:41:41.893 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3d1d3348
+INFO  2024-05-13 15:41:41.895 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:41:41.900 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:41:44.915 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:41:44.927 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:41:44.940 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:41:44.947 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 4.864 seconds (process running for 5.525)
+INFO  2024-05-13 15:41:45.004 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:41:45.004 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:41:45.005 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:41:45.016 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:41:45.017 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:41:45.022 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:51:06.907 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:51:06.910 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:51:09.918 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 16544 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:51:09.920 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:51:09.921 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:51:10.187 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:51:10.188 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:51:10.844 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:51:11.192 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:51:11.200 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:51:11.202 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:51:11.202 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:51:11.254 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:51:11.254 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1066 ms
+INFO  2024-05-13 15:51:11.335 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:51:11.415 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@63880feb
+INFO  2024-05-13 15:51:11.417 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:51:11.429 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:51:14.622 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:51:14.633 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:51:14.645 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:51:14.651 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 5.352 seconds (process running for 5.929)
+INFO  2024-05-13 15:51:14.729 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:51:14.729 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:51:14.730 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:51:14.743 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:51:14.743 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:51:14.750 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:51:47.464 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:51:47.468 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:51:50.663 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 20604 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:51:50.664 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:51:50.666 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:51:50.872 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:51:50.873 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:51:51.294 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:51:51.539 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:51:51.544 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:51:51.546 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:51:51.546 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:51:51.578 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:51:51.579 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 706 ms
+INFO  2024-05-13 15:51:51.637 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:51:51.691 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7740148a
+INFO  2024-05-13 15:51:51.692 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:51:51.698 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:51:54.935 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:51:54.954 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:51:54.970 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:51:54.980 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 4.789 seconds (process running for 5.278)
+INFO  2024-05-13 15:51:55.117 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:51:55.117 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:51:55.118 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:51:55.135 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:51:55.135 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:51:55.142 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:52:45.727 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:52:45.730 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:52:49.907 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 14828 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:52:49.911 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:52:49.916 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:52:50.443 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:52:50.444 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:52:51.601 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:52:52.266 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:52:52.277 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:52:52.280 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:52:52.281 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:52:52.352 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:52:52.352 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1907 ms
+INFO  2024-05-13 15:52:52.482 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:52:52.627 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@6a586fdf
+INFO  2024-05-13 15:52:52.631 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:52:52.644 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:52:57.383 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:52:57.402 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:52:57.419 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:52:57.427 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 9.061 seconds (process running for 10.737)
+INFO  2024-05-13 15:52:57.820 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:52:57.820 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:52:57.821 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:52:57.839 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:52:57.839 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:52:57.845 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:56:42.850 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:56:42.854 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:56:45.557 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 10908 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:56:45.559 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:56:45.559 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:56:45.757 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:56:45.757 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:56:46.188 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:56:46.455 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:56:46.461 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:56:46.462 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:56:46.463 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:56:46.498 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:56:46.498 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 740 ms
+INFO  2024-05-13 15:56:46.557 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:56:46.609 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@58cc540e
+INFO  2024-05-13 15:56:46.610 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:56:46.616 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:56:49.436 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:56:49.449 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:56:49.462 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:56:49.468 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 4.359 seconds (process running for 4.836)
+INFO  2024-05-13 15:56:52.609 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:56:52.609 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:56:52.610 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:56:52.625 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:56:52.625 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:56:52.631 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 15:59:15.790 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 15:59:15.794 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 15:59:19.378 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 4252 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 15:59:19.380 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 15:59:19.381 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 15:59:19.662 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 15:59:19.662 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 15:59:20.259 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 15:59:20.574 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 15:59:20.580 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:59:20.582 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 15:59:20.582 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 15:59:20.617 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 15:59:20.617 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 954 ms
+INFO  2024-05-13 15:59:20.681 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 15:59:20.740 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3c15329f
+INFO  2024-05-13 15:59:20.741 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 15:59:20.748 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 15:59:25.068 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 15:59:25.082 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 15:59:25.096 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 15:59:25.104 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 6.44 seconds (process running for 7.135)
+INFO  2024-05-13 15:59:25.324 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 15:59:25.324 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 15:59:25.325 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 15:59:25.339 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 15:59:25.340 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 15:59:25.345 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 16:00:06.322 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 16:00:06.325 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 16:00:10.549 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 12720 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 16:00:10.553 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 16:00:10.554 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 16:00:10.911 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 16:00:10.912 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 16:00:11.562 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 16:00:11.948 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 16:00:11.955 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 16:00:11.957 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 16:00:11.957 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 16:00:12.004 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 16:00:12.004 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1092 ms
+INFO  2024-05-13 16:00:12.088 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 16:00:12.160 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@57b6bc54
+INFO  2024-05-13 16:00:12.162 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 16:00:12.170 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 16:00:19.489 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 16:00:19.510 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 16:00:19.529 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 16:00:19.541 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 9.79 seconds (process running for 10.494)
+INFO  2024-05-13 16:00:20.358 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 16:00:20.358 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 16:00:20.360 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 16:00:20.383 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 16:00:20.383 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 16:00:20.392 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 16:11:19.347 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 16:11:19.406 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 16:11:26.420 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 15740 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 16:11:26.423 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 16:11:26.425 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 16:11:26.829 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 16:11:26.830 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 16:11:27.610 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 16:11:28.045 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 16:11:28.055 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 16:11:28.057 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 16:11:28.058 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 16:11:28.107 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 16:11:28.107 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1276 ms
+INFO  2024-05-13 16:11:28.192 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 16:11:28.273 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@212ae860
+INFO  2024-05-13 16:11:28.275 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 16:11:28.283 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 16:11:34.453 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 16:11:34.476 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 16:11:34.495 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 16:11:34.506 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 9.054 seconds (process running for 10.072)
+INFO  2024-05-13 16:11:34.587 [http-nio-8081-exec-2] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 16:11:34.588 [http-nio-8081-exec-2] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 16:11:34.588 [http-nio-8081-exec-2] [DispatcherServlet:554] - Completed initialization in 0 ms
+DEBUG 2024-05-13 16:11:34.612 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 16:11:34.612 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 16:11:34.621 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 16:12:36.449 [http-nio-8081-exec-10] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 16:12:36.450 [http-nio-8081-exec-10] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 16:12:36.450 [http-nio-8081-exec-10] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 16:25:34.678 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 16:25:34.680 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 16:25:38.997 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 15272 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 16:25:39.000 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 16:25:39.000 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 16:25:39.325 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 16:25:39.325 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 16:25:40.336 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 16:25:40.912 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 16:25:40.923 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 16:25:40.927 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 16:25:40.927 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 16:25:40.995 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 16:25:40.996 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1669 ms
+INFO  2024-05-13 16:25:41.106 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 16:25:41.223 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@4a034590
+INFO  2024-05-13 16:25:41.226 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 16:25:41.239 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 16:25:45.076 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 16:25:45.092 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 16:25:45.109 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 16:25:45.119 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 6.742 seconds (process running for 7.742)
+INFO  2024-05-13 16:25:45.221 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 16:25:45.221 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 16:25:45.222 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 0 ms
+DEBUG 2024-05-13 16:25:45.239 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 16:25:45.240 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 16:25:45.247 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 16:56:44.916 [Catalina-utility-1] [WebSessionListener:124] - updateUserCloseTime test 
+INFO  2024-05-13 17:09:49.392 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 17:09:49.394 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 17:09:52.461 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 16828 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 17:09:52.464 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 17:09:52.465 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 17:09:52.720 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 17:09:52.720 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 17:09:53.724 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 17:09:54.260 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 17:09:54.272 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 17:09:54.275 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 17:09:54.275 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 17:09:54.344 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 17:09:54.345 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1624 ms
+INFO  2024-05-13 17:09:54.444 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 17:09:54.568 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@21c5b919
+INFO  2024-05-13 17:09:54.571 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 17:09:54.581 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 17:09:58.661 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 17:09:58.674 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 17:09:58.685 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 17:09:58.692 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 6.894 seconds (process running for 8.211)
+INFO  2024-05-13 17:09:58.810 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 17:09:58.811 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 17:09:58.811 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 0 ms
+DEBUG 2024-05-13 17:10:03.642 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 17:10:03.643 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /login/proc
+DEBUG 2024-05-13 17:10:03.687 [http-nio-8081-exec-1] [ArgumentResolver:56] - ##### key : userid, value : test #####
+DEBUG 2024-05-13 17:10:03.687 [http-nio-8081-exec-1] [ArgumentResolver:56] - ##### key : userpwd, value : 1111 #####
+DEBUG 2024-05-13 17:10:03.688 [http-nio-8081-exec-1] [AbstractDAO:15] - 	 QueryId  	:  login.login_proc
+DEBUG 2024-05-13 17:10:03.712 [http-nio-8081-exec-1] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. select seq, userid, userpwd
+        from account
+        where userid = 'test'
+          and userpwd =SHA2('1111', 256)
+          and del_yn = 0
+
+INFO  2024-05-13 17:10:03.732 [http-nio-8081-exec-1] [WebSessionListener:88] - setSession 실행
+DEBUG 2024-05-13 17:10:03.754 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 17:10:03.763 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 17:10:03.764 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-13 17:10:03.764 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 17:10:06.453 [http-nio-8081-exec-7] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 17:10:06.453 [http-nio-8081-exec-7] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 17:10:06.453 [http-nio-8081-exec-7] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 17:12:42.263 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 17:12:42.269 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 17:12:46.692 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 9824 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 17:12:46.696 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 17:12:46.698 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 17:12:47.180 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 17:12:47.181 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 17:12:48.757 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 17:12:49.756 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 17:12:49.772 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 17:12:49.776 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 17:12:49.777 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 17:12:49.870 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 17:12:49.871 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 2688 ms
+INFO  2024-05-13 17:12:50.010 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 17:12:50.159 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3d1d3348
+INFO  2024-05-13 17:12:50.163 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 17:12:50.178 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 17:12:56.782 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 17:12:56.807 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 17:12:56.827 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 17:12:56.838 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 11.186 seconds (process running for 12.268)
+INFO  2024-05-13 17:12:57.653 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 17:12:57.654 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 17:12:57.655 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 17:12:57.688 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 17:12:57.689 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 17:12:57.701 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 17:39:56.378 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 17:39:56.386 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 17:40:12.741 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 11224 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 17:40:12.746 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 17:40:12.747 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 17:40:13.443 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 17:40:13.444 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 17:40:16.190 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 17:40:17.497 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 17:40:17.517 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 17:40:17.522 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 17:40:17.522 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 17:40:17.634 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 17:40:17.635 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 4189 ms
+INFO  2024-05-13 17:40:17.853 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 17:40:18.080 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7563be75
+INFO  2024-05-13 17:40:18.085 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 17:40:18.108 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 17:40:29.085 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 17:40:29.106 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 17:40:29.128 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 17:40:29.139 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 19.348 seconds (process running for 21.684)
+INFO  2024-05-13 17:40:30.719 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-13 17:40:30.720 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-13 17:40:30.721 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-13 17:40:30.750 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 17:40:30.750 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 17:40:30.760 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-13 17:40:35.045 [http-nio-8081-exec-8] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-13 17:40:35.046 [http-nio-8081-exec-8] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-13 17:40:35.046 [http-nio-8081-exec-8] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-13 17:44:08.934 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 17:44:08.946 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
+INFO  2024-05-13 17:44:17.702 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 8536 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-13 17:44:17.704 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-13 17:44:17.705 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-13 17:44:18.074 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-13 17:44:18.075 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-13 17:44:18.821 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-13 17:44:19.149 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-13 17:44:19.156 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 17:44:19.158 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-13 17:44:19.158 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-13 17:44:19.203 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-13 17:44:19.203 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1128 ms
+INFO  2024-05-13 17:44:19.274 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-13 17:44:19.338 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@7671a58c
+INFO  2024-05-13 17:44:19.340 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-13 17:44:19.347 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-13 17:44:22.410 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-13 17:44:22.422 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-13 17:44:22.433 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-13 17:44:22.443 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 5.549 seconds (process running for 6.909)
+INFO  2024-05-13 17:44:33.482 [SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  2024-05-13 17:44:33.485 [SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.

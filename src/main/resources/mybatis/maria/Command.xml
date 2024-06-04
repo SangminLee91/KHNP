@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Command">
+
+    <insert id="insertCommand" parameterType="map">
+        INSERT INTO `command` (`code`, `input`, `output`, `reg_userid`, `reg_dt`)
+        VALUES (#{code}, #{input}, #{output}, #{reg_userid}, NOW())
+    </insert>
+
+
+
+</mapper>

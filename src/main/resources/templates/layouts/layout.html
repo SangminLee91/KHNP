@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta name="description" content="">
+    <title>IMS</title>
+
+    <!-- Bootstrap CSS [ REQUIRED ]-->
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/demo-purpose/demo-icons.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/demo-purpose/demo-settings.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/datatables.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nifty.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/ims.css}">
+
+    <!-- 컨텐츠 CSS 영역 -->
+    <th:block layout:fragment="css"></th:block>
+
+</head>
+
+<body class="jumping">
+
+    <!-- PAGE CONTAINER -->
+<!--    <div id="root" class="root mn&#45;&#45;max hd&#45;&#45;expanded navbar-fixed">-->
+    <div id="root" class="root mn--push hd--expanded">
+
+        <!-- CONTENTS -->
+        <section id="content" class="content">
+            <div class="content__header content__boxed rounded-0"><!-- overlapping -->
+                <th:block layout:fragment="breadcrumb"></th:block>
+            </div>
+
+            <!-- CONTENTS BEGIN -->
+            <div layout:fragment="content"> </div>
+            <!-- CONTENTS END -->
+
+            <!-- FOOTER
+            <footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+            END - FOOTER -->
+
+        </section>
+        <!-- END - CONTENTS -->
+
+        <!-- HEADER -->
+        <header th:replace="~{fragments/header :: headerFragment}"></header>
+
+        <!-- MAIN NAVIGATION
+        <nav th:replace="~{fragments/nav :: navFragment}"></nav>
+        END - MAIN NAVIGATION -->
+
+
+    </div>
+    <!-- END - PAGE CONTAINER -->
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <div class="scroll-container">
+        <a href="#root" class="scroll-page rounded-circle ratio ratio-1x1" aria-label="Scroll button"></a>
+    </div>
+    <!-- END - SCROLL TO TOP BUTTON -->
+
+    <!-- SETTINGS CONTAINER [ DEMO ]
+    <div th:replace="~{fragments/setting :: settingFragment}"></div>
+    END - SETTINGS CONTAINER [ DEMO ] -->
+
+    <!-- OFFCANVAS [ DEMO ] -->
+    <div id="_dm-offcanvas" class="offcanvas" tabindex="-1"></div>
+    <!-- END - OFFCANVAS [ DEMO ] -->
+
+
+
+    <!-- 공통 js -->
+    <script th:src="@{/assets/vendors/popperjs/popper.min.js}" defer></script>
+    <script th:src="@{/assets/vendors/bootstrap/bootstrap.min.js}" defer></script>
+    <script th:src="@{/assets/js/nifty.js}" defer></script>
+    <script th:src="@{/assets/js/demo-purpose-only.js}" defer></script>
+    <script th:src="@{/assets/js/jquery3.6.0.min.js}"></script>
+    <script th:src="@{/assets/js/ims.js}"></script>
+
+    <script type="text/javascript">
+        const CONTEXT_PATH = window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+        $(document).ready(function() {
+            $(".mainLink").click(function(){
+                location.href = CONTEXT_PATH; //"/ims";
+            });
+        });
+    </script>
+
+    <!-- 컨텐츠 스크립트 영역 -->
+    <th:block layout:fragment="script"></th:block>
+
+</body>
+
+</html>

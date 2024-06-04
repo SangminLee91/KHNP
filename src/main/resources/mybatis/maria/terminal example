@@ -1,0 +1,34 @@
+C:\Users\82106>ssh -p 22 engr@192.168.103.81
+(engr@192.168.103.81) Password:
+Last login: Mon Jun  3 14:49:20 2024 from 192.168.101.57
+Assistant-linux:/home/engr # dipas_batch
+********* RMX :  LOGON at 2024/06/03 14:52:59  ONLINE BATCHPROCESSING ********
+
+*** HICOM-Nr: RMX  Contract: 00 Name:
+
+L01: LOGON ACCEPTED TSN 9370 ALLOCATED                         24-06-03 14:52:56
+
+ACTUAL CODEWORD EXPIRES AT
+2024-06-12  <dis-lssm;
+dis-lssm;
+
+DIS-LSSM;
+H500:  AMO LSSM  STARTED
+
+  +=========================================================================+
+  |                        STATE OF LAN - CHANNELS                          |
+  +=========================================================================+
+  |      |        |           SYSTEM           |            USER            |
+  | TCP- | STATE  |=========================================================|
+  | LINE |        |   IP ADDRESS    |  PORT    |  IP ADDRESS     |   PORT   |
+  +=========================================================================+
+  |  1   |  ON    | 192.0.2.3       |  1201    | 0.0.0.0         |  0       |
+  |  2   |  ON    | 192.0.2.3       |  1202    | 0.0.0.0         |  0       |
+  |  3   |  OFF   | 0.0.0.0         |  0       | 0.0.0.0         |  0       |
+  |  4   |  OFF   | 0.0.0.0         |  0       | 0.0.0.0         |  0       |
+  |  5   |  ON    | 192.0.2.3       |  1205    | 0.0.0.0         |  0       |
+  |  6   |  ON    | 192.0.2.3       |  1206    | 0.0.0.0         |  0       |
+  +=========================================================================+
+
+AMO-LSSM -111       LINE SWITCH, SERVICE MODULES
+DISPLAY COMPLETED;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Login">
+
+    <select id="login_proc" parameterType="hashmap" resultType="hashmap">
+        select seq, userid, userpwd
+        from account
+        where userid = #{userid}
+          and userpwd =SHA2(#{userpwd}, 256)
+          and del_yn = 0
+    </select>
+
+
+
+</mapper>

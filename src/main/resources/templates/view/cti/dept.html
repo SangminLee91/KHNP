@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<!-- 컨텐츠 고유 CSS 추가 -->
+<th:block layout:fragment="css">
+
+</th:block>
+
+<!-- 컨텐츠 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+    <script th:src="@{/assets/vendors/datatables/datatables.min.js}"></script>
+    <script th:src="@{/assets/vendors/datatables/datatables.default.setting.js}"></script>
+
+    <script type="text/javascript">
+        let SELECTED_ROW = "";
+
+        $(document).ready(function() {
+            const deptTable = $('#agentTable').DataTable({
+                ajax: {
+                    url: CONTEXT_PATH + "/cti/dept/list",
+                    dataSrc: "rows"
+                },
+                columns: [
+                    { data: "seq" },
+                    { data: "dept_no" },
+                    { data: "dept_nm" },
+                    { data: "high_dept_no" },
+                    { data: "high_dept_nm" },
+                    { data: "cti_team_key" },
+                    { data: "dept_desc" }
+                ],
+                columnDefs: [ {  "targets": [0, 3, 5], "visible": false, "searchable": false }],
+                bInfo: true,
+                bPaginate: true,
+                scrollY: "536px",
+                scrollCollapse: true,
+            });
+
+            //Grid select
+            deptTable.on('select', function(e, dt, type, indexes){ SELECTED_ROW = deptTable.row(indexes).data(); }).on('deselect', function(){ SELECTED_ROW = ""; });
+
+            //save
+            $('#btn_dept_save').click(function(){
+
+                ValidChk("#addfrm");
+
+                let dept_no = $("#add_Emp_No").val();
+                let dept_nm = $("#add_Emp_Nm").val();
+                let high_dept_no = $("#add_Emp_Passwd").val();
+                let cti_team_key = $("#add_Dept_No").val();
+                let dept_desc = $("#add_Role").val();
+
+                let DeptData = {
+                    dept_no: dept_no
+                    , dept_nm: dept_nm
+                    , high_dept_no: high_dept_no
+                    , cti_team_key: cti_team_key
+                    , dept_desc: dept_desc
+                }
+                let AgnetAdd = ajax(CONTEXT_PATH+"/cti/dept/add", DeptData);
+                if (!AgnetAdd.success) { alert("저장이 실패하였습니다."); return false; }
+            });
+
+            //edit
+
+
+            //delete
+
+        });
+    </script>
+</th:block>
+
+<th:block layout:fragment="breadcrumb">
+    <div class="content__wrap">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">운영관리</li>
+                <li class="breadcrumb-item active" aria-current="page">부서 관리</li>
+            </ol>
+        </nav>
+        <h1 class="page-title mb-0 mt-2">부서 관리</h1>
+        <p class="lead">
+        </p>
+    </div>
+</th:block>
+
+<div layout:fragment="content" class="content__boxed">
+    <div class="content__wrap">
+        <div class="row">
+
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title d-none">부서 관리</h5>
+                        <div class="row">
+                            <div class="col-md-12 d-flex gap-1 align-items-center justify-content-md-end">
+                                <button class="btn btn-xs btn-dark" id="btn-add" data-bs-toggle="modal" data-bs-target="#add" >Add</button>
+                                <button class="btn btn-xs btn-dark ml-1" id="btn-edt">Edit</button>
+                                <button class="btn btn-xs btn-dark ml-1" id="btn-delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="agentTable" class="table table-sm table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="d-none">seq</th>
+                                    <th class="">부서 번호</th>
+                                    <th class="">부서 명</th>
+                                    <th class="d-none">high_dept_no</th>
+                                    <th class="">상위 부서명</th>
+                                    <th class="">부서 설명</th>
+                                    <th class="d-none">cti_team_key</th>
+                                    <th class="">내선번호</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Modal-->
+    <div class="modal fade" id="add" aria-hidden="true" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">상담원 등록</h4>
+                    <button type="button" class="btn btn-icon btn-xs btn-dark btn-close-card" data-bs-dismiss="modal">
+                        <i class="demo-psi-cross"></i><span class="visually-hidden">Close</span>
+                    </button>
+                </div>
+
+                <form name="addfrm" id="addfrm" method="post">
+                    <div class="modal-body">
+
+                        <div class="input-group mb-1">
+                            <label for="add_Emp_No" class="col-sm-4 col-xl-2 col-form-label">로그인 ID</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <input id="add_Emp_No" type="text" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Emp_Nm" class="col-sm-4 col-xl-2 col-form-label">상담원명</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <input id="add_Emp_Nm" type="text" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Emp_Passwd" class="col-sm-4 col-xl-2 col-form-label">비밀번호</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <input id="add_Emp_Passwd" type="password" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Dept_No" class="col-sm-4 col-xl-2 col-form-label">부 서</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <select class="form-select form-select-sm _dept" id="add_Dept_No">
+                                    <option value="" disabled selected hidden>-선택- </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Role" class="col-sm-4 col-xl-2 col-form-label">기본권한</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <select class="form-select form-select-sm _dept" id="add_Role">
+                                    <option value="" disabled selected hidden>-선택- </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_AgentKey" class="col-sm-4 col-xl-2 col-form-label">Agent ID</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <select class="form-select form-select-sm _dept" id="add_AgentKey" data-valid=false>
+                                    <option value="" disabled selected hidden>-선택- </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Extn" class="col-sm-4 col-xl-2 col-form-label">내선번호</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <input id="add_Extn" type="text" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-xs btn-dark" id="btn_agent_save">Save</button>
+                        <button type="button" class="btn btn-xs btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

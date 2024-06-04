@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <script th:src="@{/assets/js/jquery3.6.0.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/js/main.js}" type="text/javascript"></script>
+</head>
+
+
+<th:block layout:fragment="css"></th:block>
+<th:block layout:fragment="script">
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+
+
+            //로그아웃
+            $("#logout").css("cursor", "pointer").click(function () {
+                location.replace(CONTEXT_PATH + "/logout");
+            });
+
+            //가입자내선(디지털) SDAT 속성 변경 (CHA-SDAT)
+            $(".cha_sdat_input").change(function(){
+                make_command($(".cha_sdat_input"), $(this), "CHANGE-SDAT");
+            });
+
+            // 당겨받기 작업선택
+            $("#select_aun_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".aun_job_1").removeClass("d-block").addClass("d-none");
+                $(".aun_job_2").removeClass("d-block").addClass("d-none");
+                $(".aun_job_3").removeClass("d-block").addClass("d-none");
+                $(".aun_job_4").removeClass("d-block").addClass("d-none");
+                $(".aun_job_5").removeClass("d-block").addClass("d-none");
+                $(".aun_job_6").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            //당겨받기 (AUN)
+            // 생성 ADD-AUN
+            $(".add_aun_job1_input").change(function(){
+                make_command($(".add_aun_job1_input"), $(this), "ADD-AUN");
+            });
+            // 내선추가
+            $(".add_aun_job2_input").change(function(){
+                make_command($(".add_aun_job2_input"), $(this), "ADD-AUN");
+            });
+            // 내선삭제
+            $(".del_aun_job3_input").change(function(){
+                make_command($(".del_aun_job3_input"), $(this), "DELETE-AUN");
+            });
+            // 그룹삭제
+            $(".del_aun_job4_input").change(function(){
+                make_command($(".del_aun_job4_input"), $(this), "DELETE-AUN");
+            });
+            // 그룹 번호 검색
+            $(".reg_aun_job5_input").change(function(){
+                make_command($(".reg_aun_job5_input"), $(this), "REGENERATE-AUN");
+            });
+            // 내선번호 검색
+            $(".reg_aun_job6_input").change(function(){
+                make_command($(".reg_aun_job6_input"), $(this), "REGENERATE-AUN");
+            });
+
+
+            // 대표전화(헌트) 작업선택
+            $("#select_sa_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".sa_job_1").removeClass("d-block").addClass("d-none");
+                $(".sa_job_2").removeClass("d-block").addClass("d-none");
+                $(".sa_job_3").removeClass("d-block").addClass("d-none");
+                $(".sa_job_4").removeClass("d-block").addClass("d-none");
+                $(".sa_job_5").removeClass("d-block").addClass("d-none");
+                $(".sa_job_6").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 대표번호생성
+            $(".add_sa_job1_input").change(function(){
+                make_command($(".add_sa_job1_input"), $(this), "ADD-SA");
+            });
+            // 종속번호추가
+            $(".add_sa_job2_input").change(function(){
+                make_command($(".add_sa_job2_input"), $(this), "ADD-SA");
+            });
+            // 종속번호삭제
+            $(".del_sa_job3_input").change(function(){
+                make_command($(".del_sa_job3_input"), $(this), "DELETE-SA");
+            });
+            // 대표번호삭제
+            $(".del_sa_job4_input").change(function(){
+                make_command($(".del_sa_job4_input"), $(this), "DELETE-SA");
+            });
+            // 대표번호검색
+            $(".dis_sa_job5_input").change(function(){
+                make_command($(".dis_sa_job5_input"), $(this), "DISPLAY-SA");
+            });
+            // 종속번호검색
+            $(".dis_sa_job6_input").change(function(){
+                make_command($(".dis_sa_job6_input"), $(this), "DISPLAY-SA");
+            });
+
+            //내선생성
+            $("#select_sbcsu_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".sbcsu_job_1").removeClass("d-block").addClass("d-none");
+                $(".sbcsu_job_2").removeClass("d-block").addClass("d-none");
+                $(".sbcsu_job_3").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 디지털, IP(HFA), SIP 내선 생성
+            $(".add_sbcsu_job1_input").change(function(){
+                make_command($(".add_sbcsu_job1_input"), $(this), "ADD-SBCSU");
+            });
+            // 디지털, IP(HFA), SIP 내선 확인
+            $(".dis_sbcsu_job2_input").change(function(){
+                make_command($(".dis_sbcsu_job2_input"), $(this), "DISPLAY-SBCSU");
+            });
+            // 디지털, IP(HFA), SIP 내선 변경
+            $(".cha_sbcsu_job3_input").change(function(){
+                make_command($(".cha_sbcsu_job3_input"), $(this), "CHANGE-SBCSU");
+            });
+
+            //아날로그 내선생성
+            $("#select_scsu_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".scsu_job_1").removeClass("d-block").addClass("d-none");
+                $(".scsu_job_2").removeClass("d-block").addClass("d-none");
+                $(".scsu_job_3").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 아날로그 내선 생성
+            $(".add_scsu_job1_input").change(function(){
+                make_command($(".add_scsu_job1_input"), $(this), "ADD-SCSU");
+            });
+            // 아날로그 내선 확인
+            $(".dis_scsu_job2_input").change(function(){
+                make_command($(".dis_scsu_job2_input"), $(this), "DISPLAY-SCSU");
+            });
+            // 아날로그 내선 Data 변경
+            $(".cha_scsu_job3_input").change(function(){
+                make_command($(".cha_scsu_job3_input"), $(this), "CHANGE-SCSU");
+            });
+
+            let make_command = function(dom, dom_this, main_command) {
+                let command = "";
+                dom_this.attr("data-amo-value", dom_this.attr("data-amo") + "=" + dom_this.val());
+                $.each(dom, function () {
+                    if ($(this).val() !== "") command += $(this).attr("data-amo-value") + ","; // 입력요소 반복하며 문자열 구성
+                });
+                if (command.indexOf(",") > -1) command = command.slice(0, -1); //마지막 " , " 없애기
+                $("#send_order").val(main_command +":"+ command.toUpperCase() +";"); //send_order 폼에 명령어 출력
+            };
+
+            // 서버 응답값 comwon_display에 깔끔하게 만들기
+            function formatResponse(response) {
+                return response.replace(/ /g, '&nbsp;').replace(/\n/g, '<br>');
+            }
+
+            // 명령어 전송 후 서버 응답값 comwon_display에 출력
+            $("#send_button").click(function() {
+                let command = $("#send_order").val();
+                if (command) {
+                    $.ajax({
+                        url: '/sendCommand',
+                        type: 'POST',
+                        data: JSON.stringify({ command: command }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function(response) {
+                            if(response.success) {
+                                $("#comwon_display").html(formatResponse(response.response));
+                            } else {
+                                alert(response.message || "명령어 실행에 실패하였습니다.");
+                            }
+                        },
+                        error: function(error) {
+                            console.error("커맨드 전송에 실패하였습니다.:", error);
+                            alert("커맨드 전송에 실패하였습니다.");
+                        }
+                    });
+                } else {
+                    alert("전송 할 커맨드를 입력해주세요");
+                }
+            });
+
+            // $('#send_order').keypress(function(e){
+            //     if(e.keyCode === 13){
+            //         $('#send_button').click();
+            //     }
+            // });
+
+        });
+    </script>
+
+</th:block>
+
+<th:block layout:fragment="breadcrumb">
+    <div class="content__wrap">
+            <h1 class="page-title mb-0 mt-2">내선 메인</h1>
+        <p class="lead"> </p>
+    </div>
+</th:block>
+
+<div layout:fragment="content" class="content__boxed">
+
+    <div class="content__wrap">
+        <div class="card mb-3">
+            <div class="card-body">
+
+                <div class="mb-3">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/main">내선 메인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/backup">내선 백업</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tollmain">톨 메인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tollbackup">톨 백업</a>
+                    </li>
+                </ul>
+                </div>
+
+                <h5 class="card-title">내선 메인 교환기 설정</h5>
+                <p>규격에 맞는 옵션을 설정 해주십시오.</p>
+                <div class="d-flex mt-4 gap-3">
+                    <button class="btn btn-xs btn-light" type="button" onclick="window.history.back();">Back</button>
+                    <button class="btn btn-xs btn-primary" type="button" onclick="location.reload();">Refresh</button>
+                    <button id="logout" class="btn btn-xs btn-dark" type="button">Logout</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="tab-base ">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#maintab1" type="button" role="tab" aria-controls="home" aria-selected="true">가입자 내선</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab2" type="button" role="tab" aria-controls="profile" aria-selected="false">당겨받기</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab3" type="button" role="tab" aria-controls="contact" aria-selected="false">대표전화(헌트)</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab4" type="button" role="tab" aria-controls="internal" aria-selected="false">내선생성</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab5" type="button" role="tab" aria-controls="analog" aria-selected="false">아날로그내선생성</button>
+                        </li>
+                    </ul>
+
+                    <!-- Tabs content -->
+                    <div class="tab-content col-md">
+                        <div id="maintab1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="main-tab1">
+<!--                            <h5 class="card-title">가입자 내선 (디지털, IP) 속성 SDAT 변경</h5>-->
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="변경하고자 하는 내선번호">내선번호</span>
+                                <label for="cha_sdat_stno"></label>
+                                <input type="text" class="form-control cha_sdat_input" id="cha_sdat_stno" placeholder="변경 할 내선번호" data-amo="STNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="일반 가입자 데이터 관리">
+                                    <label for="cha_sdat_type">TYPE</label></span>
+                                <select class="form-select cha_sdat_input" id="cha_sdat_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="DATA1">DATA1</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="가상노드번호 (내선번호 생성시 1-100-98로 설정됨)">가상노드번호</span>
+                                <label for="cha_sdat_nno"></label>
+                                <input type="text" class="form-control cha_sdat_input" id="cha_sdat_nno" placeholder="1-100-98" data-amo="NNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="외부 발신시 발신자 번호 변경기능 ex) 1089772010">공중전화번호</span>
+                                <label for="cha_sdat_pubnum"></label>
+                                <input type="text" class="form-control cha_sdat_input" id="cha_sdat_pubnum" placeholder="변경 할 발신자번호" data-amo="PUBNUM" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="PUBNUM 설정시 ISDN 으로 설정하여야 발신자 번호가 변경됨.">
+                                    <label for="cha_sdat_npi">번호 플랜 numbering plan identification</label></span>
+                                <select class="form-select cha_sdat_input" id="cha_sdat_npi" data-amo="NPI" data-amo-value="">
+                                    <option value="">NPI</option>
+                                    <option value="ISDN">ISDN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="HOT LINE 설정시 사용
+ADD-HOTLN : HOTDEST  설정한 IDX 값 입력 ">핫라인 색인</span>
+                                <label for="cha_sdat_hotidx"></label>
+                                <input type="text" class="form-control cha_sdat_input" id="cha_sdat_hotidx" placeholder="1~20000"  data-amo="HOTIDX" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="OOS (Out Of Service) 가입자 개인 대체 라우팅 번호
+(XXXX 는 STNO 값이 입력되어야 함.)">대체라우팅번호</span>
+                                <label for="cha_sdat_stnoos"></label>
+                                <input type="text" class="form-control cha_sdat_input" id="cha_sdat_stnoos" placeholder="대체 라우팅 번호" data-amo="STNOOOS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="YES : 대체 라우팅 사용 / NO : 미사용"><label for="cha_sdat_amoaltrt">AMO 대체 라우팅</label></span>
+                                <select class="form-select cha_sdat_input" id="cha_sdat_amoaltrt" data-amo="AMOALTRT" data-amo-value="">
+                                    <option value="">AMOALTRT</option>
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1">
+                                <span class="input-group-text w100px btn-primary" title="IP 전화기 인증 방식
+(한수원 본사의 경우 IP 보드에 TLS 인증이 되어있어 단말속성을 변경하여야 함.)"><label for="cha_sdat_classsec">CLASSSEC</label></span>
+                                <select class="form-select cha_sdat_input" id="cha_sdat_classsec" data-amo="CLASSSEC" data-amo-value="">
+                                    <option value="">CLASSSEC</option>
+                                    <option value="SECURE">SECURE</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                        <div id="maintab2" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab2">
+<!--                            <h5 class="card-title">당겨받기 기능</h5>-->
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_aun_job"></label>
+                                <select class="form-select" id="select_aun_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="aun_job_1" selected>생성 ADD-AUN</option>
+                                    <option value="aun_job_2">내선추가</option>
+                                    <option value="aun_job_3">내선삭제</option>
+                                    <option value="aun_job_4">그룹삭제</option>
+                                    <option value="aun_job_5">그룹 번호 검색</option>
+                                    <option value="aun_job_6">내선번호 검색</option>
+                                </select>
+                            </div>
+
+
+                            <!-- 생성 ADD-AUN -->
+                            <div class="input-group input-group-sm pb-1 aun_job_1">
+                                <span class="input-group-text w100px btn-primary" title="pickup group number. 그룹넘버를 입력하지 않을시
+오름차순으로 자동 설정됨">그룹번호</span>
+                                <label for="add_aun_job1_grno"></label>
+                                <input type="text" class="form-control add_aun_job1_input" id="add_aun_job1_grno" placeholder="그룹넘버" data-amo="GRNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_1">
+                                <span class="input-group-text w100px btn-primary" title="GR:  group / ONS: One number service"><label for="add_aun_job1_type">그룹타입</label></span>
+                                <select class="form-select add_aun_job1_input" id="add_aun_job1_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="GR">GR</option>
+                                    <option value="ONS">ONS</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_1">
+                                <span class="input-group-text w100px btn-primary" title="station number. 당겨받을 번호들 입력, & : 번호구분,
+&& : 연속적인 번호 입력시">내선번호</span>
+                                <label for="add_aun_job1_stno"></label>
+                                <input type="text" class="form-control add_aun_job1_input" id="add_aun_job1_stno" placeholder="내선번호(여러개 시 &기호로 구분)" data-amo="STNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_1">
+                                <span class="input-group-text w100px btn-primary" title="display station no. of calling party
+YES:  TRUE  / NO: FALSE"><label for="add_aun_job1_distno">디스플레이선택</label></span>
+                                <select class="form-select add_aun_job1_input" id="add_aun_job1_distno" data-amo="DISTNO" data-amo-value="">
+                                    <option value="">DISTNO</option>
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_1">
+                                <span class="input-group-text w100px btn-primary" title="delayed notification tone ring
+OFF: no notification / ON3: with multiple burst notification in all states" style="text-align:left;"><label for="add_aun_job1_notrng">경고톤 <br/>(delayed notification <br/>tone ring)</label></span>
+                                <select class="form-select add_aun_job1_input" id="add_aun_job1_notrng" data-amo="NOTRNG" data-amo-value="">
+                                    <option value="">NOTRNG</option>
+                                    <option value="OFF">OFF</option>
+                                    <option value="ON3">ON3</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_1">
+                                <span class="input-group-text w100px btn-primary" title="pick up of second call enabled
+YES:  TRUE / NO: FALSE"><label for="add_aun_job1_pusecond">통화중당겨받기</label></span>
+                                <select class="form-select add_aun_job1_input" id="add_aun_job1_pusecond" data-amo="PUSECOND" data-amo-value="">
+                                    <option value="">PUSECOND</option>
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_1">
+                                <span class="input-group-text w100px btn-primary" title="signaling mode
+ALL: display, led and tone signaling
+LED:  only led signaling
+NONE: no signaling"><label for="add_aun_job1_signal">시그날링모드</label></span>
+                                <select class="form-select add_aun_job1_input" id="add_aun_job1_signal" data-amo="SIGNAL" data-amo-value="">
+                                    <option value="">SIGNAL</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="LED">LED</option>
+                                    <option value="NONE">NONE</option>
+                                </select>
+                            </div>
+
+                            <!-- 내선추가 -->
+                            <div class="input-group input-group-sm pb-1 aun_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Pickup Group Number (기존 생성된 그룹번호 입력)">그룹번호</span>
+                                <label for="add_aun_job2_grno"></label>
+                                <input type="text" class="form-control add_aun_job2_input" id="add_aun_job2_grno" placeholder="그룹번호" data-amo="GRNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="">그룹타입</span>
+                                <label for="add_aun_job2_gr"></label>
+                                <input type="text" class="form-control add_aun_job2_input" id="add_aun_job2_gr" placeholder="GR" data-amo="GR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Station Number (추가할 내선번호 입력)">내선번호</span>
+                                <label for="add_aun_job2_stno"></label>
+                                <input type="text" class="form-control add_aun_job2_input" id="add_aun_job2_stno" placeholder="내선번호(여러개 시 &기호로 구분)" data-amo="STNO" data-amo-value="">
+                            </div>
+
+                            <!-- 내선삭제 -->
+                            <div class="input-group input-group-sm pb-1 aun_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="">타입</span>
+                                <label for="del_aun_job3_type"></label>
+                                <input type="text" class="form-control del_aun_job3_input" id="del_aun_job3_type" placeholder="STN" data-amo="TYPE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="">그룹번호</span>
+                                <label for="del_aun_job3_gr"></label>
+                                <input type="text" class="form-control del_aun_job3_input" id="del_aun_job3_gr" placeholder="GR" data-amo="GR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Station Number (삭제할 내선 번호 입력)">내선번호</span>
+                                <label for="del_aun_job3_stno"></label>
+                                <input type="text" class="form-control del_aun_job3_input" id="del_aun_job3_stno" placeholder="내선번호(여러개 시 &기호로 구분)" data-amo="STNO" data-amo-value="">
+                            </div>
+
+
+                            <!-- 그룹삭제 -->
+                            <div class="input-group input-group-sm pb-1 aun_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="">타입</span>
+                                <label for="del_aun_job4_type"></label>
+                                <select class="form-select del_aun_job4_input" id="del_aun_job4_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="GR">GR</option>
+                                    <option value="SYS">SYS</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="">그룹번호</span>
+                                <label for="del_aun_job4_grno"></label>
+                                <input type="text" class="form-control del_aun_job4_input" id="del_aun_job4_grno" placeholder="그룹번호" data-amo="GRNO" data-amo-value="">
+                            </div>
+
+
+                            <!-- 그룹 번호 검색 -->
+                            <div class="input-group input-group-sm pb-1 aun_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Group (그룹으로 검색)">타입</span>
+                                <label for="reg_aun_job5_type"></label>
+                                <input type="text" class="form-control reg_aun_job5_input" id="reg_aun_job5_type" placeholder="TYPE" data-amo="TYPE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Pickup Group Number (그룹넘버 입력)">그룹번호</span>
+                                <label for="reg_aun_job5_grno"></label>
+                                <input type="text" class="form-control reg_aun_job5_input" id="reg_aun_job5_grno" placeholder="GRNO" data-amo="GRNO" data-amo-value="">
+                            </div>
+
+                            <!-- 내선번호 검색 -->
+                            <div class="input-group input-group-sm pb-1 aun_job_6 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Station (내선번호로 검색)">타입</span>
+                                <label for="reg_aun_job6_type"></label>
+                                <input type="text" class="form-control reg_aun_job6_input" id="reg_aun_job6_type" placeholder="TYPE" data-amo="TYPE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 aun_job_6 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Station Number (내선번호 입력)">내선번호</span>
+                                <label for="reg_aun_job6_stno"></label>
+                                <input type="text" class="form-control reg_aun_job6_input" id="reg_aun_job6_stno" placeholder="내선번호" data-amo="STNO" data-amo-value="">
+                            </div>
+
+
+
+                        </div>
+                        <div id="maintab3" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab3">
+
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_sa_job"></label>
+                                <select class="form-select" id="select_sa_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="sa_job_1" selected>대표번호생성</option>
+                                    <option value="sa_job_2">종속번호추가</option>
+                                    <option value="sa_job_3">종속번호삭제</option>
+                                    <option value="sa_job_4">대표번호삭제</option>
+                                    <option value="sa_job_5">대표번호검색</option>
+                                    <option value="sa_job_6">종속번호검색</option>
+                                </select>
+                            </div>
+
+
+                            <!-- 대표번호생성 -->
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Station 입력">타입</span>
+                                <label for="add_sa_job1_type"></label>
+                                <input type="text" class="form-control add_sa_job1_input" id="add_sa_job1_type" placeholder="VCE" data-amo="TYPE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Hunting Group Access Code
+헌팅그룹 대표번호 입력">대표번호</span>
+                                <label for="add_sa_job1_cd"></label>
+                                <input type="text" class="form-control add_sa_job1_input" id="add_sa_job1_cd" placeholder="헌트그룹 대표번호" data-amo="CD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Station (종속 번호 입력)">종속번호</span>
+                                <label for="add_sa_job1_stno"></label>
+                                <input type="text" class="form-control add_sa_job1_input" id="add_sa_job1_stno" placeholder="내선번호(여러개 시 &기호로 구분)" data-amo="STNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="CYC (균등착신), LIN(순차착신), PRL (동시착신)"><label for="add_sa_job1_stype">착신방법</label></span>
+                                <select class="form-select add_sa_job1_input" id="add_sa_job1_stype" data-amo="STYPE" data-amo-value="">
+                                    <option value="">STYPE</option>
+                                    <option value="CYC">CYC</option>
+                                    <option value="LIN">LIN</option>
+                                    <option value="PRL">PRL</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="콜오더/큐잉 용량 (대기 콜 수)
+(최대 3자리까지 입력 가능)">대기콜 수</span>
+                                <label for="add_sa_job1_cqmax"></label>
+                                <input type="text" class="form-control add_sa_job1_input" id="add_sa_job1_cqmax" placeholder="대기 콜 수(최대 3)" data-amo="CQMAX" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="TEXT 입력 (최대 16자리 입력가능)">그룹 명</span>
+                                <label for="add_sa_job1_name"></label>
+                                <input type="text" class="form-control add_sa_job1_input" id="add_sa_job1_name" placeholder="그룹 명(최대 16자)" data-amo="NAME" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Forward if no answer
+무응답시 포워드 적용"><label for="add_sa_job1_fna">착신 선택</label></span>
+                                <select class="form-select add_sa_job1_input" id="add_sa_job1_fna" data-amo="FNA" data-amo-value="">
+                                    <option value="">FNA</option>
+                                    <option value="Y">Y</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="헌트그룹 번호중 착신전환 설정시 착신 허용"><label for="add_sa_job1_execcfw">헌트그룹 착신 전환 실행</label></span>
+                                <select class="form-select add_sa_job1_input" id="add_sa_job1_execcfw" data-amo="EXECCFW" data-amo-value="">
+                                    <option value="">EXECCFW</option>
+                                    <option value="Y">Y</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Overflow after one cycle (한사이클 후 Overflow 목적지 호전환)"><label for="add_sa_job1_ovflcycl">오버 싸이클</label></span>
+                                <select class="form-select add_sa_job1_input" id="add_sa_job1_ovflcycl" data-amo="OVFLCYCL" data-amo-value="">
+                                    <option value="">OVFLCYCL</option>
+                                    <option value="Y">Y</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="None (없음)
+Destext (Destination extension)"><label for="add_sa_job1_ovfldest">무응답 전환 설정</label></span>
+                                <select class="form-select add_sa_job1_input" id="add_sa_job1_ovfldest" data-amo="OVFLDEST" data-amo-value="">
+                                    <option value="">OVFLDEST</option>
+                                    <option value="NONE">NONE</option>
+                                    <option value="DESTEXT">DESTEXT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_1">
+                                <span class="input-group-text w100px btn-primary" title="목적지 내선 번호 입력">무응답 전환번호</span>
+                                <label for="add_sa_job1_number"></label>
+                                <input type="text" class="form-control add_sa_job1_input" id="add_sa_job1_number" placeholder="목적지 내선 번호" data-amo="NUMBER" data-amo-value="">
+                            </div>
+
+                            <!-- 종속번호추가 -->
+                            <div class="input-group input-group-sm pb-1 sa_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Station 입력">타입</span>
+                                <label for="add_sa_job2_type"></label>
+                                <input type="text" class="form-control add_sa_job2_input" id="add_sa_job2_type" placeholder="STN" data-amo="TYPE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="헌트그룹 대표번호 입력">대표번호</span>
+                                <label for="add_sa_job2_cd"></label>
+                                <input type="text" class="form-control add_sa_job2_input" id="add_sa_job2_cd" placeholder="대표번호" data-amo="CD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="VCE (Voice 입력)">단말모드</span>
+                                <label for="add_sa_job2_svc"></label>
+                                <input type="text" class="form-control add_sa_job2_input" id="add_sa_job2_svc" placeholder="SVC" data-amo="SVC" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="추가할 내선번호 입력">종속번호</span>
+                                <label for="add_sa_job2_stno"></label>
+                                <input type="text" class="form-control add_sa_job2_input" id="add_sa_job2_stno" placeholder="내선번호(여러개 시 &기호로 구분)" data-amo="STNO" data-amo-value="">
+                            </div>
+
+                            <!-- 종속번호삭제 -->
+                            <div class="input-group input-group-sm pb-1 sa_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Station 입력">타입</span>
+                                <label for="del_sa_job3_type"></label>
+                                <input type="text" class="form-control del_sa_job3_input" id="del_sa_job3_type" placeholder="STN" data-amo="TYPE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="헌트그룹 대표번호 입력">대표번호</span>
+                                <label for="del_sa_job3_cd"></label>
+                                <input type="text" class="form-control del_sa_job3_input" id="del_sa_job3_cd" placeholder="대표번호" data-amo="CD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="VCE (Voice 입력)">단말모드</span>
+                                <label for="del_sa_job3_svc"></label>
+                                <input type="text" class="form-control del_sa_job3_input" id="del_sa_job3_svc" placeholder="SVC" data-amo="SVC" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 내선 번호 입력">종속번호</span>
+                                <label for="del_sa_job3_stno"></label>
+                                <input type="text" class="form-control del_sa_job3_input" id="del_sa_job3_stno" placeholder="내선번호(여러개 시 &기호로 구분)" data-amo="STNO" data-amo-value="">
+                            </div>
+
+                            <!-- 대표번호삭제 -->
+                            <div class="input-group input-group-sm pb-1 sa_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Station 입력">타입</span>
+                                <label for="del_sa_job4_type"></label>
+                                <input type="text" class="form-control del_sa_job4_input" id="del_sa_job4_type" placeholder="TYPE" data-amo="TYPE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 sa_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="헌트그룹 대표번호 입력">대표번호</span>
+                                <label for="del_sa_job4_cd"></label>
+                                <input type="text" class="form-control del_sa_job4_input" id="del_sa_job4_cd" placeholder="헌트그룹 대표번호" data-amo="CD" data-amo-value="">
+                            </div>
+
+                            <!-- 대표번호 검색 -->
+                            <div class="input-group input-group-sm pb-1 sa_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="헌트그룹 대표번호 입력">대표번호</span>
+                                <label for="dis_sa_job5_cd"></label>
+                                <input type="text" class="form-control dis_sa_job5_input" id="dis_sa_job5_cd" placeholder="검색하려는 대표번호" data-amo="CD" data-amo-value="">
+                            </div>
+                            <!-- 종속번호 검색 -->
+                            <div class="input-group input-group-sm pb-1 sa_job_6 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 내선 번호 입력">종속번호</span>
+                                <label for="dis_sa_job6_stno"></label>
+                                <input type="text" class="form-control dis_sa_job6_input" id="dis_sa_job6_stno" placeholder="검색하려는 내선번호" data-amo="STNO" data-amo-value="">
+                            </div>
+
+
+
+
+                        </div>
+                        <div id="maintab4" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab4">
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_sbcsu_job"></label>
+                                <select class="form-select" id="select_sbcsu_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="sbcsu_job_1" selected>디지털, IP, SIP 내선 생성</option>
+                                    <option value="sbcsu_job_2">디지털, IP, SIP 내선 확인</option>
+                                    <option value="sbcsu_job_3">디지털, IP, SIP 내선 변경</option>
+                                </select>
+                            </div>
+
+
+                        <!-- 디지털, IP, SIP 내선 생성 -->
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="STNO(내선번호) 입력">내선번호</span>
+                            <label for="add_sbcsu_job1_stno"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_stno" placeholder="생성하고자 하는 내선번호" data-amo="STNO" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="OPTI(전화기타입) 입력">전화기 타입</span>
+                            <label for="add_sbcsu_job1_opt"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_opt" placeholder="OPTI" data-amo="OPT" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="CONN (전화기 연결 방법) DIR (디지털 전화기) IP2 (IP전화기)">전화기 연결 방법</span>
+                            <label for="add_sbcsu_job1_conn"></label>
+                            <select class="form-select add_sbcsu_job1_input" id="add_sbcsu_job1_conn" data-amo="CONN" data-amo-value="">
+                                <option value="">CONN</option>
+                                <option value="DIR">DIR</option>
+                                <option value="IP2">IP2</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="내선번호의 포트 번호 (LTG-LTU-SLOT-CCT)">포트번호</span>
+                            <label for="add_sbcsu_job1_pen"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_pen" placeholder="1-X-X-X" data-amo="PEN" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="OPTISET (디지털) OPTIIP (HFA 전화기) UFIP (SIP 전화기)">
+                                <label for="add_sbcsu_job1_dvcfig">전화기 모델</label></span>
+                            <select class="form-select add_sbcsu_job1_input" id="add_sbcsu_job1_dvcfig" data-amo="DVCFIG" data-amo-value="">
+                                <option value="">DVCFIG</option>
+                                <option value="OPTISET">OPTISET</option>
+                                <option value="OPTIIP">OPTIIP</option>
+                                <option value="UFIP">UFIP</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="서비스등급1">서비스 등급 1</span>
+                            <label for="add_sbcsu_job1_cos1"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_cos1" placeholder="1~1000" data-amo="COS1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="서비스등급2">서비스 등급 2</span>
+                            <label for="add_sbcsu_job1_cos2"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_cos2" placeholder="1~1000" data-amo="COS2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="호등급1">호 등급 1</span>
+                            <label for="add_sbcsu_job1_lcosv1"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_lcosv1" placeholder="1~1000" data-amo="LCOSV1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="호등급2">호 등급 2</span>
+                            <label for="add_sbcsu_job1_lcosv2"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_lcosv2" placeholder="1~1000" data-amo="LCOSV2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="데이터등급1">데이터 등급 1</span>
+                            <label for="add_sbcsu_job1_lcosd1"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_lcosd1" placeholder="1~1000" data-amo="LCOSD1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="데이터등급2">데이터 등급 2</span>
+                            <label for="add_sbcsu_job1_lcosd2"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_lcosd2" placeholder="1~1000" data-amo="LCOSD2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="기능엑세스그룹">기능 엑세스 그룹</span>
+                            <label for="add_sbcsu_job1_dpln"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_dpln" placeholder="0~15" data-amo="DPLN" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="테난트그룹">테난트 그룹</span>
+                            <label for="add_sbcsu_job1_itr"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_itr" placeholder="0~15" data-amo="ITR" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="발신자표시제어">
+                                    <label for="add_sbcsu_job1_sstno">발신자 표시 제어</label></span>
+                            <select class="form-select add_sbcsu_job1_input" id="add_sbcsu_job1_sstno" data-amo="SSTNO" data-amo-value="">
+                                <option value="">SSTNO</option>jjjjkjj
+                                <option value="Y">Y</option>
+                                <option value="N">N</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="개별단축다이얼">개별 단축 다이얼</span>
+                            <label for="add_sbcsu_job1_spdi"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_spdi" placeholder="10" data-amo="SPDI" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="시스템단축다이얼1">시스템 단축 다이얼 1</span>
+                            <label for="add_sbcsu_job1_spdc1"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_spdc1" placeholder="0~15" data-amo="SPDC1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="시스템단축다이얼2">시스템 단축 다이얼 2</span>
+                            <label for="add_sbcsu_job1_spdc2"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_spdc2" placeholder="0~15" data-amo="SPDC2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="확장키">확장 키</span>
+                            <label for="add_sbcsu_job1_rep"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_rep" placeholder="0~4" data-amo="REP" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="전화기버튼항목">전화기 버튼 항목</span>
+                            <label for="add_sbcsu_job1_std"></label>
+                            <input type="text" class="form-control add_sbcsu_job1_input" id="add_sbcsu_job1_std" placeholder="0~255" data-amo="STD" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="비서기능">
+                                <label for="add_sbcsu_job1_secr">비서 기능</label></span>
+                            <select class="form-select add_sbcsu_job1_input" id="add_sbcsu_job1_secr" data-amo="SECR" data-amo-value="">
+                                <option value="">SECR</option>
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="N (미사용) NOIND (하드웨어 표시가 없는 헤드셋) WITHIND (하드웨어 표시가 있는 헤드셋) 헤드셋 설정 1">
+                                <label for="add_sbcsu_job1_headset">헤드셋 설정 1</label></span>
+                            <select class="form-select add_sbcsu_job1_input" id="add_sbcsu_job1_headset" data-amo="HEADSET" data-amo-value="">
+                                <option value="">HEADSET</option>
+                                <option value="N">N</option>
+                                <option value="NOIND">NOIND</option>
+                                <option value="WITHIND">WITHIND</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                        <span class="input-group-text w100px btn-primary" title="헤드셋설정 2">
+                            <label for="add_sbcsu_job1_hskey">헤드셋 설정 2</label></span>
+                            <select class="form-select add_sbcsu_job1_input" id="add_sbcsu_job1_hskey" data-amo="HSKEY" data-amo-value="">
+                                <option value="">HSKEY</option>
+                                <option value="NORMAL">NORMAL</option>
+                                <option value="HSIND">HSIND</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                        <span class="input-group-text w100px btn-primary" title="언어">
+                            <label for="add_sbcsu_job1_textsel">언어</label></span>
+                                <select class="form-select add_sbcsu_job1_input" id="add_sbcsu_job1_textsel" data-amo="TEXTSEL" data-amo-value="">
+                                    <option value="">TEXTSEL</option>
+                                    <option value="ENGLISH">ENGLISH</option>
+                                    <option value="KOREAN">KOREAN</option>
+                                </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_1">
+                        <span class="input-group-text w100px btn-primary" title="ALL (모든 Call Log 기록) NONE (사용하지 않음) TRIES (시도하는 Call Log 기록) 통화기록 표시">
+                            <label for="add_sbcsu_job1_callog">통화 기록 표시</label></span>
+                                <select class="form-select add_sbcsu_job1_input" id="add_sbcsu_job1_callog" data-amo="CALLOG" data-amo-value="">
+                                    <option value="">CALLOG</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="NONE">NONE</option>
+                                    <option value="TRIES">TRIES</option>
+                                </select>
+                        </div>
+
+                        <!-- 디지털, IP, SIP 내선 확인 -->
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_2 d-none">
+                            <span class="input-group-text w100px btn-primary" title="STNO(내선번호) 입력">내선번호</span>
+                            <label for="dis_sbcsu_job2_stno"></label>
+                            <input type="text" class="form-control dis_sbcsu_job2_input" id="dis_sbcsu_job2_stno" placeholder="확인 하고자 하는 내선번호" data-amo="STNO" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_2 d-none">
+                            <span class="input-group-text w100px btn-primary" title="TERMDATA (기본정보 출력) OPTIDAT (IP주소, H/W버전, 볼륨등 출력) 타입">
+                             <label for="dis_sbcsu_job2_type">타입</label></span>
+                            <select class="form-select dis_sbcsu_job2_input" id="dis_sbcsu_job2_type" data-amo="TYPE" data-amo-value="">
+                                <option value="">TYPE</option>
+                                <option value="TERMDATA">TERMDATA</option>
+                                <option value="OPTIDAT">OPTIDAT</option>
+                            </select>
+                        </div>
+
+                        <!-- 디지털, IP, SIP 내선 변경 -->
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="STNO(내선번호) 입력">내선번호</span>
+                            <label for="cha_sbcsu_job3_stno"></label>
+                            <input type="text" class="form-control cha_sbcsu_job3_input" id="cha_sbcsu_job3_stno" placeholder="확인 하고자 하는 내선번호" data-amo="STNO" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="TERMDATA (기본정보 출력) OPTIDAT (IP주소, H/W버전, 볼륨등 출력) 타입">
+                         <label for="cha_sbcsu_job3_type">타입</label></span>
+                            <select class="form-select cha_sbcsu_job3_input" id="cha_sbcsu_job3_type" data-amo="TYPE" data-amo-value="">
+                                <option value="">TYPE</option>
+                                <option value="TERMDATA">TERMDATA</option>
+                                <option value="OPTIDAT">OPTIDAT</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="서비스등급1">서비스 등급 1</span>
+                            <label for="cha_sbcsu_job3_cos1"></label>
+                            <input type="text" class="form-control cha_sbcsu_job3_input" id="cha_sbcsu_job3_cos1" placeholder="1~1000" data-amo="COS1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="서비스등급2">서비스 등급 2</span>
+                            <label for="cha_sbcsu_job3_cos2"></label>
+                            <input type="text" class="form-control cha_sbcsu_job3_input" id="cha_sbcsu_job3_cos2" placeholder="1~1000" data-amo="COS2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="호등급1">호 등급 1</span>
+                            <label for="cha_sbcsu_job3_lcosv1"></label>
+                            <input type="text" class="form-control cha_sbcsu_job3_input" id="cha_sbcsu_job3_lcosv1" placeholder="1~1000" data-amo="LCOSV1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="호등급2">호 등급 2</span>
+                            <label for="cha_sbcsu_job3_lcosv2"></label>
+                            <input type="text" class="form-control cha_sbcsu_job3_input" id="cha_sbcsu_job3_lcosv2" placeholder="1~1000" data-amo="LCOSV2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="전화기타입">전화기 타입</span>
+                            <label for="cha_sbcsu_job3_opt"></label>
+                            <input type="text" class="form-control cha_sbcsu_job3_input" id="cha_sbcsu_job3_opt" placeholder="OPTI" data-amo="OPT" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="확장키">확장 키</span>
+                            <label for="cha_sbcsu_job3_rep"></label>
+                            <input type="text" class="form-control cha_sbcsu_job3_input" id="cha_sbcsu_job3_rep" placeholder="0~4" data-amo="REP" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="비서기능">
+                             <label for="cha_sbcsu_job3_secr">비서 기능</label></span>
+                            <select class="form-select cha_sbcsu_job3_input" id="cha_sbcsu_job3_secr" data-amo="SECR" data-amo-value="">
+                                <option value="">SECR</option>
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="N (미사용) NOIND (하드웨어 표시가 없는 헤드셋) WITHIND (하드웨어 표시가 있는 헤드셋) 헤드셋 설정 1">
+                            <label for="cha_sbcsu_job3_headset">헤드셋 설정 1</label></span>
+                            <select class="form-select cha_sbcsu_job3_input" id="cha_sbcsu_job3_headset" data-amo="HEADSET" data-amo-value="">
+                                <option value="">HEADSET</option>
+                                <option value="N">N</option>
+                                <option value="NOIND">NOIND</option>
+                                <option value="WITHIND">WITHIND</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="헤드셋설정 2">
+                            <label for="cha_sbcsu_job3_hskey">헤드셋 설정 2</label></span>
+                                <select class="form-select cha_sbcsu_job3_input" id="cha_sbcsu_job3_hskey" data-amo="HSKEY" data-amo-value="">
+                                    <option value="">HSKEY</option>
+                                    <option value="NORMAL">NORMAL</option>
+                                    <option value="HSIND">HSIND</option>
+                                </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="언어">
+                            <label for="cha_sbcsu_job3_textsel">언어</label></span>
+                                <select class="form-select cha_sbcsu_job3_input" id="cha_sbcsu_job3_textsel" data-amo="TEXTSEL" data-amo-value="">
+                                    <option value="">TEXTSEL</option>
+                                    <option value="ENGLISH">ENGLISH</option>
+                                    <option value="KOREAN">KOREAN</option>
+                                </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 sbcsu_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="ALL (모든 Call Log 기록) NONE (사용하지 않음) TRIES (시도하는 Call Log 기록) 통화기록 표시">
+                            <label for="cha_sbcsu_job3_callog">통화 기록 표시</label></span>
+                                <select class="form-select cha_sbcsu_job3_input" id="cha_sbcsu_job3_callog" data-amo="CALLOG" data-amo-value="">
+                                    <option value="">CALLOG</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="NONE">NONE</option>
+                                    <option value="TRIES">TRIES</option>
+                                </select>
+                        </div>
+
+
+                    </div>
+                        <div id="maintab5" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab5">
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_scsu_job"></label>
+                                <select class="form-select" id="select_scsu_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="scsu_job_1" selected>아날로그 내선 생성</option>
+                                    <option value="scsu_job_2">아날로그 내선 확인</option>
+                                    <option value="scsu_job_3">아날로그 내선 Data 변경</option>
+                                </select>
+                            </div>
+
+                        <!-- 아날로그 내선 생성 -->
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="STNO(내선번호) 입력">내선번호</span>
+                            <label for="add_scsu_job1_stno"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_stno" placeholder="생성하고자 하는 내선번호" data-amo="STNO" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="내선번호의 포트 번호 (LTG-LTU-SLOT-CCT)">포트번호</span>
+                            <label for="add_scsu_job1_pen"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_pen" placeholder="1-X-X-X" data-amo="PEN" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="전화기구성">전화기 구성</span>
+                            <label for="add_scsu_job1_dvcfig"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_dvcfig" placeholder="DVCFIG" data-amo="DVCFIG" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="기능엑세스그룹">기능엑세스그룹</span>
+                            <label for="add_scsu_job1_dpln"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_dpln" placeholder="0~15" data-amo="DPLN" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="테난트그룹">테난트 그룹</span>
+                            <label for="add_scsu_job1_itr"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_itr" placeholder="0~15" data-amo="ITR" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="서비스등급1">서비스 등급 1</span>
+                            <label for="add_scsu_job1_cos1"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_cos1" placeholder="1~1000" data-amo="COS1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="서비스등급2">서비스 등급 2</span>
+                            <label for="add_scsu_job1_cos2"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_cos2" placeholder="1~1000" data-amo="COS2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="호등급1">호 등급 1</span>
+                            <label for="add_scsu_job1_lcosv1"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_lcosv1" placeholder="1~1000" data-amo="LCOSV1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="호등급2">호 등급 2</span>
+                            <label for="add_scsu_job1_lcosv2"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_lcosv2" placeholder="1~1000" data-amo="LCOSV2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="데이터등급1">데이터 등급 1</span>
+                            <label for="add_scsu_job1_lcosd1"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_lcosd1" placeholder="1~1000" data-amo="LCOSD1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="데이터등급2">데이터 등급 2</span>
+                            <label for="add_scsu_job1_lcosd2"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_lcosd2" placeholder="1~1000" data-amo="LCOSV1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="시스템단축다이얼1">시스템 단축 다이얼 1</span>
+                            <label for="add_scsu_job1_spdc1"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_spdc1" placeholder="0~15" data-amo="SPDC1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="시스템단축다이얼2">시스템 단축 다이얼 2</span>
+                            <label for="add_scsu_job1_spdc2"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_spdc2" placeholder="0~15" data-amo="SPDC2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="개별단축다이얼">개별 단축 다이얼</span>
+                            <label for="add_scsu_job1_spdi"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_spdi" placeholder="10" data-amo="SPDI" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                            <span class="input-group-text w100px btn-primary" title="훅크타임">훅크 타임</span>
+                            <label for="add_scsu_job1_cctidx"></label>
+                            <input type="text" class="form-control add_scsu_job1_input" id="add_scsu_job1_cctidx" placeholder="1" data-amo="CCTIDX" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                        <span class="input-group-text w100px btn-primary" title="VAR (DP 또는 DTMF가 자동으로 식별) DTMF (이중 톤 다중 주파수 신호) DP (다이얼 펄스) 다이얼방식">
+                            <label for="add_scsu_job1_dial">다이얼 방식</label></span>
+                            <select class="form-select add_scsu_job1_input" id="add_scsu_job1_dial" data-amo="DIAL" data-amo-value="">
+                                <option value="">DIAL</option>
+                                <option value="VAR">VAR</option>
+                                <option value="DTMF">DTMF</option>
+                                <option value="DP">DP</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                        <span class="input-group-text w100px btn-primary" title="언어">
+                            <label for="add_scsu_job1_textsel">언어</label></span>
+                            <select class="form-select add_scsu_job1_input" id="add_scsu_job1_textsel" data-amo="TEXTSEL" data-amo-value="">
+                                <option value="">TEXTSEL</option>
+                                <option value="ENGLISH">ENGLISH</option>
+                                <option value="KOREAN">KOREAN</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                        <span class="input-group-text w100px btn-primary" title="YES (할당된 스테이션이 활성화됩니다) FLOAT (비활성화) 내선방식">
+                            <label for="add_scsu_job1_ins">내선 방식</label></span>
+                            <select class="form-select add_scsu_job1_input" id="add_scsu_job1_ins" data-amo="INS" data-amo-value="">
+                                <option value="">INS</option>
+                                <option value="YES">YES</option>
+                                <option value="FLOAT">FLOAT</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="발신자표시제어">
+                                    <label for="add_scsu_job1_sstno">발신자 표시 제어</label></span>
+                            <select class="form-select add_scsu_job1_input" id="add_scsu_job1_sstno" data-amo="SSTNO" data-amo-value="">
+                                <option value="">SSTNO</option>
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Hookflash 사용여부 선택">
+                                    <label for="add_scsu_job1_flash">훅크 스위치 사용</label></span>
+                            <select class="form-select add_scsu_job1_input" id="add_scsu_job1_flash" data-amo="FLASH" data-amo-value="">
+                                <option value="">FLASH</option>
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+
+                        <!-- 아날로그 내선 확인 -->
+                        <div class="input-group input-group-sm pb-1 scsu_job_2 d-none">
+                            <span class="input-group-text w100px btn-primary" title="STNO(내선번호) 입력">내선번호</span>
+                            <label for="dis_scsu_job2_stno"></label>
+                            <input type="text" class="form-control dis_scsu_job2_input" id="dis_scsu_job2_stno" placeholder="확인하고자 하는 내선번호" data-amo="STNO" data-amo-value="">
+                        </div>
+
+                        <!-- 아날로그 내선 Data 변경 -->
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="STNO(내선번호) 입력">내선번호</span>
+                            <label for="cha_scsu_job3_stno"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_stno" placeholder="변경하고자 하는 내선번호" data-amo="STNO" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="기능엑세스그룹">기능엑세스그룹</span>
+                            <label for="cha_scsu_job3_dpln"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_dpln" placeholder="0~15" data-amo="DPLN" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="테난트그룹">테난트 그룹</span>
+                            <label for="cha_scsu_job3_itr"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_itr" placeholder="0~15" data-amo="ITR" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="서비스등급1">서비스 등급 1</span>
+                            <label for="cha_scsu_job3_cos1"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_cos1" placeholder="1~1000" data-amo="COS1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="서비스등급2">서비스 등급 2</span>
+                            <label for="cha_scsu_job3_cos2"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_cos2" placeholder="1~1000" data-amo="COS2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="호등급1">호 등급 1</span>
+                            <label for="cha_scsu_job3_lcosv1"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_lcosv1" placeholder="1~1000" data-amo="LCOSV1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="호등급2">호 등급 2</span>
+                            <label for="cha_scsu_job3_lcosv2"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_lcosv2" placeholder="1~1000" data-amo="LCOSV2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="데이터등급1">데이터 등급 1</span>
+                            <label for="cha_scsu_job3_lcosd1"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_lcosd1" placeholder="1~1000" data-amo="LCOSD1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="데이터등급2">데이터 등급 2</span>
+                            <label for="cha_scsu_job3_lcosd2"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_lcosd2" placeholder="1~1000" data-amo="LCOSV1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="시스템단축다이얼1">시스템 단축 다이얼 1</span>
+                            <label for="cha_scsu_job3_spdc1"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_spdc1" placeholder="0~15" data-amo="SPDC1" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="시스템단축다이얼2">시스템 단축 다이얼 2</span>
+                            <label for="cha_scsu_job3_spdc2"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_spdc2" placeholder="0~15" data-amo="SPDC2" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="개별단축다이얼">개별 단축 다이얼</span>
+                            <label for="cha_scsu_job3_spdi"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_spdi" placeholder="10" data-amo="SPDI" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="훅크타임">훅크 타임</span>
+                            <label for="cha_scsu_job3_cctidx"></label>
+                            <input type="text" class="form-control cha_scsu_job3_input" id="cha_scsu_job3_cctidx" placeholder="1" data-amo="CCTIDX" data-amo-value="">
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="VAR (DP 또는 DTMF가 자동으로 식별) DTMF (이중 톤 다중 주파수 신호) DP (다이얼 펄스) 다이얼방식">
+                            <label for="cha_scsu_job3_dial">다이얼 방식</label></span>
+                            <select class="form-select cha_scsu_job3_input" id="cha_scsu_job3_dial" data-amo="DIAL" data-amo-value="">
+                                <option value="">DIAL</option>
+                                <option value="VAR">VAR</option>
+                                <option value="DTMF">DTMF</option>
+                                <option value="DP">DP</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="언어">
+                            <label for="cha_scsu_job3_textsel">언어</label></span>
+                            <select class="form-select cha_scsu_job3_input" id="cha_scsu_job3_textsel" data-amo="TEXTSEL" data-amo-value="">
+                                <option value="">TEXTSEL</option>
+                                <option value="ENGLISH">ENGLISH</option>
+                                <option value="KOREAN">KOREAN</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="YES (할당된 스테이션이 활성화됩니다) FLOAT (비활성화) 내선방식">
+                            <label for="cha_scsu_job3_ins">내선 방식</label></span>
+                            <select class="form-select cha_scsu_job3_input" id="cha_scsu_job3_ins" data-amo="INS" data-amo-value="">
+                                <option value="">INS</option>
+                                <option value="YES">YES</option>
+                                <option value="FLOAT">FLOAT</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="발신자표시제어">
+                                    <label for="cha_scsu_job3_sstno">발신자 표시 제어</label></span>
+                            <select class="form-select cha_scsu_job3_input" id="cha_scsu_job3_sstno" data-amo="SSTNO" data-amo-value="">
+                                <option value="">SSTNO</option>
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-sm pb-1 scsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Hookflash 사용여부 선택">
+                                    <label for="cha_scsu_job3_flash">훅크 스위치 사용</label></span>
+                            <select class="form-select cha_scsu_job3_input" id="cha_scsu_job3_flash" data-amo="FLASH" data-amo-value="">
+                                <option value="">FLASH</option>
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="bg-white d-flex flex-column-reverse flex-fill min-h-0 overflow-auto scrollable-content p-1 rounded-3">
+                    <label for="comwon_display"></label>
+                    <div class="form-control bg-white" id="comwon_display" style="height: 440px; overflow-y: scroll; white-space: pre-wrap; font-family: monospace;">comwin message</div>
+                </div>
+                <form class="d-flex align-items-center gap-1 pt-3">
+                    <label for="send_order"></label>
+                    <input type="text" class="form-control" id="send_order" placeholder="Send Command">
+                    <button type="button" id="send_button" class="btn btn-icon btn-primary">
+                        <i class="demo-pli-paper-plane fs-5"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</html>

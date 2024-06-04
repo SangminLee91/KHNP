@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <meta name="description" content="">
+    <title>본사 내선 동기화 관리</title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nifty.min.css}">
+
+</head>
+
+<body class="" th:style="'background-image:url(/assets/premium/boxed-bg/abstract/bg/15.jpg);'">
+
+<!-- PAGE CONTAINER -->
+<div id="root" class="root front-container">
+
+    <!-- CONTENTS -->
+    <section id="content" class="content">
+        <div class="content__boxed w-100 min-vh-100 d-flex flex-column align-items-center justify-content-center">
+            <div class="content__wrap col-lg-3">
+
+                <!-- Login card -->
+                <div class="card shadow-lg">
+                    <div class="card-body">
+
+                        <div class="text-center">
+                            <h1 class="h3">본사 내선 동기화 관리</h1>
+                        </div>
+
+                        <div class="mt-4 mb-3">
+                            <label class="form-label" for="userid">User ID</label>
+                            <input type="text" class="form-control" id="userid" placeholder="Userid" autofocus autocomplete="off">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="userpwd">Password</label>
+                            <input type="password" class="form-control" id="userpwd" placeholder="Password" autocomplete="off">
+                        </div>
+
+                        <div class="d-grid mt-5">
+                            <button class="btn btn-primary btn-lg" id="btn_login">Sign In</button>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- END : Login card -->
+            </div>
+        </div>
+    </section>
+
+    <!-- END - CONTENTS -->
+</div>
+
+<!-- END - PAGE CONTAINER -->
+
+<script th:src="@{/assets/vendors/popperjs/popper.min.js}" defer></script>
+<script th:src="@{/assets/vendors/bootstrap/bootstrap.min.js}" defer></script>
+<script th:src="@{/assets/js/nifty.js}" defer></script>
+<script th:src="@{/assets/js/jquery3.6.0.min.js}"></script>
+
+<script type="text/javascript">
+    const CONTEXT_PATH = window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+
+    $(document).ready(function() {
+    //     $('#btn_login').click(function(){
+    //         loginproc();
+    //     });
+    //
+    //     let loginproc = function() {
+    //         $.ajax({
+    //             method: "POST",
+    //             url: CONTEXT_PATH+"/login/proc",
+    //             data: {
+    //                 userid: $("#userid").val()
+    //                 , userpwd: $("#userpwd").val()
+    //             },
+    //             error: function(jqXHR) { }
+    //         }).done(function (data) {
+    //             console.log(data);
+    //             location.replace(CONTEXT_PATH + "/main");
+    //
+    //         });
+    //     }
+    // });
+        $('#userpwd').keypress(function(e){
+            if(e.keyCode === 13){
+                $('#btn_login').click();
+            }
+        });
+
+        $('#btn_login').click(function(){
+            let userid = $("#userid").val();
+            let userpwd = $("#userpwd").val();
+
+            if(userid === "") {alert("아이디를 입력하세요!"); $("#userid").focus(); return false;}
+            if(userpwd === "") {alert("비밀번호를 입력하세요!"); $("#userpwd").focus(); return false;}
+
+            $.ajax({
+                method: "POST",
+                url: CONTEXT_PATH+"/login/proc",
+                data: {
+                    userid: userid,
+                    userpwd: userpwd
+                },
+                error: function(jqXHR) {
+                    // 오류 처리
+                    alert("로그인 요청 중 오류가 발생했습니다.");
+                }
+            }).done(function (data) {
+                if(data.success) {
+                    // 로그인 성공 시 메인 페이지로 이동
+                    location.replace(CONTEXT_PATH + "/main");
+                } else {
+                    // 로그인 실패 시 오류 메시지 표시
+                    alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+                }
+            });
+        });
+    });
+
+</script>
+
+
+</body>
+
+</html>

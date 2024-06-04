@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<!-- 컨텐츠 고유 CSS 추가 -->
+<th:block layout:fragment="css"></th:block>
+
+<!-- 컨텐츠 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+    <script th:src="@{/assets/vendors/datatables/datatables.min.js}"></script>
+    <script th:src="@{/assets/vendors/datatables/datatables.default.setting.js}"></script>
+
+    <script type="text/javascript">
+        let SELECTED_ROW = "";
+
+        $(document).ready(function() {
+            const agentTable = $('#agentTable').DataTable({
+                ajax: {
+                    url: CONTEXT_PATH + "/cti/agent/list",
+                    dataSrc: "rows"
+                },
+                columns: [
+                    { data: "seq" },
+                    { data: "emp_no" },
+                    { data: "emp_nm" },
+                    { data: "cti_agent_key" },
+                    { data: "cti_agent_id" },
+                    { data: "extn_no" },
+                    { data: "role_no" },
+                    { data: "dept_no" },
+                    { data: "dept_nm" },
+                    { data: "reg_dt"},
+                    { data: "login_fail_cnt"},
+                    { data: "last_pwd_edit_dt"},
+                    { data: "last_login_dt"},
+                    { data: "group"}
+                ],
+                columnDefs: [ {  "targets": [0, 6, 7, 9], "visible": false, "searchable": false }],
+                bInfo: true,
+                bPaginate: true,
+                scrollY: "536px",
+                scrollCollapse: true,
+                select: { style: "single"}
+            });
+
+            // grid select
+            agentTable.on('select', function(e, dt, type, indexes){ SELECTED_ROW = agentTable.row(indexes).data(); }).on('deselect', function(){ SELECTED_ROW = ""; });
+
+            // dept
+            let DeptRows = ajax(CONTEXT_PATH+"/cmm/dept/tot/list", {});
+            if (DeptRows.success) {
+                $("._dept option:not(option:eq(0))").remove();
+                $.each(DeptRows.data.Dept, function (i, item) {
+                    $("._dept").append($('<option>', { value: item.Dept_No, text: item.Path_Dept_Nm }));
+                });
+            }
+
+            // role
+            let RoleRows = ajax(CONTEXT_PATH+"/cmm/auth/role/list", {});
+            if (RoleRows.success) {
+                $("._Role option:not(option:eq(0))").remove();
+                $.each(RoleRows.data.Role, function (i, item) {
+                    $("._Role").append($('<option>', { value: item.Role_No, text: item.Role_Nm }));
+                });
+            }
+
+            // agent key(userkey)
+            let AgentKeyRows = function() {
+                let AjaxAgentKeyRows = ajax(CONTEXT_PATH+"/mng/cti/agent/key/list", {});
+                if (AjaxAgentKeyRows.success) {
+                    $("#edt_AgentKey option:not(option:eq(0))").remove();
+                    $("#add_AgentKey option:not(option:eq(0))").remove();
+
+                    $.each(AjaxAgentKeyRows.data.AgentKey, function (i, item) {
+                        if(item.Use_Stat === 1) {
+                            $("._AgentKey").append($('<option>', { value: item.userkey, text: '[사용가능] '+item.userid }));
+                        } else {
+                            $("._AgentKey").append($('<option>', { value: item.userkey, text: '[사 용 중] '+item.userid, disabled: 'disabled' }));
+                        }
+                    });
+                }
+            };
+            AgentKeyRows();
+
+
+            // save
+            $('#btn_agent_save').click(function(){
+
+                validCheck("#addfrm"); //유효성 검사
+
+                let emp_no = $("#add_Emp_No").val();
+                let emp_nm = $("#add_Emp_Nm").val();
+                let emp_pwd = $("#add_Emp_Passwd").val();
+                let dept_no = $("#add_Dept_No").val();
+                let role = $("#add_Role").val();
+                let agentkey = $("#add_AgentKey").val();
+                let extn_no = $("#add_Extn").val();
+
+                let AgentData = { emp_no: emp_no, emp_nm: emp_nm, emp_pwd: emp_pwd, dept_no: dept_no, role: role, agentkey: agentkey, extn_no: extn_no }
+                let AgnetAdd = ajax(CONTEXT_PATH+"/cti/agent/add", AgentData);
+                if (!AgnetAdd.success) { alert("저장이 실패하였습니다."); return false; }
+            });
+
+            // edit
+
+            // delete
+
+
+            // menu make
+/*
+            let createDom = function(ele, attr, text) {
+
+                let e = document.createElement(ele);
+                if (attr !== undefined) {
+                    if(typeof attr == "object" && attr.constructor === Object) {
+                        e.setAttribute(attr.key, attr.val);
+                    }
+                    else
+                    {
+                        attr.forEach(function (item) {
+                            e.setAttribute(item.key, item.val);
+                        });
+                    }
+                }
+                if (text !== undefined) {
+                    e.appendChild(document.createTextNode(text));
+                }
+
+                return e
+            }
+
+            const nav_content = document.getElementsByClassName('mainnav__top-content')[0];
+
+            let AjaxMenuInfo = ajax(CONTEXT_PATH+"/menu/list", {});
+            if(AjaxMenuInfo.success) {
+                let lvl1_data = AjaxMenuInfo.data.rows.filter(function(e){ return e.lvl === 1; });
+                let lvl2_data = AjaxMenuInfo.data.rows.filter(function(e){ return e.lvl === 2; });
+                let lvl3_data = AjaxMenuInfo.data.rows.filter(function(e){ return e.lvl === 3; });
+
+                $.each(lvl1_data, function (i, lv1) {
+                    menu_lvl_1 = createDom('div', {key: "class", val: "mainnav__categoriy py-3"});
+                    menu_lvl_1_text = createDom('h6', {key: "class", val: "mainnav__caption mt-0 px-3 fw-bold"}, lv1.menu_nm);
+                    menu_lvl_1.appendChild(menu_lvl_1_text);
+
+
+                    menu_lvl_2 = createDom('ul', {key: 'class', val: 'mainnav__menu nav flex-column'});
+
+                    $.each(lvl2_data, function (j, lv2) {
+                        if(lv1.menu_id === lv2.high_menu_id) {
+                            menu_lvl_2_item = createDom('li', {key: 'class', val: 'nav-item has-sub'});
+                            menu_lvl_2_icon = createDom('i', {key: 'class', val: 'demo-pli-gear fs-5 me-2'});
+                            menu_lvl_2_href = createDom('a', [{key: 'class', val: 'nav-link mininav-toggle collapsed'}, {key: 'href', val: lv2.menu_link}]);
+                            menu_lvl_2_text = createDom('span', {key: 'class', val: 'nav-label ms-1'}, lv2.menu_nm);
+
+                            menu_lvl_2_href.appendChild(menu_lvl_2_icon);
+                            menu_lvl_2_href.appendChild(menu_lvl_2_text);
+
+                            menu_lvl_2_item.appendChild(menu_lvl_2_href);
+
+                            menu_lvl_3 = createDom('ul', {key: 'class', val: 'mininav-content nav collapse'});
+                            $.each(lvl3_data, function (k, lv3) {
+                                if(lv2.menu_id === lv3.high_menu_id) {
+                                    menu_lvl_3_item = createDom('li', {key: 'class', val: 'nav-item'});
+                                    menu_lvl_3_href = createDom('a', [{key: 'class', val: 'nav-link'}, {key: 'href', val: lv3.menu_link}], lv3.menu_nm);
+
+                                    menu_lvl_3_item.appendChild(menu_lvl_3_href);
+
+                                    menu_lvl_3.appendChild(menu_lvl_3_item);
+                                }
+                            });
+
+                            menu_lvl_2_item.appendChild(menu_lvl_3);
+                            menu_lvl_2.appendChild(menu_lvl_2_item);
+                        }
+                    });
+                    menu_lvl_1.appendChild(menu_lvl_2);
+                    nav_content.appendChild(menu_lvl_1);
+                });
+
+            }
+*/
+        });
+    </script>
+</th:block>
+
+<th:block layout:fragment="breadcrumb">
+    <div class="content__wrap">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">운영관리</li>
+                <li class="breadcrumb-item active" aria-current="page">CTI 관리</li>
+            </ol>
+        </nav>
+        <h1 class="page-title mb-0 mt-2">상담원 관리</h1>
+        <p class="lead">
+        </p>
+    </div>
+</th:block>
+
+<div layout:fragment="content" class="content__boxed">
+    <div class="content__wrap">
+        <div class="row">
+
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title d-none">상담원 관리</h5>
+                        <div class="row">
+                            <div class="col-md-12 d-flex gap-1 align-items-center justify-content-md-end">
+                                <button class="btn btn-xs btn-dark" id="btn-add" data-bs-toggle="modal" data-bs-target="#add" >Add</button>
+                                <button class="btn btn-xs btn-dark ml-1" id="btn-edt">Edit</button>
+                                <button class="btn btn-xs btn-dark ml-1" id="btn-delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="agentTable" class="table table-sm table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="d-none">seq</th>
+                                    <th class="">로그인 ID</th>
+                                    <th class="">상담원 명</th>
+                                    <th class="">AGENT KEY</th>
+                                    <th class="">AGENT ID</th>
+                                    <th class="">내선번호</th>
+                                    <th class="d-none">role_no</th>
+                                    <th class="d-none">dept_no</th>
+                                    <th class="">부서</th>
+                                    <th class="d-none">reg_dt</th>
+                                    <th class="">로그인실패수</th>
+                                    <th class="">최종비밀번호수정일시</th>
+                                    <th class="">최종로그인일시</th>
+                                    <th class="">소속그룹</th>
+                                </tr>
+                                </thead>
+                                <tbody style="cursor: pointer;"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="content__wrap" id="ui_agent_add">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="card">
+
+
+                    <div class="card-header toolbar" style="min-height: 0;padding: 0.3rem 1.25rem;">
+                        <div class="toolbar-start">
+                            <h5 class="m-0">상담원 등록</h5>
+                        </div>
+                        <div class="toolbar-end">
+                            <button type="button" class="btn btn-icon btn-light btn-xs" data-bs-toggle="collapse" data-bs-target="#card_agent_add" aria-expanded="true" aria-controls="card_agent_add">
+                                <i class="demo-psi-min"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="card_agent_add" class="collapse show">
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal-->
+    <div class="modal fade" id="add" aria-hidden="true" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">상담원 등록</h4>
+                    <button type="button" class="btn btn-icon btn-xs btn-dark btn-close-card" data-bs-dismiss="modal">
+                        <i class="demo-psi-cross"></i><span class="visually-hidden">Close</span>
+                    </button>
+                </div>
+
+                <form name="addfrm" id="addfrm" method="post">
+                    <div class="modal-body">
+
+                        <div class="input-group mb-1">
+                            <label for="add_Emp_No" class="col-sm-4 col-xl-2 col-form-label">로그인 ID</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <input id="add_Emp_No" type="text" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Emp_Nm" class="col-sm-4 col-xl-2 col-form-label">상담원명</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <input id="add_Emp_Nm" type="text" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Emp_Passwd" class="col-sm-4 col-xl-2 col-form-label">비밀번호</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <input id="add_Emp_Passwd" type="password" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Dept_No" class="col-sm-4 col-xl-2 col-form-label">부 서</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <select class="form-select form-select-sm _dept" id="add_Dept_No">
+                                    <option value="" disabled selected hidden>-선택- </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Role" class="col-sm-4 col-xl-2 col-form-label">기본권한</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <select class="form-select form-select-sm _dept" id="add_Role">
+                                    <option value="" disabled selected hidden>-선택- </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_AgentKey" class="col-sm-4 col-xl-2 col-form-label">Agent ID</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <select class="form-select form-select-sm _dept" id="add_AgentKey" data-valid=false>
+                                    <option value="" disabled selected hidden>-선택- </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group mb-1">
+                            <label for="add_Extn" class="col-sm-4 col-xl-2 col-form-label">내선번호</label>
+                            <div class="col-sm-8 col-xl-10">
+                                <input id="add_Extn" type="text" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-xs btn-dark" id="btn_agent_save">Save</button>
+                        <button type="button" class="btn btn-xs btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

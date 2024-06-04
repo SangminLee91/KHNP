@@ -1,0 +1,2401 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <script th:src="@{/assets/js/jquery3.6.0.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/js/toll.js}" type="text/javascript"></script>
+</head>
+
+<th:block layout:fragment="css"></th:block>
+<th:block layout:fragment="script">
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            //로그아웃
+            $("#logout").css("cursor", "pointer").click(function () {
+                location.replace(CONTEXT_PATH + "/logout");
+            });
+
+            // 트렁크 그룹 번호, 이름 및 채널 수량 설정작업선택
+            $("#select_buend_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".buend_job_1").removeClass("d-block").addClass("d-none");
+                $(".buend_job_2").removeClass("d-block").addClass("d-none");
+                $(".buend_job_3").removeClass("d-block").addClass("d-none");
+                $(".buend_job_4").removeClass("d-block").addClass("d-none");
+                $(".buend_job_5").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            //트렁크 (BUEND)
+            // 생성
+            $(".add_buend_job1_input").change(function(){
+                make_command($(".add_buend_job1_input"), $(this), "ADD-BUEND");
+            });
+            // 확인
+            $(".dis_buend_job2_input").change(function(){
+                make_command($(".dis_buend_job2_input"), $(this), "DISPLAY-BUEND");
+            });
+            // 그룹 변경
+            $(".cha_buend_job3_input").change(function(){
+                make_command($(".cha_buend_job3_input"), $(this), "CHANGE-BUEND");
+            });
+            // 그룹 데이터 확인
+            $(".reg_buend_job4_input").change(function(){
+                make_command($(".reg_buend_job4_input"), $(this), "REGENERATE-BUEND");
+            });
+            // 그룹 삭제
+            $(".del_buend_job5_input").change(function(){
+                make_command($(".del_buend_job5_input"), $(this), "DELETE-BUEND");
+            });
+
+
+            // 트렁크 구성 설정(디지털)
+            $("#select_tdcsu_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".tdcsu_job_1").removeClass("d-block").addClass("d-none");
+                $(".tdcsu_job_2").removeClass("d-block").addClass("d-none");
+                $(".tdcsu_job_3").removeClass("d-block").addClass("d-none");
+                $(".tdcsu_job_4").removeClass("d-block").addClass("d-none");
+                $(".dssu_job_1").removeClass("d-block").addClass("d-none");
+                $(".dssu_job_2").removeClass("d-block").addClass("d-none");
+                $(".dssu_job_3").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 디지털 트렁크 구성 설정
+            $(".add_tdcsu_job1_input").change(function(){
+                make_command($(".add_tdcsu_job1_input"), $(this), "ADD-TDCSU");
+            });
+            // 디지털 트렁크 구성 확인
+            $(".dis_tdcsu_job2_input").change(function(){
+                make_command($(".dis_tdcsu_job2_input"), $(this), "DISPLAY-TDCSU");
+            });
+            // 디지털 트렁크 구성 변경
+            $(".cha_tdcsu_job3_input").change(function(){
+                make_command($(".cha_tdcsu_job3_input"), $(this), "CHANGE-TDCSU");
+            });
+            // 디지털 트렁크 구성 삭제
+            $(".del_tdcsu_job4_input").change(function(){
+                make_command($(".del_tdcsu_job4_input"), $(this), "DELETE-TDCSU");
+            });
+            // 디지털 트렁크 포트 활성화
+            $(".act_dssu_job1_input").change(function(){
+                make_command($(".act_dssu_job1_input"), $(this), "ACTIVATE-DSSU");
+            });
+            // 디지털 트렁크 포트 비활성화
+            $(".dea_dssu_job2_input").change(function(){
+                make_command($(".dea_dssu_job2_input"), $(this), "DEACTIVATE-DSSU");
+            });
+            // 디지털 트렁크 포트 리셋
+            $(".rest_dssu_job3_input").change(function(){
+                make_command($(".rest_dssu_job3_input"), $(this), "RESTART-DSSU");
+            });
+
+            // 트렁크 구성 설정(IP)
+            $("#select_tdcsu2_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".tdcsu2_job_1").removeClass("d-block").addClass("d-none");
+                $(".tdcsu2_job_2").removeClass("d-block").addClass("d-none");
+                $(".tdcsu2_job_3").removeClass("d-block").addClass("d-none");
+                $(".tdcsu2_job_4").removeClass("d-block").addClass("d-none");
+                $(".dssu2_job_1").removeClass("d-block").addClass("d-none");
+                $(".dssu2_job_2").removeClass("d-block").addClass("d-none");
+                $(".dssu2_job_3").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 디지털 트렁크 구성 설정
+            $(".add_tdcsu2_job1_input").change(function(){
+                make_command($(".add_tdcsu2_job1_input"), $(this), "ADD-TDCSU");
+            });
+            // 디지털 트렁크 구성 확인
+            $(".dis_tdcsu2_job2_input").change(function(){
+                make_command($(".dis_tdcsu2_job2_input"), $(this), "DISPLAY-TDCSU");
+            });
+            // 디지털 트렁크 구성 변경
+            $(".cha_tdcsu2_job3_input").change(function(){
+                make_command($(".cha_tdcsu2_job3_input"), $(this), "CHANGE-TDCSU");
+            });
+            // 디지털 트렁크 구성 삭제
+            $(".del_tdcsu2_job4_input").change(function(){
+                make_command($(".del_tdcsu2_job4_input"), $(this), "DELETE-TDCSU");
+            });
+            // 디지털 트렁크 포트 활성화
+            $(".act_dssu2_job1_input").change(function(){
+                make_command($(".act_dssu2_job1_input"), $(this), "ACTIVATE-DSSU");
+            });
+            // 디지털 트렁크 포트 비활성화
+            $(".dea_dssu2_job2_input").change(function(){
+                make_command($(".dea_dssu2_job2_input"), $(this), "DEACTIVATE-DSSU");
+            });
+            // 디지털 트렁크 포트 리셋
+            $(".rest_dssu2_job3_input").change(function(){
+                make_command($(".rest_dssu2_job3_input"), $(this), "RESTART-DSSU");
+            });
+
+            //트렁크 경로 설정(Open Num)
+            $("#select_richt_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".richt_job_1").removeClass("d-block").addClass("d-none");
+                $(".richt_job_2").removeClass("d-block").addClass("d-none");
+                $(".richt_job_3").removeClass("d-block").addClass("d-none");
+                $(".richt_job_4").removeClass("d-block").addClass("d-none");
+                $(".richt_job_5").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 트렁크 경로 설정
+            $(".add_richt_job1_input").change(function(){
+                make_command($(".add_richt_job1_input"), $(this), "ADD-RICHT");
+            });
+            // 트렁크 경로 확인
+            $(".dis_richt_job2_input").change(function(){
+                make_command($(".dis_richt_job2_input"), $(this), "DISPLAY-RICHT");
+            });
+            // 트렁크 경로 변경
+            $(".cha_richt_job3_input").change(function(){
+                make_command($(".cha_richt_job3_input"), $(this), "CHANGE-RICHT");
+            });
+            // 트렁크 경로 데이터 확인
+            $(".reg_richt_job4_input").change(function(){
+                make_command($(".reg_richt_job4_input"), $(this), "REGENERATE-RICHT");
+            });
+            // 트렁크 그룹 삭제
+            $(".del_richt_job5_input").change(function(){
+                make_command($(".del_richt_job5_input"), $(this), "DELETE-RICHT");
+            });
+
+            //트렁크 경로 설정(Close Num)
+            $("#select_richt2_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".wabe_job_1").removeClass("d-block").addClass("d-none");
+                $(".richt2_job_1").removeClass("d-block").addClass("d-none");
+                $(".richt2_job_2").removeClass("d-block").addClass("d-none");
+                $(".richt2_job_3").removeClass("d-block").addClass("d-none");
+                $(".richt2_job_4").removeClass("d-block").addClass("d-none");
+                $(".richt2_job_5").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // Digit Code 생성
+            $(".add_wabe_job1_input").change(function(){
+                make_command($(".add_wabe_job1_input"), $(this), "ADD-WABE");
+            });
+            // 트렁크 경로 설정
+            $(".add_richt2_job1_input").change(function(){
+                make_command($(".add_richt2_job1_input"), $(this), "ADD-RICHT");
+            });
+            // 트렁크 경로 확인
+            $(".dis_richt2_job2_input").change(function(){
+                make_command($(".dis_richt2_job2_input"), $(this), "DISPLAY-RICHT");
+            });
+            // 트렁크 경로 변경
+            $(".cha_richt2_job3_input").change(function(){
+                make_command($(".cha_richt2_job3_input"), $(this), "CHANGE-RICHT");
+            });
+            // 트렁크 경로 데이터 확인
+            $(".reg_richt2_job4_input").change(function(){
+                make_command($(".reg_richt2_job4_input"), $(this), "REGENERATE-RICHT");
+            });
+            // 트렁크 그룹 삭제
+            $(".del_richt2_job5_input").change(function(){
+                make_command($(".del_richt2_job5_input"), $(this), "DELETE-RICHT");
+            });
+
+            //다이얼 룰 설정(Lcr OutDial Rule)
+            $("#select_lodr_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".lodr_job_1").removeClass("d-block").addClass("d-none");
+                $(".lodr_job_2").removeClass("d-block").addClass("d-none");
+                $(".lodr_job_3").removeClass("d-block").addClass("d-none");
+                $(".lodr_job_4").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 다이얼 룰 설정
+            $(".add_lodr_job1_input").change(function(){
+                make_command($(".add_lodr_job1_input"), $(this), "ADD-LODR");
+            });
+            // 다이얼 룰 확인
+            $(".dis_lodr_job2_input").change(function(){
+                make_command($(".dis_lodr_job2_input"), $(this), "DISPLAY-LODR");
+            });
+            // 다이얼 룰 삭제
+            $(".del_lodr_job3_input").change(function(){
+                make_command($(".del_lodr_job3_input"), $(this), "DELETE-LODR");
+            });
+            // 다이얼 룰 데이터 확인
+            $(".reg_lodr_job4_input").change(function(){
+                make_command($(".reg_lodr_job4_input"), $(this), "REGENERATE-SCSU");
+            });
+
+            // 각각의 트렁크 경로에 대한 요소 설정(LCR Routes)
+            $("#select_ldat_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".ldat_job_1").removeClass("d-block").addClass("d-none");
+                $(".ldat_job_2").removeClass("d-block").addClass("d-none");
+                $(".ldat_job_3").removeClass("d-block").addClass("d-none");
+                $(".ldat_job_4").removeClass("d-block").addClass("d-none");
+                $(".ldat_job_5").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 트렁크 경로 설정
+            $(".add_ldat_job1_input").change(function(){
+                make_command($(".add_ldat_job1_input"), $(this), "ADD-LDAT");
+            });
+            // 트렁크 경로 확인
+            $(".dis_ldat_job2_input").change(function(){
+                make_command($(".dis_ldat_job2_input"), $(this), "DISPLAY-LDAT");
+            });
+            // 트렁크 경로 변경
+            $(".cha_ldat_job3_input").change(function(){
+                make_command($(".cha_ldat_job3_input"), $(this), "CHANGE-LDAT");
+            });
+            // 트렁크 경로 데이터 확인
+            $(".reg_ldat_job4_input").change(function(){
+                make_command($(".reg_ldat_job4_input"), $(this), "REGENERATE-LDAT");
+            });
+            // 트렁크 그룹 삭제
+            $(".del_ldat_job5_input").change(function(){
+                make_command($(".del_ldat_job5_input"), $(this), "DELETE-LDAT");
+            });
+
+            // 각각의 트렁크 경로에 대한 다이얼 플랜 설정
+            $("#select_ldpln_job").change(function(){
+                let showclass = $(this).val();
+
+                $(".ldpln_job_1").removeClass("d-block").addClass("d-none");
+                $(".ldpln_job_2").removeClass("d-block").addClass("d-none");
+                $(".ldpln_job_3").removeClass("d-block").addClass("d-none");
+                $(".ldpln_job_4").removeClass("d-block").addClass("d-none");
+                $("."+showclass).removeClass("d-none").css("display","flex"); //addClass("d-block");
+            });
+
+            // 다이얼 플랜 설정
+            $(".add_ldpln_job1_input").change(function(){
+                make_command($(".add_ldpln_job1_input"), $(this), "ADD-LDPLN");
+            });
+            // 다이얼 플랜 확인
+            $(".dis_ldpln_job2_input").change(function(){
+                make_command($(".dis_ldpln_job2_input"), $(this), "DISPLAY-LDPLN");
+            });
+            // 다이얼 플랜 데이터 확인
+            $(".reg_ldpln_job3_input").change(function(){
+                make_command($(".reg_ldpln_job3_input"), $(this), "REGENERATE-LDPLN");
+            });
+            // 다이얼 플랜 삭제
+            $(".del_ldpln_job4_input").change(function(){
+                make_command($(".del_ldpln_job4_input"), $(this), "DELETE-LDPLN");
+            });
+
+            let make_command = function(dom, dom_this, main_command) {
+                let command = "";
+                dom_this.attr("data-amo-value", dom_this.attr("data-amo") + "=" + dom_this.val());
+                $.each(dom, function () {
+                    if ($(this).val() !== "") command += $(this).attr("data-amo-value") + ","; // 입력요소 반복하며 문자열 구성
+                });
+                if (command.indexOf(",") > -1) command = command.slice(0, -1); //마지막 " , " 없애기
+                $("#send_order").val(main_command +":"+ command.toUpperCase() +";"); //send_order 폼에 명령어 출력
+            };
+
+            // 서버 응답값 comwon_display에 깔끔하게 만들기
+            function formatResponse(response) {
+                return response.replace(/ /g, '&nbsp;').replace(/\n/g, '<br>');
+            }
+
+            // 명령어 전송 후 서버 응답값 comwon_display에 출력
+            $("#send_button").click(function() {
+                let command = $("#send_order").val();
+                if (command) {
+                    $.ajax({
+                        url: '/sendCommand',
+                        type: 'POST',
+                        data: JSON.stringify({ command: command }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function(response) {
+                            if(response.success) {
+                                $("#comwon_display").html(formatResponse(response.response));
+                            } else {
+                                alert(response.message || "명령어 실행에 실패하였습니다.");
+                            }
+                        },
+                        error: function(error) {
+                            console.error("커맨드 전송에 실패하였습니다.:", error);
+                            alert("커맨드 전송에 실패하였습니다.");
+                        }
+                    });
+                } else {
+                    alert("전송 할 커맨드를 입력해주세요");
+                }
+            });
+
+        });
+    </script>
+</th:block>
+
+
+<th:block layout:fragment="breadcrumb">
+    <div class="content__wrap">
+        <h1 class="page-title mb-0 mt-2">톨 백업</h1>
+        <p class="lead"> </p>
+    </div>
+</th:block>
+
+<div layout:fragment="content" class="content__boxed">
+
+    <div class="content__wrap">
+        <div class="card mb-3">
+            <div class="card-body">
+
+                <div class="mb-3">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/main">내선 메인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/backup">내선 백업</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tollmain">톨 메인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/tollbackup">톨 백업</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <h5 class="card-title">톨 백업 교환기 설정</h5>
+                <p>규격에 맞는 옵션을 설정 해주십시오.</p>
+                <div class="d-flex mt-4 gap-3">
+                    <button class="btn btn-xs btn-light" type="button" onclick="window.history.back();">Back</button>
+                    <button class="btn btn-xs btn-primary" type="button" onclick="location.reload();">Refresh</button>
+                    <button id="logout" class="btn btn-xs btn-dark" type="button">Logout</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="tab-base ">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#maintab1" type="button" role="tab" aria-controls="group" aria-selected="true">그룹번호, 이름 및 채널 수량 설정</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab2" type="button" role="tab" aria-controls="digital" aria-selected="false">트렁크 구성 설정(디지털)</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab3" type="button" role="tab" aria-controls="ip" aria-selected="false">트렁크 구성 설정(IP)</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab4" type="button" role="tab" aria-controls="open_num" aria-selected="false">트렁크 경로 설정(Open Num)</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab5" type="button" role="tab" aria-controls="close_num" aria-selected="false">트렁크 경로 설정(Close Num)</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab6" type="button" role="tab" aria-controls="dial_rule" aria-selected="false">다이얼 룰 설정</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab7" type="button" role="tab" aria-controls="lcr_routes" aria-selected="false">트렁크 경로에 대한 요소 설정</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maintab8" type="button" role="tab" aria-controls="dial_plan" aria-selected="false">다이얼 플랜 설정</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content col-md">
+                        <div id="maintab1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="main-tab1">
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_buend_job"></label>
+                                <select class="form-select" id="select_buend_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="buend_job_1" selected>트렁크 생성</option>
+                                    <option value="buend_job_2">트렁크 확인</option>
+                                    <option value="buend_job_3">트렁크 그룹 변경</option>
+                                    <option value="buend_job_4">트렁크 그룹 데이터 확인</option>
+                                    <option value="buend_job_5">트렁크 그룹 삭제</option>
+                                </select>
+                            </div>
+
+
+                            <!-- 트렁크 생성 -->
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정(1~512)">트렁크 그룹 번호</span>
+                                <label for="add_buend_job1_tgrp"></label>
+                                <input type="text" class="form-control add_buend_job1_input" id="add_buend_job1_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 이름 설정(최대 18자 설정 가능)">트렁크 그룹 이름</span>
+                                <label for="add_buend_job1_name"></label>
+                                <input type="text" class="form-control add_buend_job1_input" id="add_buend_job1_name" placeholder="최대 18자 설정 가능" data-amo="NAME" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 최대 채널 수량 설정(1~2000개)">트렁크 채널 수량</span>
+                                <label for="add_buend_job1_no"></label>
+                                <input type="text" class="form-control add_buend_job1_input" id="add_buend_job1_no" placeholder="1~2000" data-amo="NO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">트렁크 추적</span>
+                                <label for="add_buend_job1_traceno"></label>
+                                <input type="text" class="form-control add_buend_job1_input" id="add_buend_job1_traceno" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="TRACENO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :* (사용하지않는 기능으로 Default 값 설정)">ACD 호출 처리 트렁크 수</span>
+                                <label for="add_buend_job1_acdthrh"></label>
+                                <input type="text" class="form-control add_buend_job1_input" id="add_buend_job1_acdthrh" placeholder="Default :* (사용하지않는 기능으로 Default 값 설정)" data-amo="ACDTHRH" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 우선 순위 설정(0~48, 대체적으로 1,2 사용)">트렁크 우선 순위</span>
+                                <label for="add_buend_job1_priono"></label>
+                                <input type="text" class="form-control add_buend_job1_input" id="add_buend_job1_priono" placeholder="PRIONO" data-amo="PRIONO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default : ON (사용하지않는 기능으로 Default 값 설정)">
+                                    <label for="add_buend_job1_tddrflag">트래픽 종속 동적 라우팅</label></span>
+                                <select class="form-select add_buend_job1_input" id="add_buend_job1_tddrflag" data-amo="TDDRFLAG" data-amo-value="">
+                                    <option value="">Default : ON (사용하지않는 기능으로 Default 값 설정)</option>
+                                    <option value="ON">ON</option>
+                                    <option value="OFF">OFF</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">일반 숫자 변환 규칙</span>
+                                <label for="add_buend_job1_gdtrrule"></label>
+                                <input type="text" class="form-control add_buend_job1_input" id="add_buend_job1_gdtrrule" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="GDTRRULE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">ACD 전화 메일 그룹</span>
+                                <label for="add_buend_job1_acdpmgrp"></label>
+                                <input type="text" class="form-control add_buend_job1_input" id="add_buend_job1_acdpmgrp" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="ACDPMGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default : NEUTRAL (사용하지않는 기능으로 Default 값 설정)">
+                                    <label for="add_buend_job1_charcon">문자 변환</label></span>
+                                <select class="form-select add_buend_job1_input" id="add_buend_job1_charcon" data-amo="CHARCON" data-amo-value="">
+                                    <option value="">Default : NEUTRAL (사용하지않는 기능으로 Default 값 설정)</option>
+                                    <option value="NEUTRAL">NEUTRAL</option>
+                                    <option value="CHARCON">CHARCON</option>
+                                    <option value="RUSSCYR">RUSSCYR</option>
+                                </select>
+                            </div>
+
+
+                            <!-- 트렁크 확인 -->
+                            <div class="input-group input-group-sm pb-1 buend_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 트렁크 그룹 번호">트렁크 그룹 번호</span>
+                                <label for="dis_buend_job2_tgrp"></label>
+                                <input type="text" class="form-control dis_buend_job2_input" id="dis_buend_job2_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="B:트렁크 채널, S:Shorts(이름이랑 번호만, M:Medium(전체 데이터 간략하게), L:Long(전체 데이터)">
+                                    <label for="dis_buend_job2_format">형식</label></span>
+                                <select class="form-select dis_buend_job2_input" id="dis_buend_job2_format" data-amo="FORMAT" data-amo-value="">
+                                    <option value="">FORMAT</option>
+                                    <option value="B">B</option>
+                                    <option value="S">S</option>
+                                    <option value="S">M</option>
+                                    <option value="S">L</option>
+                                </select>
+                            </div>
+
+                            <!-- 트렁크 그룹 변경 -->
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정(1~512)">트렁크 그룹 번호</span>
+                                <label for="cha_buend_job3_tgrp"></label>
+                                <input type="text" class="form-control cha_buend_job3_input" id="cha_buend_job3_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 이름 설정(최대 18자 설정 가능)">트렁크 그룹 이름</span>
+                                <label for="cha_buend_job3_name"></label>
+                                <input type="text" class="form-control cha_buend_job3_input" id="cha_buend_job3_name" placeholder="최대 18자 설정 가능" data-amo="NAME" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 최대 채널 수량 설정(1~2000개)">트렁크 채널 수량</span>
+                                <label for="cha_buend_job3_no"></label>
+                                <input type="text" class="form-control cha_buend_job3_input" id="cha_buend_job3_no" placeholder="1~2000" data-amo="NO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">트렁크 추적</span>
+                                <label for="cha_buend_job3_traceno"></label>
+                                <input type="text" class="form-control cha_buend_job3_input" id="cha_buend_job3_traceno" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="TRACENO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default :* (사용하지않는 기능으로 Default 값 설정)">ACD 호출 처리 트렁크 수</span>
+                                <label for="cha_buend_job3_acdthrh"></label>
+                                <input type="text" class="form-control cha_buend_job3_input" id="cha_buend_job3_acdthrh" placeholder="Default :* (사용하지않는 기능으로 Default 값 설정)" data-amo="ACDTHRH" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 우선 순위 설정(0~48, 대체적으로 1,2 사용)">트렁크 우선 순위</span>
+                                <label for="cha_buend_job3_priono"></label>
+                                <input type="text" class="form-control cha_buend_job3_input" id="cha_buend_job3_priono" placeholder="0~48" data-amo="PRIONO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default : ON (사용하지않는 기능으로 Default 값 설정)">
+                                    <label for="cha_buend_job3_tddrflag">트래픽 종속 동적 라우팅</label></span>
+                                <select class="form-select cha_buend_job3_input" id="cha_buend_job3_tddrflag" data-amo="TDDRFLAG" data-amo-value="">
+                                    <option value="">Default : ON (사용하지않는 기능으로 Default 값 설정)</option>
+                                    <option value="ON">ON</option>
+                                    <option value="OFF">OFF</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">일반 숫자 변환 규칙</span>
+                                <label for="cha_buend_job3_gdtrrule"></label>
+                                <input type="text" class="form-control cha_buend_job3_input" id="cha_buend_job3_gdtrrule" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="GDTRRULE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">ACD 전화 메일 그룹</span>
+                                <label for="cha_buend_job3_acdpmgrp"></label>
+                                <input type="text" class="form-control cha_buend_job3_input" id="cha_buend_job3_acdpmgrp" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="ACDPMGRP" data-amo-value="">
+                            </div>
+
+                            <div class="input-group input-group-sm pb-1 buend_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default : NEUTRAL (사용하지않는 기능으로 Default 값 설정)">
+                                    <label for="cha_buend_job3_charcon">문자 변환</label></span>
+                                <select class="form-select cha_buend_job3_input" id="cha_buend_job3_charcon" data-amo="CHARCON" data-amo-value="">
+                                    <option value="">Default : NEUTRAL (사용하지않는 기능으로 Default 값 설정)</option>
+                                    <option value="NEUTRAL">NEUTRAL</option>
+                                    <option value="CHARCON">CHARCON</option>
+                                    <option value="RUSSCYR">RUSSCYR</option>
+                                </select>
+                            </div>
+
+
+                            <!-- 트렁크 그룹 데이터 확인 -->
+                            <div class="input-group input-group-sm pb-1 buend_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정(1~512)">트렁크 그룹 번호</span>
+                                <label for="reg_buend_job4_tgrp"></label>
+                                <input type="text" class="form-control reg_buend_job4_input" id="reg_buend_job4_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+
+
+                            <!-- 트렁크 그룹 삭제 -->
+                            <div class="input-group input-group-sm pb-1 buend_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정(1~512)">트렁크 그룹 번호</span>
+                                <label for="del_buend_job5_tgrp"></label>
+                                <input type="text" class="form-control del_buend_job5_input" id="del_buend_job5_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+
+
+
+                        </div>
+                        <div id="maintab2" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab2">
+
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_tdcsu_job"></label>
+                                <select class="form-select" id="select_tdcsu_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="tdcsu_job_1" selected>디지털 트렁크 구성 설정</option>
+                                    <option value="tdcsu_job_2">디지털 트렁크 구성 확인</option>
+                                    <option value="tdcsu_job_3">디지털 트렁크 구성 변경</option>
+                                    <option value="tdcsu_job_4">디지털 트렁크 구성 삭제</option>
+                                    <option value="dssu_job_1">디지털 트렁크 포트 활성화</option>
+                                    <option value="dssu_job_2">디지털 트렁크 포트 비활성화</option>
+                                    <option value="dssu_job_3">디지털 트렁크 포트 리셋</option>
+                                </select>
+                            </div>
+
+                            <!-- 디지털 트렁크 구성 설정 -->
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 구성 설정(신규/확장)">
+                                    <label for="add_tdcsu_job1_opt">트렁크 구성</label></span>
+                                <select class="form-select add_tdcsu_job1_input" id="add_tdcsu_job1_opt" data-amo="OPT" data-amo-value="">
+                                    <option value="">OPT</option>
+                                    <option value="NEW">NEW</option>
+                                    <option value="EXT">EXT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 포트 설정(LTG-LTU-SLOT-CCT(포트))">
+                                    <label for="add_tdcsu_job1_pen">착신방법</label></span>
+                                <select class="form-select add_tdcsu_job1_input" id="add_tdcsu_job1_pen" data-amo="PEN" data-amo-value="">
+                                    <option value="">PEN</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="PRI, CORNET에 해당하는 COT값 입력">COT</span>
+                                <label for="add_tdcsu_job1_cotno"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_cotno" placeholder="0~255" data-amo="COTNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="PRI, CORNET에 해당하는 COP값 입력">COP</span>
+                                <label for="add_tdcsu_job1_copno"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_copno" placeholder="0~255" data-amo="COPNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">기능 액세스 그룹</span>
+                                <label for="add_tdcsu_job1_dpln"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_dpln" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="DPLN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">테난트 그룹</span>
+                                <label for="add_tdcsu_job1_itr"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_itr" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="ITR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="서비스 등급(트렁크 서비스 등급 : 100)">서비스 등급</span>
+                                <label for="add_tdcsu_job1_cos"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_cos" placeholder="1~1000" data-amo="COS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="발신호 등급 (1. 국제전화, 2. 핸드폰,시외, 3. 시내, 4. 구내)">호 등급</span>
+                                <label for="add_tdcsu_job1_lcosv"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_lcosv" placeholder="1~1000" data-amo="LCOSV" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default : 1 (사용하지않는 기능으로 Default 값 설정)">데이터 등급</span>
+                                <label for="add_tdcsu_job1_lcosd"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_lcosd" placeholder="Default : 1 (사용하지않는 기능으로 Default 값 설정)" data-amo="LCOSD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 구성 설명(트렁크 이름, To bonsa 등)">트렁크 구성 설명</span>
+                                <label for="add_tdcsu_job1_cct"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_cct" placeholder="텍스트 최대 12자" data-amo="CCT" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="프로토콜 변수 설정(ETSI, ECMAV2, EDSS1NET 등) ETSI : 국제 표준, ECMAV2 : Cornet 방식, EDSS1NET : LG 교환기">프로토콜 변수</span>
+                                <label for="add_tdcsu_job1_protvar"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_protvar" placeholder="PROTVAR" data-amo="PROTVAR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default : 1,8 (사용하지않는 기능으로 Default 값 설정)">분할</span>
+                                <label for="add_tdcsu_job1_segment"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_segment" placeholder="Default : 1,8 (사용하지않는 기능으로 Default 값 설정)" data-amo="SEGMENT" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="WABE CO, TIE 설정한 것에 따라 설정">
+                                    <label for="add_tdcsu_job1_atntyp">감쇄 유형</label></span>
+                                <select class="form-select add_tdcsu_job1_input" id="add_tdcsu_job1_atntyp" data-amo="ATNTYP" data-amo-value="">
+                                    <option value="">ATNTYP</option>
+                                    <option value="CO">CO</option>
+                                    <option value="TIE">TIE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Dial Digit 후 앞에서부터 설정한 값만큼 자름 ex) supress 1 설정, 990226577200 → 90226577200">Digit 앞에서부터 삭제</span>
+                                <label for="add_tdcsu_job1_supress"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_supress" placeholder="0~8" data-amo="SUPRESS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Incoming Call 발생 시 설정한 값이 앞에 붙어서 들어옴
+ex) 8998 설정 후 Incoming Call, 0226577200 → 89980226577200">Digit Prefixing</span>
+                                <label for="add_tdcsu_job1_dgtpr"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_dgtpr" placeholder="숫자 최대 8자리" data-amo="DGTPR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="가상노드번호 (1-100-X 설정, X : COT, COP값과 동일하게 설정)">가상노드번호</span>
+                                <label for="add_tdcsu_job1_nno"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_nno" placeholder="1-100-X" data-amo="NNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="위와 동일한 COT 값 설정">COT</span>
+                                <label for="add_tdcsu_job1_cotx"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_cotx" placeholder="0~255" data-amo="COTX" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정">트렁크 그룹 번호</span>
+                                <label for="add_tdcsu_job1_tgrp"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_tgrp" placeholder="0~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="CIR : 1번채널 사용 후 다음엔 2번채널 사용
+ASC : 1번채널부터 사용, DSC : 30채널부터 사용">
+                                    <label for="add_tdcsu_job1_srchmode">B채널 순서</label></span>
+                                <select class="form-select add_tdcsu_job1_input" id="add_tdcsu_job1_srchmode" data-amo="SRCHMODE" data-amo-value="">
+                                    <option value="">SRCHMODE</option>
+                                    <option value="CIR">CIR</option>
+                                    <option value="ASC">ASC</option>
+                                    <option value="DSC">DSC</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="회선 활성화 여부 설정 Y/N">
+                                    <label for="add_tdcsu_job1_ins">회선 활성화</label></span>
+                                <select class="form-select add_tdcsu_job1_input" id="add_tdcsu_job1_ins" data-amo="INS" data-amo-value="">
+                                    <option value="">INS</option>
+                                    <option value="Y">Y</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="S2COD : 국사, S2CONN : 교환기 혹은 다른 부가장비 연동 시">
+                                    <label for="add_tdcsu_job1_dev">장치</label></span>
+                                <select class="form-select add_tdcsu_job1_input" id="add_tdcsu_job1_dev" data-amo="DEV" data-amo-value="">
+                                    <option value="">DEV</option>
+                                    <option value="S2COD">S2COD</option>
+                                    <option value="S2CONN">S2CONN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="B채널 수량 설정 : 1~30채널 설정시, 1&&30">B채널 수량</span>
+                                <label for="add_tdcsu_job1_bchan"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_bchan" placeholder="1~30" data-amo="BCHAN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="B채널 그룹 설정 : 기본 1그룹 1~30채널 설정함
+BCGR : 1, BCHAN : 1&&30">B채널 그룹</span>
+                                <label for="add_tdcsu_job1_bcgr"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_bcgr" placeholder="1~30" data-amo="BCGR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_1">
+                                <span class="input-group-text w100px btn-primary" title="사용할 트렁크에 맞추어 LWPAR 설정한 값 설정">회선 Master/Slave</span>
+                                <label for="add_tdcsu_job1_lwpar"></label>
+                                <input type="text" class="form-control add_tdcsu_job1_input" id="add_tdcsu_job1_lwpar" placeholder="0~25" data-amo="LWPAR" data-amo-value="">
+                            </div>
+
+
+
+
+                            <!-- 디지털 트렁크 구성 확인 -->
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 포트 설정(LTG-LTU-SLOT-CCT(포트))">
+                                    <label for="dis_tdcsu_job2_pen1">트렁크 포트</label></span>
+                                <select class="form-select dis_tdcsu_job2_input" id="dis_tdcsu_job2_pen1" data-amo="PEN1" data-amo-value="">
+                                    <option value="">PEN1</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 트렁크 번호">확인할 트렁크 번호</span>
+                                <label for="dis_tdcsu_job2_tgrp"></label>
+                                <input type="text" class="form-control dis_tdcsu_job2_input" id="dis_tdcsu_job2_tgrp" placeholder="0~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 트렁크 내역 형식
+(S:Shorts(이름이랑 번호만, L:Long(전체 데이터))">
+                                    <label for="dis_tdcsu_job2_format">형식</label></span>
+                                <select class="form-select dis_tdcsu_job2_input" id="dis_tdcsu_job2_format" data-amo="FORMAT" data-amo-value="">
+                                    <option value="">FORMAT</option>
+                                    <option value="S">S</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
+
+                            <!-- 디지털 트렁크 구성 변경 -->
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 트렁크 포트 입력(LTG-LTU-SLOT-CCT(포트))">
+                                    <label for="cha_tdcsu_job3_pen">트렁크 포트</label></span>
+                                <select class="form-select cha_tdcsu_job3_input" id="cha_tdcsu_job3_pen" data-amo="PEN" data-amo-value="">
+                                    <option value="">PEN</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="PRI, CORNET에 해당하는 COT값 입력">COT</span>
+                                <label for="cha_tdcsu_job3_cotno"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_cotno" placeholder="0~255" data-amo="COTNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="PRI, CORNET에 해당하는 COP값 입력">COP</span>
+                                <label for="cha_tdcsu_job3_copno"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_copno" placeholder="0~255" data-amo="COPNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="서비스 등급(트렁크 서비스 등급 : 100)">서비스 등급</span>
+                                <label for="cha_tdcsu_job3_cos"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_cos" placeholder="1~1000" data-amo="COS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="발신호 등급 (1. 국제전화, 2. 핸드폰,시외, 3. 시내, 4. 구내)">호 등급</span>
+                                <label for="cha_tdcsu_job3_lcosv"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_lcosv" placeholder="1~1000" data-amo="LCOSV" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default : 1 (사용하지않는 기능으로 Default 값 설정)">데이터 등급</span>
+                                <label for="cha_tdcsu_job3_lcosd"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_lcosd" placeholder="Default : 1 (사용하지않는 기능으로 Default 값 설정)" data-amo="LCOSD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 구성 설명(트렁크 이름, To bonsa 등)">트렁크 구성 설명</span>
+                                <label for="cha_tdcsu_job3_cct"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_cct" placeholder="CCT" data-amo="CCT" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="프로토콜 변수 설정(ETSI, ECMAV2, EDSS1NET 등) ETSI : 국제 표준, ECMAV2 : Cornet 방식, EDSS1NET : LG 교환기">프로토콜 변수</span>
+                                <label for="cha_tdcsu_job3_protvar"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_protvar" placeholder="PROTVAR" data-amo="PROTVAR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="WABE CO, TIE 설정한 것에 따라 설정">
+                                    <label for="cha_tdcsu_job3_atntyp">감쇄 유형</label></span>
+                                <select class="form-select cha_tdcsu_job3_input" id="cha_tdcsu_job3_atntyp" data-amo="ATNTYP" data-amo-value="">
+                                    <option value="">ATNTYP</option>
+                                    <option value="CO">CO</option>
+                                    <option value="TIE">TIE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Dial Digit 후 앞에서부터 설정한 값만큼 자름 ex) supress 1 설정, 990226577200 → 90226577200">Digit 앞에서부터 삭제</span>
+                                <label for="cha_tdcsu_job3_supress"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_supress" placeholder="0~8" data-amo="SUPRESS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Incoming Call 발생 시 설정한 값이 앞에 붙어서 들어옴
+ex) 8998 설정 후 Incoming Call, 0226577200 → 89980226577200">Digit Prefixing</span>
+                                <label for="cha_tdcsu_job3_dgtpr"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_dgtpr" placeholder="숫자 최대 8자리" data-amo="DGTPR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="가상노드번호 (1-100-X 설정, X : COT, COP값과 동일하게 설정)">가상노드번호</span>
+                                <label for="cha_tdcsu_job3_nno"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_nno" placeholder="1-100-X" data-amo="NNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="위와 동일한 COT 값 설정">COT</span>
+                                <label for="cha_tdcsu_job3_cotx"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_cotx" placeholder="0~255" data-amo="COTX" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정">트렁크 그룹 번호</span>
+                                <label for="cha_tdcsu_job3_tgrp"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_tgrp" placeholder="0~255" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="CIR : 1번채널 사용 후 다음엔 2번채널 사용
+ASC : 1번채널부터 사용, DSC : 30채널부터 사용">
+                                    <label for="cha_tdcsu_job3_srchmode">B채널 순서</label></span>
+                                <select class="form-select cha_tdcsu_job3_input" id="cha_tdcsu_job3_srchmode" data-amo="SRCHMODE" data-amo-value="">
+                                    <option value="">SRCHMODE</option>
+                                    <option value="CIR">CIR</option>
+                                    <option value="ASC">ASC</option>
+                                    <option value="DSC">DSC</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="회선 활성화 여부 설정 Y/N">
+                                    <label for="cha_tdcsu_job3_ins">회선 활성화</label></span>
+                                <select class="form-select cha_tdcsu_job3_input" id="cha_tdcsu_job3_ins" data-amo="INS" data-amo-value="">
+                                    <option value="">INS</option>
+                                    <option value="Y">Y</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="S2COD : 국사, S2CONN : 교환기 혹은 다른 부가장비 연동 시">
+                                    <label for="cha_tdcsu_job3_dev">장치</label></span>
+                                <select class="form-select cha_tdcsu_job3_input" id="cha_tdcsu_job3_dev" data-amo="DEV" data-amo-value="">
+                                    <option value="">DEV</option>
+                                    <option value="S2COD">S2COD</option>
+                                    <option value="S2CONN">S2CONN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="B채널 수량 설정 : 1~30채널 설정시, 1&&30">B채널 수량</span>
+                                <label for="cha_tdcsu_job3_bchan"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_bchan" placeholder="1~30" data-amo="BCHAN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="B채널 그룹 설정 : 기본 1그룹 1~30채널 설정함
+BCGR : 1, BCHAN : 1&&30">B채널 그룹</span>
+                                <label for="cha_tdcsu_job3_bcgr"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_bcgr" placeholder="1~30" data-amo="BCGR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="사용할 트렁크에 맞추어 LWPAR 설정한 값 설정">회선 Master/Slave</span>
+                                <label for="cha_tdcsu_job3_lwpar"></label>
+                                <input type="text" class="form-control cha_tdcsu_job3_input" id="cha_tdcsu_job3_lwpar" placeholder="0~25" data-amo="LWPAR" data-amo-value="">
+                            </div>
+
+
+                            <!-- 디지털 트렁크 구성 삭제 -->
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 트렁크 포트 입력(LTG-LTU-SLOT-CCT(포트))">
+                                    <label for="del_tdcsu_job4_pen">트렁크 포트</label></span>
+                                <select class="form-select del_tdcsu_job4_input" id="del_tdcsu_job4_pen" data-amo="PEN" data-amo-value="">
+                                    <option value="">PEN</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 B채널 입력">B채널</span>
+                                <label for="del_tdcsu_job4_bchan"></label>
+                                <input type="text" class="form-control del_tdcsu_job4_input" id="del_tdcsu_job4_bchan" placeholder="1~30" data-amo="BCHAN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 B채널 그룹 입력">B채널 그룹</span>
+                                <label for="del_tdcsu_job4_bcgr"></label>
+                                <input type="text" class="form-control del_tdcsu_job4_input" id="del_tdcsu_job4_bcgr" placeholder="1~30" data-amo="BCGR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 B채널 그룹 입력">트렁크 번호</span>
+                                <label for="del_tdcsu_job4_tgrp"></label>
+                                <input type="text" class="form-control del_tdcsu_job4_input" id="del_tdcsu_job4_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+
+                            <!-- 디지털 트렁크 포트 활성화 -->
+                            <div class="input-group input-group-sm pb-1 dssu_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="ACL : 조건부 로딩 후 활성화, ANL : 로딩 없이 활성화
+AUL : 무조건 로딩 후 활성화">
+                                    <label for="act_dssu_job1_ontype">서비스 유형</label></span>
+                                <select class="form-select act_dssu_job1_input" id="act_dssu_job1_ontype" data-amo="ONTYPE" data-amo-value="">
+                                    <option value="">ONTYPE</option>
+                                    <option value="ACL">ACL</option>
+                                    <option value="ANL">ANL</option>
+                                    <option value="AUL">AUL</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="BCHANNEL 혹은 PEN 선택(TYPE BCHAN 설정 시, 포트 설정후
+BCHANNEL 1~30 채널 중 선택)">
+                                    <label for="act_dssu_job1_type">기능 유형</label></span>
+                                <select class="form-select act_dssu_job1_input" id="act_dssu_job1_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="BCHAN">BCHAN</option>
+                                    <option value="PEN">PEN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="act_dssu_job1_pen1">포트</label></span>
+                                <select class="form-select act_dssu_job1_input" id="act_dssu_job1_pen1" data-amo="PEN1" data-amo-value="">
+                                    <option value="">PEN1</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="act_dssu_job1_pen2">포트</label></span>
+                                <select class="form-select act_dssu_job1_input" id="act_dssu_job1_pen2" data-amo="PEN2" data-amo-value="">
+                                    <option value="">PEN2</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+
+                            <!-- 디지털 트렁크 포트 비활성화 -->
+                            <div class="input-group input-group-sm pb-1 dssu_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="DC : 조건부 비활성화, DI : 즉시 비활성화, L : long term deativation">
+                                    <label for="dea_dssu_job2_offtype">서비스 유형</label></span>
+                                <select class="form-select dea_dssu_job2_input" id="dea_dssu_job2_offtype" data-amo="OFFTYPE" data-amo-value="">
+                                    <option value="">OFFTYPE</option>
+                                    <option value="DC">DC</option>
+                                    <option value="DI">DI</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="BCHANNEL 혹은 PEN 선택(TYPE BCHAN 설정 시, 포트 설정후
+BCHANNEL 1~30 채널 중 선택)">
+                                    <label for="dea_dssu_job2_type">기능 유형</label></span>
+                                <select class="form-select dea_dssu_job2_input" id="dea_dssu_job2_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="BCHAN">BCHAN</option>
+                                    <option value="PEN">PEN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="dea_dssu_job2_pen1">포트</label></span>
+                                <select class="form-select dea_dssu_job2_input" id="dea_dssu_job2_pen1" data-amo="PEN1" data-amo-value="">
+                                    <option value="">PEN1</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="dea_dssu_job2_pen2">포트</label></span>
+                                <select class="form-select dea_dssu_job2_input" id="dea_dssu_job2_pen2" data-amo="PEN2" data-amo-value="">
+                                    <option value="">PEN2</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+
+                            <!-- 디지털 트렁크 포트 리셋 -->
+                            <div class="input-group input-group-sm pb-1 dssu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="BCHANNEL 혹은 PEN 선택(TYPE BCHAN 설정 시, 포트 설정후
+BCHANNEL 1~30 채널 중 선택)">
+                                    <label for="rest_dssu_job3_type">기능 유형</label></span>
+                                <select class="form-select rest_dssu_job3_input" id="rest_dssu_job3_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="BCHAN">BCHAN</option>
+                                    <option value="PEN">PEN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="rest_dssu_job3_pen1">포트</label></span>
+                                <select class="form-select rest_dssu_job3_input" id="rest_dssu_job3_pen1" data-amo="PEN1" data-amo-value="">
+                                    <option value="">PEN1</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="rest_dssu_job3_pen2">포트</label></span>
+                                <select class="form-select rest_dssu_job3_input" id="rest_dssu_job3_pen2" data-amo="PEN2" data-amo-value="">
+                                    <option value="">PEN2</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div id="maintab3" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab3">
+
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_tdcsu2_job"></label>
+                                <select class="form-select" id="select_tdcsu2_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="tdcsu2_job_1" selected>IP 트렁크 구성 설정</option>
+                                    <option value="tdcsu2_job_2">IP 트렁크 구성 확인</option>
+                                    <option value="tdcsu2_job_3">IP 트렁크 구성 변경</option>
+                                    <option value="tdcsu2_job_4">IP 트렁크 구성 삭제</option>
+                                    <option value="dssu2_job_1">IP 트렁크 포트 활성화</option>
+                                    <option value="dssu2_job_2">IP 트렁크 포트 비활성화</option>
+                                    <option value="dssu2_job_3">IP 트렁크 포트 리셋</option>
+                                </select>
+                            </div>
+
+                            <!-- IP 트렁크 구성 설정 -->
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 구성 설정(신규/확장)">
+                                    <label for="add_tdcsu2_job1_opt">트렁크 구성</label></span>
+                                <select class="form-select add_tdcsu2_job1_input" id="add_tdcsu2_job1_opt" data-amo="OPT" data-amo-value="">
+                                    <option value="">OPT</option>
+                                    <option value="NEW">NEW</option>
+                                    <option value="EXT">EXT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 포트 설정(LTG-LTU-SLOT-CCT(포트))">
+                                    <label for="add_tdcsu2_job1_pen">트렁크 포트</label></span>
+                                <select class="form-select add_tdcsu2_job1_input" id="add_tdcsu2_job1_pen" data-amo="PEN" data-amo-value="">
+                                    <option value="">PEN</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="IP에 해당하는 COT값 입력">COT</span>
+                                <label for="add_tdcsu2_job1_cotno"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_cotno" placeholder="0~255" data-amo="COTNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="IP에 해당하는 COP값 입력">COP</span>
+                                <label for="add_tdcsu2_job1_copno"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_copno" placeholder="0~255" data-amo="COPNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">기능 액세스 그룹</span>
+                                <label for="add_tdcsu2_job1_dpln"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_dpln" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="DPLN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">테난트 그룹</span>
+                                <label for="add_tdcsu2_job1_itr"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_itr" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="ITR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="서비스 등급(트렁크 서비스 등급 : 100)">서비스 등급</span>
+                                <label for="add_tdcsu2_job1_cos"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_cos" placeholder="1~1000" data-amo="COS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="발신호 등급 (1. 국제전화, 2. 핸드폰,시외, 3. 시내, 4. 구내)">호 등급</span>
+                                <label for="add_tdcsu2_job1_lcosv"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_lcosv" placeholder="1~1000" data-amo="LCOSV" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default : 1 (사용하지않는 기능으로 Default 값 설정)">데이터 등급</span>
+                                <label for="add_tdcsu2_job1_lcosd"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_lcosd" placeholder="Default : 1 (사용하지않는 기능으로 Default 값 설정)" data-amo="LCOSD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 구성 설명(트렁크 이름, Coloring 등)">트렁크 구성 설명</span>
+                                <label for="add_tdcsu2_job1_cct"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_cct" placeholder="텍스트 최대 12자" data-amo="CCT" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="프로토콜 변수 설정(ETSI, ECMAV2, EDSS1NET 등) ETSI : 국제 표준, ECMAV2 : Cornet 방식, EDSS1NET : LG 교환기">프로토콜 변수</span>
+                                <label for="add_tdcsu2_job1_protvar"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_protvar" placeholder="PROTVAR" data-amo="PROTVAR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default : 1,8 (사용하지않는 기능으로 Default 값 설정)">분할</span>
+                                <label for="add_tdcsu2_job1_segment"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_segment" placeholder="Default : 1,8 (사용하지않는 기능으로 Default 값 설정)" data-amo="SEGMENT" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="WABE CO, TIE 설정한 것에 따라 설정">
+                                    <label for="add_tdcsu2_job1_atntyp">감쇄 유형</label></span>
+                                <select class="form-select add_tdcsu2_job1_input" id="add_tdcsu2_job1_atntyp" data-amo="ATNTYP" data-amo-value="">
+                                    <option value="">ATNTYP</option>
+                                    <option value="CO">CO</option>
+                                    <option value="TIE">TIE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Dial Digit 후 앞에서부터 설정한 값만큼 자름 ex) supress 1 설정, 990226577200 → 90226577200">Digit 앞에서부터 삭제</span>
+                                <label for="add_tdcsu2_job1_supress"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_supress" placeholder="0~8" data-amo="SUPRESS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Incoming Call 발생 시 설정한 값이 앞에 붙어서 들어옴
+ex) 8998 설정 후 Incoming Call, 0226577200 → 89980226577200">Digit Prefixing</span>
+                                <label for="add_tdcsu2_job1_dgtpr"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_dgtpr" placeholder="숫자 최대 8자리" data-amo="DGTPR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="가상노드번호 (1-100-X 설정, X : COT, COP값과 동일하게 설정)">가상노드번호</span>
+                                <label for="add_tdcsu2_job1_nno"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_nno" placeholder="1-100-X" data-amo="NNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="위와 동일한 COT 값 설정">COT</span>
+                                <label for="add_tdcsu2_job1_cotx"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_cotx" placeholder="0~255" data-amo="COTX" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정">트렁크 그룹 번호</span>
+                                <label for="add_tdcsu2_job1_tgrp"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_tgrp" placeholder="0~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="CIR : 1번채널 사용 후 다음엔 2번채널 사용
+ASC : 1번채널부터 사용, DSC : 30채널부터 사용">
+                                    <label for="add_tdcsu2_job1_srchmode">B채널 순서</label></span>
+                                <select class="form-select add_tdcsu2_job1_input" id="add_tdcsu2_job1_srchmode" data-amo="SRCHMODE" data-amo-value="">
+                                    <option value="">SRCHMODE</option>
+                                    <option value="CIR">CIR</option>
+                                    <option value="ASC">ASC</option>
+                                    <option value="DSC">DSC</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="회선 활성화 여부 설정 Y/N">
+                                    <label for="add_tdcsu2_job1_ins">회선 활성화</label></span>
+                                <select class="form-select add_tdcsu2_job1_input" id="add_tdcsu2_job1_ins" data-amo="INS" data-amo-value="">
+                                    <option value="">INS</option>
+                                    <option value="Y">Y</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="S2COD : 국사, S2CONN : 교환기 혹은 다른 부가장비 연동 시">
+                                    <label for="add_tdcsu2_job1_dev">장치</label></span>
+                                <select class="form-select add_tdcsu2_job1_input" id="add_tdcsu2_job1_dev" data-amo="DEV" data-amo-value="">
+                                    <option value="">DEV</option>
+                                    <option value="S2COD">S2COD</option>
+                                    <option value="S2CONN">S2CONN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="B채널 수량 설정 : 1~30채널 설정시, 1&&30">B채널 수량</span>
+                                <label for="add_tdcsu2_job1_bchan"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_bchan" placeholder="1~30" data-amo="BCHAN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_1">
+                                <span class="input-group-text w100px btn-primary" title="B채널 그룹 설정 : 기본 1그룹 1~30채널 설정함
+BCGR : 1, BCHAN : 1&&30">B채널 그룹</span>
+                                <label for="add_tdcsu2_job1_bcgr"></label>
+                                <input type="text" class="form-control add_tdcsu2_job1_input" id="add_tdcsu2_job1_bcgr" placeholder="1~30" data-amo="BCGR" data-amo-value="">
+                            </div>
+
+
+
+                            <!-- IP 트렁크 구성 확인 -->
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 포트 설정(LTG-LTU-SLOT-CCT(포트))">
+                                    <label for="dis_tdcsu2_job2_pen1">트렁크 포트</label></span>
+                                <select class="form-select dis_tdcsu2_job2_input" id="dis_tdcsu2_job2_pen1" data-amo="PEN1" data-amo-value="">
+                                    <option value="">PEN1</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 트렁크 번호">트렁크 번호</span>
+                                <label for="dis_tdcsu2_job2_tgrp"></label>
+                                <input type="text" class="form-control dis_tdcsu2_job2_input" id="dis_tdcsu2_job2_tgrp" placeholder="0~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 트렁크 내역 형식
+(S:Shorts(이름이랑 번호만, L:Long(전체 데이터))">
+                                    <label for="dis_tdcsu2_job2_format">형식</label></span>
+                                <select class="form-select dis_tdcsu2_job2_input" id="dis_tdcsu2_job2_format" data-amo="FORMAT" data-amo-value="">
+                                    <option value="">FORMAT</option>
+                                    <option value="S">S</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
+
+                            <!-- IP 트렁크 구성 변경 -->
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 트렁크 포트 입력(LTG-LTU-SLOT-CCT(포트))">
+                                    <label for="cha_tdcsu2_job3_pen">트렁크 포트</label></span>
+                                <select class="form-select cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_pen" data-amo="PEN" data-amo-value="">
+                                    <option value="">PEN</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="PRI, CORNET에 해당하는 COT값 입력">COT</span>
+                                <label for="cha_tdcsu2_job3_cotno"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_cotno" placeholder="0~255" data-amo="COTNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="PRI, CORNET에 해당하는 COP값 입력">COP</span>
+                                <label for="cha_tdcsu2_job3_copno"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_copno" placeholder="0~255" data-amo="COPNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="서비스 등급(트렁크 서비스 등급 : 100)">서비스 등급</span>
+                                <label for="cha_tdcsu2_job3_cos"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_cos" placeholder="1~1000" data-amo="COS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="발신호 등급 (1. 국제전화, 2. 핸드폰,시외, 3. 시내, 4. 구내)">호 등급</span>
+                                <label for="cha_tdcsu2_job3_lcosv"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_lcosv" placeholder="1~1000" data-amo="LCOSV" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default : 1 (사용하지않는 기능으로 Default 값 설정)">데이터 등급</span>
+                                <label for="cha_tdcsu2_job3_lcosd"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_lcosd" placeholder="Default : 1 (사용하지않는 기능으로 Default 값 설정)" data-amo="LCOSD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 구성 설명(트렁크 이름, To bonsa 등)">트렁크 구성 설명</span>
+                                <label for="cha_tdcsu2_job3_cct"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_cct" placeholder="텍스트 최대 12자" data-amo="CCT" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="프로토콜 변수 설정(ETSI, ECMAV2, EDSS1NET 등) ETSI : 국제 표준, ECMAV2 : Cornet 방식, EDSS1NET : LG 교환기">프로토콜 변수</span>
+                                <label for="cha_tdcsu2_job3_protvar"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_protvar" placeholder="PROTVAR" data-amo="PROTVAR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="WABE CO, TIE 설정한 것에 따라 설정">
+                                    <label for="cha_tdcsu2_job3_atntyp">감쇄 유형</label></span>
+                                <select class="form-select cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_atntyp" data-amo="ATNTYP" data-amo-value="">
+                                    <option value="">ATNTYP</option>
+                                    <option value="CO">CO</option>
+                                    <option value="TIE">TIE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Dial Digit 후 앞에서부터 설정한 값만큼 자름 ex) supress 1 설정, 990226577200 → 90226577200">Digit 앞에서부터 삭제</span>
+                                <label for="cha_tdcsu2_job3_supress"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_supress" placeholder="0~8" data-amo="SUPRESS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Incoming Call 발생 시 설정한 값이 앞에 붙어서 들어옴
+ex) 8998 설정 후 Incoming Call, 0226577200 → 89980226577200">Digit Prefixing</span>
+                                <label for="cha_tdcsu2_job3_dgtpr"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_dgtpr" placeholder="숫자 최대 8자리" data-amo="DGTPR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="가상노드번호 (1-100-X 설정, X : COT, COP값과 동일하게 설정)">가상노드번호</span>
+                                <label for="cha_tdcsu2_job3_nno"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_nno" placeholder="1-100-X" data-amo="NNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="위와 동일한 COT 값 설정">COT</span>
+                                <label for="cha_tdcsu2_job3_cotx"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_cotx" placeholder="0~255" data-amo="COTX" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정">트렁크 그룹 번호</span>
+                                <label for="cha_tdcsu2_job3_tgrp"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_tgrp" placeholder="0~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="CIR : 1번채널 사용 후 다음엔 2번채널 사용
+ASC : 1번채널부터 사용, DSC : 30채널부터 사용">
+                                    <label for="cha_tdcsu2_job3_srchmode">B채널 순서</label></span>
+                                <select class="form-select cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_srchmode" data-amo="SRCHMODE" data-amo-value="">
+                                    <option value="">SRCHMODE</option>
+                                    <option value="CIR">CIR</option>
+                                    <option value="ASC">ASC</option>
+                                    <option value="DSC">DSC</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="회선 활성화 여부 설정 Y/N">
+                                    <label for="cha_tdcsu2_job3_ins">회선 활성화</label></span>
+                                <select class="form-select cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_ins" data-amo="INS" data-amo-value="">
+                                    <option value="">INS</option>
+                                    <option value="Y">Y</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="S2COD : 국사, S2CONN : 교환기 혹은 다른 부가장비 연동 시">
+                                    <label for="cha_tdcsu2_job3_dev">장치</label></span>
+                                <select class="form-select cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_dev" data-amo="DEV" data-amo-value="">
+                                    <option value="">DEV</option>
+                                    <option value="S2COD">S2COD</option>
+                                    <option value="S2CONN">S2CONN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="B채널 수량 설정 : 1~30채널 설정시, 1&&30">B채널 수량</span>
+                                <label for="cha_tdcsu2_job3_bchan"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_bchan" placeholder="1~30" data-amo="BCHAN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="B채널 그룹 설정 : 기본 1그룹 1~30채널 설정함
+BCGR : 1, BCHAN : 1&&30">B채널 그룹</span>
+                                <label for="cha_tdcsu2_job3_bcgr"></label>
+                                <input type="text" class="form-control cha_tdcsu2_job3_input" id="cha_tdcsu2_job3_bcgr" placeholder="1~30" data-amo="BCGR" data-amo-value="">
+                            </div>
+
+
+
+                            <!-- IP 트렁크 구성 삭제 -->
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 트렁크 포트 입력(LTG-LTU-SLOT-CCT(포트))">
+                                    <label for="del_tdcsu2_job4_pen">트렁크 포트</label></span>
+                                <select class="form-select del_tdcsu2_job4_input" id="del_tdcsu2_job4_pen" data-amo="PEN" data-amo-value="">
+                                    <option value="">PEN</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 B채널 입력">B채널</span>
+                                <label for="del_tdcsu2_job4_bchan"></label>
+                                <input type="text" class="form-control del_tdcsu2_job4_input" id="del_tdcsu2_job4_bchan" placeholder="1~30" data-amo="BCHAN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 B채널 그룹 입력">B채널 그룹</span>
+                                <label for="del_tdcsu2_job4_bcgr"></label>
+                                <input type="text" class="form-control del_tdcsu2_job4_input" id="del_tdcsu2_job4_bcgr" placeholder="1~30" data-amo="BCGR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 tdcsu2_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 B채널 그룹 입력">트렁크 번호</span>
+                                <label for="del_tdcsu2_job4_tgrp"></label>
+                                <input type="text" class="form-control del_tdcsu2_job4_input" id="del_tdcsu2_job4_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+
+                            <!-- IP 트렁크 포트 활성화 -->
+                            <div class="input-group input-group-sm pb-1 dssu2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="ACL : 조건부 로딩 후 활성화, ANL : 로딩 없이 활성화
+AUL : 무조건 로딩 후 활성화">
+                                    <label for="act_dssu2_job1_ontype">서비스 유형</label></span>
+                                <select class="form-select act_dssu2_job1_input" id="act_dssu2_job1_ontype" data-amo="ONTYPE" data-amo-value="">
+                                    <option value="">ONTYPE</option>
+                                    <option value="ACL">ACL</option>
+                                    <option value="ANL">ANL</option>
+                                    <option value="AUL">AUL</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="BCHANNEL 혹은 PEN 선택(TYPE BCHAN 설정 시, 포트 설정후
+BCHANNEL 1~30 채널 중 선택)">
+                                    <label for="act_dssu2_job1_type">기능 유형</label></span>
+                                <select class="form-select act_dssu2_job1_input" id="act_dssu2_job1_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="BCHAN">BCHAN</option>
+                                    <option value="PEN">PEN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="act_dssu2_job1_pen1">포트</label></span>
+                                <select class="form-select act_dssu2_job1_input" id="act_dssu2_job1_pen1" data-amo="PEN1" data-amo-value="">
+                                    <option value="">PEN1</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="act_dssu2_job1_pen2">포트</label></span>
+                                <select class="form-select act_dssu2_job1_input" id="act_dssu2_job1_pen2" data-amo="PEN2" data-amo-value="">
+                                    <option value="">PEN2</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+
+                            <!-- IP 트렁크 포트 비활성화 -->
+                            <div class="input-group input-group-sm pb-1 dssu2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="DC : 조건부 비활성화, DI : 즉시 비활성화, L : long term deativation">
+                                    <label for="dea_dssu2_job2_offtype">서비스 유형</label></span>
+                                <select class="form-select dea_dssu2_job2_input" id="dea_dssu2_job2_offtype" data-amo="OFFTYPE" data-amo-value="">
+                                    <option value="">OFFTYPE</option>
+                                    <option value="DC">DC</option>
+                                    <option value="DI">DI</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="BCHANNEL 혹은 PEN 선택(TYPE BCHAN 설정 시, 포트 설정후
+BCHANNEL 1~30 채널 중 선택)">
+                                    <label for="dea_dssu2_job2_type">기능 유형</label></span>
+                                <select class="form-select dea_dssu2_job2_input" id="dea_dssu2_job2_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="BCHAN">BCHAN</option>
+                                    <option value="PEN">PEN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="dea_dssu2_job2_pen1">포트</label></span>
+                                <select class="form-select dea_dssu2_job2_input" id="dea_dssu2_job2_pen1" data-amo="PEN1" data-amo-value="">
+                                    <option value="">PEN1</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="dea_dssu2_job2_pen2">포트</label></span>
+                                <select class="form-select dea_dssu2_job2_input" id="dea_dssu2_job2_pen2" data-amo="PEN2" data-amo-value="">
+                                    <option value="">PEN2</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+
+                            <!-- IP 트렁크 포트 리셋 -->
+                            <div class="input-group input-group-sm pb-1 dssu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="BCHANNEL 혹은 PEN 선택(TYPE BCHAN 설정 시, 포트 설정후
+BCHANNEL 1~30 채널 중 선택)">
+                                    <label for="rest_dssu2_job3_type">기능 유형</label></span>
+                                <select class="form-select rest_dssu2_job3_input" id="rest_dssu2_job3_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="BCHAN">BCHAN</option>
+                                    <option value="PEN">PEN</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="rest_dssu2_job3_pen1">포트</label></span>
+                                <select class="form-select rest_dssu2_job3_input" id="rest_dssu2_job3_pen1" data-amo="PEN1" data-amo-value="">
+                                    <option value="">PEN1</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 dssu2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="비활성화할 포트 설정">
+                                    <label for="rest_dssu2_job3_pen2">포트</label></span>
+                                <select class="form-select rest_dssu2_job3_input" id="rest_dssu2_job3_pen2" data-amo="PEN2" data-amo-value="">
+                                    <option value="">PEN2</option>
+                                    <option value="LTG">LTG</option>
+                                    <option value="LTU">LTU</option>
+                                    <option value="SLOT">SLOT</option>
+                                    <option value="CCT">CCT</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div id="maintab4" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab4">
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_richt_job"></label>
+                                <select class="form-select" id="select_richt_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="richt_job_1" selected>트렁크 경로 설정</option>
+                                    <option value="richt_job_2">트렁크 경로 확인</option>
+                                    <option value="richt_job_3">트렁크 경로 변경</option>
+                                    <option value="richt_job_4">트렁크 경로 데이터 확인</option>
+                                    <option value="richt_job_5">트렁크 그룹 삭제</option>
+                                </select>
+                            </div>
+
+                            <!-- 트렁크 경로 설정 -->
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                        <span class="input-group-text w100px btn-primary" title="경로 모드 설정(신규/확장)">
+                        <label for="add_richt_job1_mode">경로 모드</label></span>
+                                <select class="form-select add_richt_job1_input" id="add_richt_job1_mode" data-amo="MODE" data-amo-value="">
+                                    <option value="">MODE</option>
+                                    <option value="LRTENEW">LRTENEW</option>
+                                    <option value="LRTEEXT">LRTEEXT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">경로 번호</span>
+                                <label for="add_richt_job1_lrte"></label>
+                                <input type="text" class="form-control add_richt_job1_input" id="add_richt_job1_lrte" placeholder="1~64000" data-amo="LRTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                        <span class="input-group-text w100px btn-primary" title="경로 서비스 표시 : VCE 선택">
+                        <label for="add_richt_job1_lsvc">서비스 표시</label></span>
+                                <select class="form-select add_richt_job1_input" id="add_richt_job1_lsvc" data-amo="LSVC" data-amo-value="">
+                                    <option value="">VCE 선택</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="DTE">DTE</option>
+                                    <option value="VCE">VCE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                                <span class="input-group-text w100px btn-primary" title="경로 이름 설정(최대 16자)">경로 이름</span>
+                                <label for="add_richt_job1_name"></label>
+                                <input type="text" class="form-control add_richt_job1_input" id="add_richt_job1_name" placeholder="NAME" data-amo="NAME" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정, 같은 경로인데 다른 트렁크(BUEND)인 경우 1&20 가능">트렁크 그룹 번호</span>
+                                <label for="add_richt_job1_tgrp"></label>
+                                <input type="text" class="form-control add_richt_job1_input" id="add_richt_job1_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                                <span class="input-group-text w100px btn-primary" title="TDCSU에서 설정한 NNO값 설정">목적지 노드 번호</span>
+                                <label for="add_richt_job1_dnno"></label>
+                                <input type="text" class="form-control add_richt_job1_input" id="add_richt_job1_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                        <span class="input-group-text w100px btn-primary" title="Default : FIX (사용하지않는 기능으로 Default 값 설정)">
+                        <label for="add_richt_job1_dtmfcnv">DTMF 변환 코드</label></span>
+                                <select class="form-select add_richt_job1_input" id="add_richt_job1_dtmfcnv" data-amo="DTMFCNV" data-amo-value="">
+                                    <option value="">Default : FIX (사용하지않는 기능으로 Default 값 설정)</option>
+                                    <option value="FIX">FIX</option>
+                                    <option value="SUFDIAL">SUFDIAL</option>
+                                    <option value="WITHOUT">WITHOUT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                        <span class="input-group-text w100px btn-primary" title="Default : PP80 (사용하지않는 기능으로 Default 값 설정)">
+                        <label for="add_richt_job1_dtmfpuls">부호송신기 펄스/정지비</label></span>
+                                <select class="form-select add_richt_job1_input" id="add_richt_job1_dtmfpuls" data-amo="DTMFPULS" data-amo-value="">
+                                    <option value="">Default : PP80 (사용하지않는 기능으로 Default 값 설정)</option>
+                                    <option value="PP80">PP80</option>
+                                    <option value="PP150">PP150</option>
+                                    <option value="PP200">PP200</option>
+                                    <option value="PP300">PP300</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_1">
+                        <span class="input-group-text w100px btn-primary" title="Default : NEUTRAL (사용하지않는 기능으로 Default 값 설정)">
+                        <label for="add_richt_job1_charcon">문자 변환</label></span>
+                                <select class="form-select add_richt_job1_input" id="add_richt_job1_charcon" data-amo="CHARCON" data-amo-value="">
+                                    <option value="">Default : NEUTRAL (사용하지않는 기능으로 Default 값 설정)</option>
+                                    <option value="NEUTRAL">NEUTRAL</option>
+                                    <option value="CHARCON">CHARCON</option>
+                                    <option value="RUSSCYR">RUSSCYR</option>
+                                </select>
+                            </div>
+
+                            <!-- 트렁크 경로 확인 -->
+                            <div class="input-group input-group-sm pb-1 richt_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="LRTE 선택">경로 모드</span>
+                                <label for="dis_richt_job2_mode"></label>
+                                <input type="text" class="form-control dis_richt_job2_input" id="dis_richt_job2_mode" placeholder="MODE" data-amo="MODE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">경로 번호</span>
+                                <label for="dis_richt_job2_lrte"></label>
+                                <input type="text" class="form-control dis_richt_job2_input" id="dis_richt_job2_lrte" placeholder="1~64000" data-amo="LRTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_2 d-none">
+                        <span class="input-group-text w100px btn-primary" title="경로 서비스 표시 : VCE 선택">
+                        <label for="dis_richt_job2_lsvc">서비스 표시</label></span>
+                                <select class="form-select dis_richt_job2_input" id="dis_richt_job2_lsvc" data-amo="LSVC" data-amo-value="">
+                                    <option value="">VCE 선택</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="DTE">DTE</option>
+                                    <option value="VCE">VCE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정, 같은 경로인데 다른 트렁크(BUEND)인 경우 1&20 가능">트렁크 그룹 번호</span>
+                                <label for="dis_richt_job2_tgrp"></label>
+                                <input type="text" class="form-control dis_richt_job2_input" id="dis_richt_job2_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="TDCSU에서 설정한 NNO값 설정">목적지 노드 번호</span>
+                                <label for="dis_richt_job2_dnno"></label>
+                                <input type="text" class="form-control dis_richt_job2_input" id="dis_richt_job2_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_2 d-none">
+                        <span class="input-group-text w100px btn-primary" title="확인할 트렁크 내역 형식
+(S:Shorts(이름이랑 번호만, L:Long(전체 데이터))">
+                        <label for="dis_richt_job2_format">형식</label></span>
+                                <select class="form-select dis_richt_job2_input" id="dis_richt_job2_format" data-amo="FORMAT" data-amo-value="">
+                                    <option value="">FORMAT</option>
+                                    <option value="S">S</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
+
+                            <!-- 트렁크 경로 변경 -->
+                            <div class="input-group input-group-sm pb-1 richt_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="LRTE 선택">경로 모드</span>
+                                <label for="cha_richt_job3_mode"></label>
+                                <input type="text" class="form-control cha_richt_job3_input" id="cha_richt_job3_mode" placeholder="MODE" data-amo="MODE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">경로 번호</span>
+                                <label for="cha_richt_job3_lrte"></label>
+                                <input type="text" class="form-control cha_richt_job3_input" id="cha_richt_job3_lrte" placeholder="1~64000" data-amo="LRTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 이름 변경(최대 16자)">경로 이름</span>
+                                <label for="cha_richt_job3_name"></label>
+                                <input type="text" class="form-control cha_richt_job3_input" id="cha_richt_job3_name" placeholder="텍스트 최대 16자" data-amo="NAME" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">목적지 노드 번호</span>
+                                <label for="cha_richt_job3_dnno"></label>
+                                <input type="text" class="form-control cha_richt_job3_input" id="cha_richt_job3_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+
+                            <!-- 트렁크 경로 데이터 확인 -->
+                            <div class="input-group input-group-sm pb-1 richt_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="LRTE 선택">경로 모드</span>
+                                <label for="reg_richt_job4_mode"></label>
+                                <input type="text" class="form-control reg_richt_job4_input" id="reg_richt_job4_mode" placeholder="MODE" data-amo="MODE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">경로 번호</span>
+                                <label for="reg_richt_job4_lrte"></label>
+                                <input type="text" class="form-control reg_richt_job4_input" id="reg_richt_job4_lrte" placeholder="1~512" data-amo="LRTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 트렁크 그룹 번호 입력">트렁크 그룹 번호</span>
+                                <label for="reg_richt_job4_tgrp"></label>
+                                <input type="text" class="form-control reg_richt_job4_input" id="reg_richt_job4_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+
+                            <!-- 트렁크 그룹 삭제 -->
+                            <div class="input-group input-group-sm pb-1 richt_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="LRTE 선택">경로 모드</span>
+                                <label for="del_richt_job5_mode"></label>
+                                <input type="text" class="form-control del_richt_job5_input" id="del_richt_job5_mode" placeholder="MODE" data-amo="MODE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">경로 번호</span>
+                                <label for="del_richt_job5_lrte"></label>
+                                <input type="text" class="form-control del_richt_job5_input" id="del_richt_job5_lrte" placeholder="0~64000" data-amo="LRTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_5 d-none">
+                            <span class="input-group-text w100px btn-primary" title="경로 서비스 표시 : VCE 선택">
+                            <label for="del_richt_job5_lsvc">서비스 표시</label></span>
+                                <select class="form-select del_richt_job5_input" id="del_richt_job5_lsvc" data-amo="LSVC" data-amo-value="">
+                                    <option value="">VCE 선택</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="DTE">DTE</option>
+                                    <option value="VCE">VCE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 트렁크 그룹 번호 입력">트렁크 그룹 번호</span>
+                                <label for="del_richt_job5_tgrp"></label>
+                                <input type="text" class="form-control del_richt_job5_input" id="del_richt_job5_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+
+                        </div>
+                        <div id="maintab5" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab5">
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_richt2_job"></label>
+                                <select class="form-select" id="select_richt2_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="wabe_job_1" selected>Digit Code 생성</option>
+                                    <option value="richt2_job_1">트렁크 경로 설정</option>
+                                    <option value="richt2_job_2">트렁크 경로 확인</option>
+                                    <option value="richt2_job_3">트렁크 경로 변경</option>
+                                    <option value="richt2_job_4">트렁크 경로 데이터 확인</option>
+                                    <option value="richt2_job_5">트렁크 그룹 삭제</option>
+                                </select>
+                            </div>
+
+                            <!-- Digit Code 생성 -->
+                            <div class="input-group input-group-sm pb-1 wabe_job_1">
+                            <span class="input-group-text w100px btn-primary" title="억세스 코드 입력(일반적으로 ##X 만듬, 사용하지 않는 코드)
+ex) ##1, ##2 등">억세스 코드</span>
+                                <label for="add_wabe_job1_cd"></label>
+                                <input type="text" class="form-control add_wabe_job1_input" id="add_wabe_job1_cd" placeholder="억세스 코드 입력 ex) ##1, ##2" data-amo="CD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 wabe_job_1">
+                                <span class="input-group-text w100px btn-primary" title="NETRTE 선택">디지트 분석 결과</span>
+                                <label for="add_wabe_job1_dar"></label>
+                                <input type="text" class="form-control add_wabe_job1_input" id="add_wabe_job1_dar" placeholder="NETRTE 선택" data-amo="DAR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 wabe_job_1">
+                        <span class="input-group-text w100px btn-primary" title="N 선택">
+                        <label for="add_wabe_job1_check">경로 모드</label></span>
+                                <select class="form-select add_wabe_job1_input" id="add_wabe_job1_check" data-amo="CHECK" data-amo-value="">
+                                    <option value="">N 선택</option>
+                                    <option value="Y">Y</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </div>
+
+
+                            <!-- 트렁크 경로 설정 -->
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                        <span class="input-group-text w100px btn-primary" title="경로 모드 설정(신규/확장)">
+                        <label for="add_richt2_job1_mode">경로 모드</label></span>
+                                <select class="form-select add_richt2_job1_input" id="add_richt2_job1_mode" data-amo="MODE" data-amo-value="">
+                                    <option value="">MODE</option>
+                                    <option value="LRTENEW">LRTENEW</option>
+                                    <option value="LRTEEXT">LRTEEXT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">경로 번호</span>
+                                <label for="add_richt2_job1_lrte"></label>
+                                <input type="text" class="form-control add_richt2_job1_input" id="add_richt2_job1_lrte" placeholder="1~64000" data-amo="LRTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="WABE로 만든 CD(NETRTE) 값 입력">억세스 코드</span>
+                                <label for="add_richt2_job1_cd"></label>
+                                <input type="text" class="form-control add_richt2_job1_input" id="add_richt2_job1_cd" placeholder="최대 6자리 숫자or기호" data-amo="CD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default : 0 (사용하지않는 기능으로 Default 값 설정)">통화 진행 상태</span>
+                                <label for="add_richt2_job1_cps"></label>
+                                <input type="text" class="form-control add_richt2_job1_input" id="add_richt2_job1_cps" placeholder="Default : 0 (사용하지않는 기능으로 Default 값 설정)" data-amo="CPS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                        <span class="input-group-text w100px btn-primary" title="커뮤니케이션 서비스 설정 : VCE 선택">
+                        <label for="add_richt2_job1_svc">커뮤니케이션 서비스</label></span>
+                                <select class="form-select add_richt2_job1_input" id="add_richt2_job1_svc" data-amo="SVC" data-amo-value="">
+                                    <option value="">SVC</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="DTE">DTE</option>
+                                    <option value="VCE">VCE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 이름 설정(최대 16자)">경로 이름</span>
+                                <label for="add_richt2_job1_name"></label>
+                                <input type="text" class="form-control add_richt2_job1_input" id="add_richt2_job1_name" placeholder="NAME" data-amo="NAME" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 설정, 같은 경로인데 다른 트렁크(BUEND)인 경우 1&20 가능">트렁크 그룹 번호</span>
+                                <label for="add_richt2_job1_tgrp1"></label>
+                                <input type="text" class="form-control add_richt2_job1_input" id="add_richt2_job1_tgrp1" placeholder="1~512" data-amo="TGRP1" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="목적지 번호 설정">목적지 번호</span>
+                                <label for="add_richt2_job1_destno"></label>
+                                <input type="text" class="form-control add_richt2_job1_input" id="add_richt2_job1_destno" placeholder="0~254" data-amo="DESTNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="TDCSU에서 설정한 NNO값 설정">목적지 노드 번호</span>
+                                <label for="add_richt2_job1_dnno"></label>
+                                <input type="text" class="form-control add_richt2_job1_input" id="add_richt2_job1_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                                <span class="input-group-text w100px btn-primary" title="Default : 2-100-99 (사용하지않는 기능으로 Default 값 설정)">가상 목적지 노드 번호</span>
+                                <label for="add_richt2_job1_pdnno"></label>
+                                <input type="text" class="form-control add_richt2_job1_input" id="add_richt2_job1_pdnno" placeholder="Default : 2-100-99 (사용하지않는 기능으로 Default 값 설정)" data-amo="PDNNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_1 d-none">
+                        <span class="input-group-text w100px btn-primary" title="Default : NEUTRAL (사용하지않는 기능으로 Default 값 설정)">
+                        <label for="add_richt2_job1_charcon">문자 변환</label></span>
+                                <select class="form-select add_richt2_job1_input" id="add_richt2_job1_charcon" data-amo="CHARCON" data-amo-value="">
+                                    <option value="">Default : NEUTRAL (사용하지않는 기능으로 Default 값 설정)</option>
+                                    <option value="NEUTRAL">NEUTRAL</option>
+                                    <option value="CHARCON">CHARCON</option>
+                                    <option value="RUSSCYR">RUSSCYR</option>
+                                </select>
+                            </div>
+
+                            <!-- 트렁크 경로 확인 -->
+                            <div class="input-group input-group-sm pb-1 richt2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="CD 선택">경로 모드</span>
+                                <label for="dis_richt2_job2_mode"></label>
+                                <input type="text" class="form-control dis_richt2_job2_input" id="dis_richt2_job2_mode" placeholder="MODE" data-amo="MODE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 CD(NETRTE) 값 입력">억세스 코드</span>
+                                <label for="dis_richt2_job2_cd"></label>
+                                <input type="text" class="form-control dis_richt2_job2_input" id="dis_richt2_job2_cd" placeholder="최대 6자리 숫자or기호" data-amo="CD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 트렁크 그룹 번호 입력">트렁크 그룹 번호</span>
+                                <label for="dis_richt2_job2_tgrp"></label>
+                                <input type="text" class="form-control dis_richt2_job2_input" id="dis_richt2_job2_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 CD(NETRTE) 값 입력">경로</span>
+                                <label for="dis_richt2_job2_lrte"></label>
+                                <input type="text" class="form-control dis_richt2_job2_input" id="dis_richt2_job2_lrte" placeholder="1~64000" data-amo="LRTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 노드 번호 입력">목적지 노드 번호</span>
+                                <label for="dis_richt2_job2_dnno"></label>
+                                <input type="text" class="form-control dis_richt2_job2_input" id="dis_richt2_job2_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+
+
+                            <!-- 트렁크 경로 변경 -->
+                            <div class="input-group input-group-sm pb-1 richt2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="WABE로 만든 CD(NETRTE) 값 입력">억세스 코드</span>
+                                <label for="cha_richt2_job3_cd"></label>
+                                <input type="text" class="form-control cha_richt2_job3_input" id="cha_richt2_job3_cd" placeholder="최대 6자리 숫자or기호" data-amo="CD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_3 d-none">
+                            <span class="input-group-text w100px btn-primary" title="커뮤니케이션 서비스 설정 : VCE 선택">
+                            <label for="cha_richt2_job3_svc">커뮤니케이션 서비스</label></span>
+                                <select class="form-select cha_richt2_job3_input" id="cha_richt2_job3_svc" data-amo="SVC" data-amo-value="">
+                                    <option value="">SVC</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="DTE">DTE</option>
+                                    <option value="VCE">VCE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="GEN 선택">경로 옵션</span>
+                                <label for="cha_richt2_job3_type"></label>
+                                <input type="text" class="form-control cha_richt2_job3_input" id="cha_richt2_job3_type" placeholder="TYPE" data-amo="TYPE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 트렁크 이름 입력">트렁크 그룹 이름</span>
+                                <label for="cha_richt2_job3_name"></label>
+                                <input type="text" class="form-control cha_richt2_job3_input" id="cha_richt2_job3_name" placeholder="텍스트 최대 16자" data-amo="NAME" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 목적지 번호 입력">목적지 번호</span>
+                                <label for="cha_richt2_job3_destno"></label>
+                                <input type="text" class="form-control cha_richt2_job3_input" id="cha_richt2_job3_destno" placeholder="0~254" data-amo="DESTNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 목적지 노드 번호 입력">목적지 노드 번호</span>
+                                <label for="cha_richt2_job3_dnno"></label>
+                                <input type="text" class="form-control cha_richt2_job3_input" id="cha_richt2_job3_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경할 경로 번호 입력">경로 번호</span>
+                                <label for="cha_richt2_job3_lrte"></label>
+                                <input type="text" class="form-control cha_richt2_job3_input" id="cha_richt2_job3_lrte" placeholder="0~64000" data-amo="LRTE" data-amo-value="">
+                            </div>
+
+
+                            <!-- 트렁크 경로 데이터 확인 -->
+                            <div class="input-group input-group-sm pb-1 richt2_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="CD 선택">경로 모드</span>
+                                <label for="reg_richt2_job4_mode"></label>
+                                <input type="text" class="form-control reg_richt2_job4_input" id="reg_richt2_job4_mode" placeholder="MODE" data-amo="MODE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">억세스 코드</span>
+                                <label for="reg_richt2_job4_cd"></label>
+                                <input type="text" class="form-control reg_richt2_job4_input" id="reg_richt2_job4_cd" placeholder="1~512" data-amo="CD" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 트렁크 그룹 번호 입력">트렁크 그룹 번호</span>
+                                <label for="reg_richt2_job4_tgrp"></label>
+                                <input type="text" class="form-control reg_richt2_job4_input" id="reg_richt2_job4_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+
+                            <!-- 트렁크 그룹 삭제 -->
+                            <div class="input-group input-group-sm pb-1 richt2_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="LRTE 선택">경로 모드</span>
+                                <label for="del_richt2_job5_mode"></label>
+                                <input type="text" class="form-control del_richt2_job5_input" id="del_richt2_job5_mode" placeholder="MODE" data-amo="MODE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 경로 번호 입력">경로 번호</span>
+                                <label for="del_richt2_job5_lrte"></label>
+                                <input type="text" class="form-control del_richt2_job5_input" id="del_richt2_job5_lrte" placeholder="0~64000" data-amo="LRTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_5 d-none">
+                            <span class="input-group-text w100px btn-primary" title="VCE 선택">
+                            <label for="del_richt2_job5_lsvc">서비스 표시</label></span>
+                                <select class="form-select del_richt2_job5_input" id="del_richt2_job5_lsvc" data-amo="LSVC" data-amo-value="">
+                                    <option value="">VCE 선택</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="DTE">DTE</option>
+                                    <option value="VCE">VCE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 richt2_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 트렁크 그룹 번호 입력 or 전체(ALL) 선택">트렁크 그룹 번호</span>
+                                <label for="del_richt2_job5_tgrp"></label>
+                                <input type="text" class="form-control del_richt2_job5_input" id="del_richt2_job5_tgrp" placeholder="1~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+
+                        </div>
+                        <div id="maintab6" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab6">
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_lodr_job"></label>
+                                <select class="form-select" id="select_lodr_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="lodr_job_1" selected>다이얼 룰 설정</option>
+                                    <option value="lodr_job_2">다이얼 룰 확인</option>
+                                    <option value="lodr_job_3">다이얼 룰 삭제</option>
+                                    <option value="lodr_job_4">다이얼 룰 데이터 확인</option>
+                                </select>
+                            </div>
+
+                            <!-- 다이얼 룰 설정 -->
+                            <div class="input-group input-group-sm pb-1 lodr_job_1">
+                                <span class="input-group-text w100px btn-primary" title="다이얼 룰 번호 설정">다이얼 룰 번호</span>
+                                <label for="add_lodr_job1_odr"></label>
+                                <input type="text" class="form-control add_lodr_job1_input" id="add_lodr_job1_odr" placeholder="1~4096" data-amo="ODR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 lodr_job_1">
+                                <span class="input-group-text w100px btn-primary" title="다이얼 규칙 명령 위치">다이얼 규칙 명령 위치</span>
+                                <label for="add_lodr_job1_cmdpos"></label>
+                                <input type="text" class="form-control add_lodr_job1_input" id="add_lodr_job1_cmdpos" placeholder="1~100" data-amo="CMDPOS" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 lodr_job_1">
+                        <span class="input-group-text w100px btn-primary" title="명령/교체 혹은 삽입">
+                        <label for="add_lodr_job1_replace">명령/교체 혹은 삽입</label></span>
+                                <select class="form-select add_lodr_job1_input" id="add_lodr_job1_replace" data-amo="REPLACE" data-amo-value="">
+                                    <option value="">REPLACE</option>
+                                    <option value="YES">YES</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 lodr_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default :0 (사용하지않는 기능으로 Default 값 설정)">다이얼 룰 이름</span>
+                                <label for="add_lodr_job1_info"></label>
+                                <input type="text" class="form-control add_lodr_job1_input" id="add_lodr_job1_info" placeholder="Default :0 (사용하지않는 기능으로 Default 값 설정)" data-amo="INFO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 lodr_job_1">
+                        <span class="input-group-text w100px btn-primary" title="ECHO/ECHOALL/END 사용">
+                        <label for="add_lodr_job1_cmd">다이얼 룰 명령</label></span>
+                                <select class="form-select add_lodr_job1_input" id="add_lodr_job1_cmd" data-amo="CMD" data-amo-value="">
+                                    <option value="">CMD</option>
+                                    <option value="ECHO">ECHO</option>
+                                    <option value="ECHOALL">ECHOALL</option>
+                                    <option value="END">END</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 lodr_job_1">
+                                <span class="input-group-text w100px btn-primary" title="DIAL PLAN 9-005-X 가정, 9 : ECHO1, 005 : ECHO2, X : ECHO3">ECHO 필드 번호</span>
+                                <label for="add_lodr_job1_field"></label>
+                                <input type="text" class="form-control add_lodr_job1_input" id="add_lodr_job1_field" placeholder="1~10" data-amo="FIELD" data-amo-value="">
+                            </div>
+
+                            <!-- 다이얼 룰 확인 -->
+                            <div class="input-group input-group-sm pb-1 lodr_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 다이얼 룰 번호">다이얼 룰 번호</span>
+                                <label for="dis_lodr_job2_odr"></label>
+                                <input type="text" class="form-control dis_lodr_job2_input" id="dis_lodr_job2_odr" placeholder="1~512" data-amo="ODR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 lodr_job_2 d-none">
+                        <span class="input-group-text w100px btn-primary" title="확인할 트렁크 내역 형식 (S:Shorts(이름이랑 번호만,L:Long(전체 데이터))">
+                        <label for="dis_lodr_job2_format">형식</label></span>
+                                <select class="form-select dis_lodr_job2_input" id="dis_lodr_job2_format" data-amo="FORMAT" data-amo-value="">
+                                    <option value="">FORMAT</option>
+                                    <option value="S">S</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
+
+                            <!-- 다이얼 룰 삭제 -->
+                            <div class="input-group input-group-sm pb-1 lodr_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="ODR(다이얼 룰), CMDPOS(다이얼 규칙 명령 위치)">
+                        <label for="del_lodr_job3_type">종류</label></span>
+                                <select class="form-select del_lodr_job3_input" id="del_lodr_job3_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="ODR">ODR</option>
+                                    <option value="CMDPOS">CMDPOS</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 lodr_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="다이얼 룰 번호">다이얼 룰 번호</span>
+                                <label for="del_lodr_job3_odr"></label>
+                                <input type="text" class="form-control del_lodr_job3_input" id="del_lodr_job3_odr" placeholder="1~4096" data-amo="ODR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 lodr_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="다이얼 규칙 명령 위치">다이얼 규칙 명령 위치</span>
+                                <label for="del_lodr_job3_cmdpos"></label>
+                                <input type="text" class="form-control del_lodr_job3_input" id="del_lodr_job3_cmdpos" placeholder="1~2000" data-amo="COMPOS" data-amo-value="">
+                            </div>
+
+                            <!-- 다이얼 룰 데이터 확인 -->
+                            <div class="input-group input-group-sm pb-1 lodr_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="다이얼 룰 번호">다이얼 룰 번호</span>
+                                <label for="reg_lodr_job4_odr"></label>
+                                <input type="text" class="form-control reg_lodr_job4_input" id="reg_lodr_job4_odr" placeholder="1~4096" data-amo="ODR" data-amo-value="">
+                            </div>
+
+                        </div>
+                        <div id="maintab7" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab7">
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_ldat_job"></label>
+                                <select class="form-select" id="select_ldat_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="ldat_job_1" selected>트렁크 경로 설정</option>
+                                    <option value="ldat_job_2">트렁크 경로 확인</option>
+                                    <option value="ldat_job_3">트렁크 경로 변경</option>
+                                    <option value="ldat_job_4">트렁크 경로 데이터 확인</option>
+                                    <option value="ldat_job_5">트렁크 그룹 삭제</option>
+                                </select>
+                            </div>
+
+                            <!-- 트렁크 경로 설정 -->
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">트렁크 경로 번호</span>
+                                <label for="add_ldat_job1_lroute"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_lroute" placeholder="1~64000" data-amo="LROUTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                        <span class="input-group-text w100px btn-primary" title="경로 서비스 표시 : VCE 선택">
+                        <label for="add_ldat_job1_lsvc">서비스 표시</label></span>
+                                <select class="form-select add_wabe_job1_input" id="add_ldat_job1_lsvc" data-amo="LSVC" data-amo-value="">
+                                    <option value="">VCE 선택</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="VCE">VCE</option>
+                                    <option value="DTE">DTE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 경로당 요소 1~254개 설정 가능">트렁크 경로 요소</span>
+                                <label for="add_ldat_job1_lval"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_lval" placeholder="1~254" data-amo="LVAL" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="설정되어있지 않은 트렁크 요소 1~254 中 신규 추가">경로 요소 신규</span>
+                                <label for="add_ldat_job1_lvalnew"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_lvalnew" placeholder="1~254" data-amo="LVALNEW" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 입력">트렁크 그룹 번호</span>
+                                <label for="add_ldat_job1_tgrp"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_tgrp" placeholder="0~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="다이얼 룰 번호 입력">다이얼 룰</span>
+                                <label for="add_ldat_job1_odr"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_odr" placeholder="1~4096" data-amo="ODR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="LCOSV(서비스 호 등급) 內 LAUTH(경로 인증) 값 입력">경로 인증</span>
+                                <label for="add_ldat_job1_lauth"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_lauth" placeholder="1~64" data-amo="LAUTH" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="PUBNUM(발신자 번호로 전송), WCHREG(과금)">LCR 속성</span>
+                                <label for="add_ldat_job1_lattr"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_lattr" placeholder="LATTR" data-amo="LATTR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="TDCSU에서 설정한 NNO값 설정">목적지 노드 번호</span>
+                                <label for="add_ldat_job1_dnno"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default : 4 (사용하지않는 기능으로 Default 값 설정)">최대 음성 압축 주기</span>
+                                <label for="add_ldat_job1_vccyc"></label>
+                                <input type="text" class="form-control add_ldat_job1_input" id="add_ldat_job1_vccyc" placeholder="Default : 4 (사용하지않는 기능으로 Default 값 설정)" data-amo="VCCYC" data-amo-value="">
+                            </div>
+
+                            <!-- 트렁크 경로 확인 -->
+                            <div class="input-group input-group-sm pb-1 ldat_job_2 d-none">
+                        <span class="input-group-text w100px btn-primary" title="ALL : 전부다, LCR : LCR 경로만, NWLCR : Close Numbering 경로만">
+                        <label for="dis_ldat_job2_type">유형</label></span>
+                                <select class="form-select add_wabe_job2_input" id="dis_ldat_job2_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="LCR">LCR</option>
+                                    <option value="NWLCR">NWLCR</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">트렁크 경로 번호</span>
+                                <label for="dis_ldat_job2_lroute"></label>
+                                <input type="text" class="form-control dis_ldat_job2_input" id="dis_ldat_job2_lroute" placeholder="1~64000" data-amo="LROUTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_2 d-none">
+                        <span class="input-group-text w100px btn-primary" title="경로 서비스 표시 : VCE 선택">
+                        <label for="dis_ldat_job2_lsvc">서비스 표시</label></span>
+                                <select class="form-select add_wabe_job2_input" id="dis_ldat_job2_lsvc" data-amo="LSVC" data-amo-value="">
+                                    <option value="">VCE 선택</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="VCE">VCE</option>
+                                    <option value="DTE">DTE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 입력">트렁크 그룹 번호</span>
+                                <label for="dis_ldat_job2_tgrp"></label>
+                                <input type="text" class="form-control dis_ldat_job2_input" id="dis_ldat_job2_tgrp" placeholder="0~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="다이얼 룰 번호 입력">다이얼 룰</span>
+                                <label for="dis_ldat_job2_odr"></label>
+                                <input type="text" class="form-control dis_ldat_job2_input" id="dis_ldat_job2_odr" placeholder="1~4096" data-amo="ODR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="LCOSV(서비스 호 등급) 內 LAUTH(경로 인증) 값 입력">경로 인증</span>
+                                <label for="dis_ldat_job2_lauth"></label>
+                                <input type="text" class="form-control dis_ldat_job2_input" id="dis_ldat_job2_lauth" placeholder="1~64" data-amo="LAUTH" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="TDCSU에서 설정한 NNO값 설정">목적지 노드 번호</span>
+                                <label for="dis_ldat_job2_dnno"></label>
+                                <input type="text" class="form-control dis_ldat_job2_input" id="dis_ldat_job2_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="PUBNUM(발신자 번호로 전송), WCHREG(과금)">LCR 속성</span>
+                                <label for="dis_ldat_job2_lattr"></label>
+                                <input type="text" class="form-control dis_ldat_job2_input" id="dis_ldat_job2_lattr" placeholder="LATTR" data-amo="LATTR" data-amo-value="">
+                            </div>
+
+                            <!-- 트렁크 경로 변경 -->
+                            <div class="input-group input-group-sm pb-1 ldat_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 설정(트렁크 그룹 번호와 같게 설정)">트렁크 경로 번호</span>
+                                <label for="cha_ldat_job3_lroute"></label>
+                                <input type="text" class="form-control cha_ldat_job3_input" id="cha_ldat_job3_lroute" placeholder="1~64000" data-amo="LROUTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_3 d-none">
+                        <span class="input-group-text w100px btn-primary" title="경로 서비스 표시 : VCE 선택">
+                        <label for="cha_ldat_job3_lsvc">서비스 표시</label></span>
+                                <select class="form-select add_wabe_job3_input" id="cha_ldat_job3_lsvc" data-amo="LSVC" data-amo-value="">
+                                    <option value="">VCE 선택</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="VCE">VCE</option>
+                                    <option value="DTE">DTE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="1~254 中 변경하고자 하는 요소 입력">경로 요소</span>
+                                <label for="cha_ldat_job3_lrtel"></label>
+                                <input type="text" class="form-control cha_ldat_job3_input" id="cha_ldat_job3_lrtel" placeholder="1~254" data-amo="LRTEL" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="트렁크 그룹 번호 입력">트렁크 그룹 번호</span>
+                                <label for="cha_ldat_job3_tgrp"></label>
+                                <input type="text" class="form-control cha_ldat_job3_input" id="cha_ldat_job3_tgrp" placeholder="0~512" data-amo="TGRP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="다이얼 룰 번호 입력">다이얼 룰</span>
+                                <label for="cha_ldat_job3_odr"></label>
+                                <input type="text" class="form-control cha_ldat_job3_input" id="cha_ldat_job3_odr" placeholder="1~4096" data-amo="ODR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="LCOSV(서비스 호 등급) 內 LAUTH(경로 인증) 값 입력">경로 인증</span>
+                                <label for="cha_ldat_job3_lauth"></label>
+                                <input type="text" class="form-control cha_ldat_job3_input" id="cha_ldat_job3_lauth" placeholder="1~64" data-amo="LAUTH" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="PUBNUM(발신자 번호로 전송), WCHREG(과금)">LCR 속성</span>
+                                <label for="cha_ldat_job3_lattr"></label>
+                                <input type="text" class="form-control cha_ldat_job3_input" id="cha_ldat_job3_lattr" placeholder="LATTR" data-amo="LATTR" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="변경하고자 하는 노드 번호 입력">목적지 노드 번호</span>
+                                <label for="cha_ldat_job3_dnno"></label>
+                                <input type="text" class="form-control cha_ldat_job3_input" id="cha_ldat_job3_dnno" placeholder="1-100-X" data-amo="DNNO" data-amo-value="">
+                            </div>
+
+                            <!-- 트렁크 경로 데이터 확인 -->
+                            <div class="input-group input-group-sm pb-1 ldat_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="확인할 경로 번호 입력">경로 번호</span>
+                                <label for="reg_ldat_job4_lroute"></label>
+                                <input type="text" class="form-control reg_ldat_job4_input" id="reg_ldat_job4_lroute" placeholder="1~64000" data-amo="LROUTE" data-amo-value="">
+                            </div>
+
+                            <!-- 트렁크 그룹 삭제 -->
+                            <div class="input-group input-group-sm pb-1 ldat_job_5 d-none">
+                        <span class="input-group-text w100px btn-primary" title="LRTE 선택">
+                        <label for="del_ldat_job5_kind">종류</label></span>
+                                <select class="form-select add_wabe_job5_input" id="del_ldat_job5_kind" data-amo="KIND" data-amo-value="">
+                                    <option value="">KIND</option>
+                                    <option value="LROUTE">LROUTE</option>
+                                    <option value="LRTEL">LRTEL</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 경로 번호 입력">경로 번호</span>
+                                <label for="del_ldat_job5_lroute"></label>
+                                <input type="text" class="form-control del_ldat_job5_input" id="del_ldat_job5_lroute" placeholder="1~64000" data-amo="LROUTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_5 d-none">
+                        <span class="input-group-text w100px btn-primary" title="VCE 선택">
+                        <label for="del_ldat_job5_lsvc">서비스 표시</label></span>
+                                <select class="form-select add_wabe_job3_input" id="del_ldat_job5_lsvc" data-amo="LSVC" data-amo-value="">
+                                    <option value="">VCE 선택</option>
+                                    <option value="ALL">ALL</option>
+                                    <option value="VCE">VCE</option>
+                                    <option value="DTE">DTE</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldat_job_5 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 경로 요소 번호 입력">경로 요소</span>
+                                <label for="del_ldat_job5_lrtel"></label>
+                                <input type="text" class="form-control del_ldat_job5_input" id="del_ldat_job5_lrtel" placeholder="1~512" data-amo="LRTEL" data-amo-value="">
+                            </div>
+
+
+                        </div>
+                        <div id="maintab8" class="tab-pane fade" role="tabpanel" aria-labelledby="main-tab8">
+                            <div class="input-group input-group-lg pb-1">
+                                <label for="select_ldpln_job"></label>
+                                <select class="form-select" id="select_ldpln_job">
+                                    <option value="">작업 선택</option>
+                                    <option value="ldpln_job_1" selected>다이얼 플랜 설정</option>
+                                    <option value="ldpln_job_2">다이얼 플랜 확인</option>
+                                    <option value="ldpln_job_3">다이얼 플랜 데이터 확인</option>
+                                    <option value="ldpln_job_4">다이얼 플랜 삭제</option>
+                                </select>
+                            </div>
+
+                            <!-- 다이얼 플랜 설정 -->
+                            <div class="input-group input-group-sm pb-1 ldpln_job_1">
+                        <span class="input-group-text w100px btn-primary" title="LCRPATT 선택">
+                        <label for="add_ldpln_job1_lcrconf">경로 구성 유형</label></span>
+                                <select class="form-select add_ldpln_job1_input" id="add_ldpln_job1_lcrconf" data-amo="LCRCONF" data-amo-value="">
+                                    <option value="">LCRPATT 선택</option>
+                                    <option value="LCRADM">LCRADM</option>
+                                    <option value="LCRPATT">LCRPATT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_1">
+                                <span class="input-group-text w100px btn-primary" title="9-X, 0-0-X 등 다이얼 플랜 설정">다이얼 플랜</span>
+                                <label for="add_ldpln_job1_ldp"></label>
+                                <input type="text" class="form-control add_ldpln_job1_input" id="add_ldpln_job1_ldp" placeholder="텍스트 최대 22자" data-amo="LDP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_1">
+                                <span class="input-group-text w100px btn-primary" title="Default : 0 (사용하지않는 기능으로 Default 값 설정)">디지트 그룹 번호</span>
+                                <label for="add_ldpln_job1_dpln"></label>
+                                <input type="text" class="form-control add_ldpln_job1_input" id="add_ldpln_job1_dpln" placeholder="Default : 0 (사용하지않는 기능으로 Default 값 설정)" data-amo="DPLN" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_1">
+                                <span class="input-group-text w100px btn-primary" title="경로 번호 입력">경로 번호</span>
+                                <label for="add_ldpln_job1_lroute"></label>
+                                <input type="text" class="form-control add_ldpln_job1_input" id="add_ldpln_job1_lroute" placeholder="0~65535" data-amo="LROUTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_1">
+                                <span class="input-group-text w100px btn-primary" title="LCOSV(서비스 호 등급) 內 LAUTH(경로 인증) 값 입력">경로 인증</span>
+                                <label for="add_ldpln_job1_lauth"></label>
+                                <input type="text" class="form-control add_ldpln_job1_input" id="add_ldpln_job1_lauth" placeholder="1~64" data-amo="LAUTH" data-amo-value="">
+                            </div>
+
+                            <!-- 다이얼 플랜 확인 -->
+                            <div class="input-group input-group-sm pb-1 ldpln_job_2 d-none">
+                        <span class="input-group-text w100px btn-primary" title="CD : 억세스 코드별 패턴 조회, LCRADM : 사용하지 않음
+LDP : 다이얼 패턴, 속성 표시, STAT : 다이얼 플랜 품질">
+                        <label for="dis_ldpln_job2_type">쿼리 유형</label></span>
+                                <select class="form-select dis_ldpln_job2_input" id="dis_ldpln_job2_type" data-amo="TYPE" data-amo-value="">
+                                    <option value="">TYPE</option>
+                                    <option value="CD">CD</option>
+                                    <option value="LCRADM">LCRADM</option>
+                                    <option value="LDP">LDP</option>
+                                    <option value="STAT">STAT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="생성한 디지트 패턴 순서 번호">디지트 패턴 순서 번호</span>
+                                <label for="dis_ldpln_job2_ldpno"></label>
+                                <input type="text" class="form-control dis_ldpln_job2_input" id="dis_ldpln_job2_ldpno" placeholder="1~64000" data-amo="LDPNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="설정한 다이얼 플랜 입력">다이얼 플랜</span>
+                                <label for="dis_ldpln_job2_ldp"></label>
+                                <input type="text" class="form-control dis_ldpln_job2_input" id="dis_ldpln_job2_ldp" placeholder="텍스트 최대 22자" data-amo="LDP" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="설정한 경로 번호 입력">경로 번호</span>
+                                <label for="dis_ldpln_job2_lroute"></label>
+                                <input type="text" class="form-control dis_ldpln_job2_input" id="dis_ldpln_job2_lroute" placeholder="0~65545" data-amo="LROUTE" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_2 d-none">
+                                <span class="input-group-text w100px btn-primary" title="설정한 경로 인증값 입력">경로 인증</span>
+                                <label for="dis_ldpln_job2_lauth"></label>
+                                <input type="text" class="form-control dis_ldpln_job2_input" id="dis_ldpln_job2_lauth" placeholder="1~64" data-amo="LAUTH" data-amo-value="">
+                            </div>
+
+                            <!-- 다이얼 플랜 확인 -->
+                            <div class="input-group input-group-sm pb-1 ldpln_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="생성한 디지트 패턴 순서 번호">디지트 패턴 순서 번호</span>
+                                <label for="reg_ldpln_job3_ldpno"></label>
+                                <input type="text" class="form-control reg_ldpln_job3_input" id="reg_ldpln_job3_ldpno" placeholder="1~64000" data-amo="LDPNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_3 d-none">
+                                <span class="input-group-text w100px btn-primary" title="설정한 다이얼 플랜 입력">다이얼 플랜</span>
+                                <label for="reg_ldpln_job3_ldp"></label>
+                                <input type="text" class="form-control reg_ldpln_job3_input" id="reg_ldpln_job3_ldp" placeholder="텍스트 최대 22자" data-amo="LDP" data-amo-value="">
+                            </div>
+
+                            <!-- 다이얼 플랜 삭제 -->
+                            <div class="input-group input-group-sm pb-1 ldpln_job_4">
+                        <span class="input-group-text w100px btn-primary" title="LCRPATT 선택">
+                        <label for="del_ldpln_job4_lcrconf">경로 구성 유형</label></span>
+                                <select class="form-select del_ldpln_job4_input" id="del_ldpln_job4_lcrconf" data-amo="LCRCONF" data-amo-value="">
+                                    <option value="">LCRPATT 선택</option>
+                                    <option value="LCRADM">LCRADM</option>
+                                    <option value="LCRPATT">LCRPATT</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="삭제할 다이얼 플랜 번호 입력">다이얼 플랜 번호</span>
+                                <label for="del_ldpln_job4_diplnum"></label>
+                                <input type="text" class="form-control del_ldpln_job4_input" id="del_ldpln_job4_diplnum" placeholder="0~2047" data-amo="DIPLNUM" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="생성한 디지트 패턴 순서 번호">디지트 패턴 순서 번호</span>
+                                <label for="del_ldpln_job4_ldpno"></label>
+                                <input type="text" class="form-control del_ldpln_job4_input" id="del_ldpln_job4_ldpno" placeholder="1~64000" data-amo="LDPNO" data-amo-value="">
+                            </div>
+                            <div class="input-group input-group-sm pb-1 ldpln_job_4 d-none">
+                                <span class="input-group-text w100px btn-primary" title="설정한 다이얼 플랜(9-X 등) 입력">트렁크 그룹 번호</span>
+                                <label for="del_ldpln_job4_ldp"></label>
+                                <input type="text" class="form-control del_ldpln_job4_input" id="del_ldpln_job4_ldp" placeholder="텍스트 최대 22자" data-amo="LDP" data-amo-value="">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="bg-white d-flex flex-column-reverse flex-fill min-h-0 overflow-auto scrollable-content p-1 rounded-3">
+                    <label for="comwon_display"></label>
+                    <div class="form-control bg-white" id="comwon_display" style="height: 459px; overflow-y: scroll; white-space: pre-wrap; font-family: monospace;">comwin message</div>
+                </div>
+                <form class="d-flex align-items-center gap-1 pt-3">
+                    <label for="send_order"></label>
+                    <input type="text" class="form-control" id="send_order" placeholder="Send Command">
+                    <button type="button" id="send_button" class="btn btn-icon btn-primary">
+                        <i class="demo-pli-paper-plane fs-5"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</html>

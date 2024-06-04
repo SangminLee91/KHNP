@@ -1,0 +1,62 @@
+INFO  2024-05-24 09:18:31.076 [restartedMain] [KhnpApplication:50] - Starting KhnpApplication using Java 17.0.10 with PID 6992 (C:\Users\82106\IdeaProjects\practice\khnp_test\out\production\classes started by 이상민 in C:\Users\82106\IdeaProjects\practice\khnp_test)
+DEBUG 2024-05-24 09:18:31.079 [restartedMain] [KhnpApplication:51] - Running with Spring Boot v3.2.0, Spring v6.1.1
+INFO  2024-05-24 09:18:31.081 [restartedMain] [KhnpApplication:659] - The following 1 profile is active: "update class"
+INFO  2024-05-24 09:18:31.337 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  2024-05-24 09:18:31.338 [restartedMain] [DevToolsPropertyDefaultsPostProcessor:252] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+WARN  2024-05-24 09:18:31.990 [restartedMain] [ClassPathMapperScanner:44] - No MyBatis mapper was found in '[com.vdc.khnp]' package. Please check your configuration.
+INFO  2024-05-24 09:18:32.305 [restartedMain] [TomcatWebServer:108] - Tomcat initialized with port 8081 (http)
+INFO  2024-05-24 09:18:32.312 [restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-24 09:18:32.314 [restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  2024-05-24 09:18:32.314 [restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/10.1.16]
+INFO  2024-05-24 09:18:32.354 [restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  2024-05-24 09:18:32.354 [restartedMain] [ServletWebServerApplicationContext:296] - Root WebApplicationContext: initialization completed in 1016 ms
+INFO  2024-05-24 09:18:32.421 [restartedMain] [HikariDataSource:80] - HikariPool-1 - Starting...
+INFO  2024-05-24 09:18:32.489 [restartedMain] [HikariPool:565] - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@3c1a7bfe
+INFO  2024-05-24 09:18:32.490 [restartedMain] [HikariDataSource:82] - HikariPool-1 - Start completed.
+DEBUG 2024-05-24 09:18:32.497 [restartedMain] [DatabaseConfig$$SpringCGLIB$$0:42] - SqlSessionFactory Start
+INFO  2024-05-24 09:18:37.736 [restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  2024-05-24 09:18:37.752 [restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8081"]
+INFO  2024-05-24 09:18:37.769 [restartedMain] [TomcatWebServer:221] - Tomcat started on port 8081 (http) with context path ''
+INFO  2024-05-24 09:18:37.781 [restartedMain] [KhnpApplication:56] - Started KhnpApplication in 7.256 seconds (process running for 11.105)
+INFO  2024-05-24 09:19:01.362 [http-nio-8081-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  2024-05-24 09:19:01.363 [http-nio-8081-exec-1] [DispatcherServlet:532] - Initializing Servlet 'dispatcherServlet'
+INFO  2024-05-24 09:19:01.364 [http-nio-8081-exec-1] [DispatcherServlet:554] - Completed initialization in 1 ms
+DEBUG 2024-05-24 09:19:01.381 [http-nio-8081-exec-1] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-24 09:19:01.382 [http-nio-8081-exec-1] [LoggerInterceptor:21] - Request URI ===> /
+DEBUG 2024-05-24 09:19:01.382 [http-nio-8081-exec-1] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-24 09:19:06.480 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-24 09:19:06.481 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /login/proc
+DEBUG 2024-05-24 09:19:06.549 [http-nio-8081-exec-4] [ArgumentResolver:56] - ##### key : userid, value : test #####
+DEBUG 2024-05-24 09:19:06.549 [http-nio-8081-exec-4] [ArgumentResolver:56] - ##### key : userpwd, value : 1111 #####
+DEBUG 2024-05-24 09:19:06.551 [http-nio-8081-exec-4] [AbstractDAO:15] - 	 QueryId  	:  login.login_proc
+DEBUG 2024-05-24 09:19:06.580 [http-nio-8081-exec-4] [sqlonly:223] -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. select seq, userid, userpwd
+        from account
+        where userid = 'test'
+          and userpwd =SHA2('1111', 256)
+          and del_yn = 0
+
+INFO  2024-05-24 09:19:06.610 [http-nio-8081-exec-4] [WebSessionListener:88] - setSession 실행
+DEBUG 2024-05-24 09:19:06.640 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-24 09:19:06.649 [http-nio-8081-exec-3] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-24 09:19:06.649 [http-nio-8081-exec-3] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-24 09:19:06.649 [http-nio-8081-exec-3] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-24 09:19:07.381 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-24 09:19:07.382 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /favicon.ico
+DEBUG 2024-05-24 09:19:07.391 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-24 09:19:07.391 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /error
+DEBUG 2024-05-24 09:19:07.410 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-24 09:19:46.621 [http-nio-8081-exec-2] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-24 09:19:46.622 [http-nio-8081-exec-2] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-24 09:19:46.622 [http-nio-8081-exec-2] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-24 09:19:48.338 [http-nio-8081-exec-6] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-24 09:19:48.339 [http-nio-8081-exec-6] [LoggerInterceptor:21] - Request URI ===> /main
+DEBUG 2024-05-24 09:19:48.339 [http-nio-8081-exec-6] [LoggerInterceptor:31] - ==================== END ======================
+DEBUG 2024-05-24 09:19:50.186 [http-nio-8081-exec-4] [LoggerInterceptor:20] - ==================== BEGIN ====================
+DEBUG 2024-05-24 09:19:50.186 [http-nio-8081-exec-4] [LoggerInterceptor:21] - Request URI ===> /tollmain
+DEBUG 2024-05-24 09:19:50.186 [http-nio-8081-exec-4] [LoggerInterceptor:31] - ==================== END ======================
+INFO  2024-05-24 09:49:34.164 [Catalina-utility-2] [WebSessionListener:76] - currentSessionUserList -> userid test 
+INFO  2024-05-24 09:50:34.209 [Catalina-utility-1] [WebSessionListener:124] - updateUserCloseTime test 
+WARN  2024-05-24 12:31:11.768 [HikariPool-1 housekeeper] [HikariPool:804] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=49m36s111ms319µs400ns).
+WARN  2024-05-24 15:04:14.986 [HikariPool-1 housekeeper] [HikariPool:804] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m30s823ms84µs400ns).
+WARN  2024-05-24 16:52:50.756 [HikariPool-1 housekeeper] [HikariPool:804] - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m34s170ms464µs100ns).

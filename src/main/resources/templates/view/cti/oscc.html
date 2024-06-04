@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+<!-- 컨텐츠 고유 CSS 추가 -->
+<th:block layout:fragment="css"></th:block>
+
+<!-- 컨텐츠 고유 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+    <script th:src="@{/assets/vendors/datatables/datatables.min.js}"></script>
+    <script th:src="@{/assets/vendors/datatables/datatables.default.setting.js}"></script>
+
+    <script type="text/javascript">
+        let SELECTED_ROW = "";
+        let Authorization = "285fd687ea600b20b6605b278dc3e5290f265830";
+        $(document).ready(function() {
+
+            let getOsccToken = function() {
+                $.ajax({
+                    method: "POST",
+                    url: CONTEXT_PATH+"/api/oscc/token",
+                    data: {
+                        userName: "master",
+                        password: "password",
+                        busUnitName: "DEFAULT",
+                        applicationIdent: "8503142"
+                    },
+                    error: function(jqXHR) { }
+                }).done(function (data) {
+                    console.log('/api/oscc/token', data);
+                    Authorization = data.msg.sessionToken;
+                });
+            }
+
+            $("#btn-on").click(function () { getOsccToken(); });
+
+            $("#btn-off").click(function () {
+                $.ajax({
+                    method: "POST",
+                    url: CONTEXT_PATH+"/api/oscc/logoff",
+                    data: { Authorization: Authorization  },
+                    error: function(jqXHR) { }
+                }).done(function (data) {
+                    console.log('/api/oscc/logoff', data);
+                    Authorization = "";
+                });
+            });
+
+            const agentTable = $('#agentTable').DataTable({
+                ajax: {
+                    method: "POST",
+                    url: CONTEXT_PATH + "/api/oscc/agents",
+                    data: { Authorization: Authorization,
+                        fromStart: true,
+                        indexControlledByClient: false,
+                        maxRecordsToReturn: 1500,
+                        startIndex: 0
+                    },
+                    complete: function (data) {
+                        console.log('/api/oscc/agents', data);
+                    },
+                    dataSrc: "msg.agents"
+                },
+                columns: [
+                    { data: "agentId" },
+                    { data: "agentIdentifier" },
+                    { data: "averageTaskTime" },
+                    { data: "extension" },
+                    { data: "firstName" },
+                    { data: "handledTasks" },
+                    { data: "key" },
+                    { data: "lastName" },
+                    { data: "lastProfilePictureChange" },
+                    { data: "routingStateReason" },
+                    { data: "siteKey" },
+                    {
+                        data: null, render: function(data, type, row, meta) {
+                            let skill = [];
+                            for (let item in row.skills) { skill.push(row.skills[item].name); }
+                            return skill.join(' / ');
+                        }
+                    },
+                    { data: "skills"}
+                ],
+                columnDefs: [ {  "targets": [12], "visible": false, "searchable": false }],
+                bInfo: true,
+                bPaginate: true,
+                scrollY: "536px",
+                scrollCollapse: true,
+                select: { style: "single"}
+            });
+            agentTable.on('select', function(e, dt, type, indexes){
+                SELECTED_ROW = agentTable.row(indexes).data();
+                console.log("SELECTED_ROW", SELECTED_ROW);
+
+                agentSkillTable.clear().draw();
+                agentSkillTable.rows.add(SELECTED_ROW.skills).draw();
+                agentSkillTable.columns.adjust().draw();
+            }).on('deselect', function(){
+                SELECTED_ROW = "";
+                agentSkillTable.clear().draw();
+            });
+
+            const skillsTable = $('#skillsTable').DataTable({
+                ajax: {
+                    method: "POST",
+                    url: CONTEXT_PATH + "/api/oscc/skills",
+                    data: { Authorization: Authorization},
+                    complete: function (data) {
+                        console.log('/api/oscc/skills', data);
+                    },
+                    dataSrc: "msg.skills"
+/*                    dataSrc: function (res) {
+                        var data = res.msg.skills;
+                        var result = [];
+
+                        // 상태가 waiting인 객체 빼고 리턴하기
+                        for (let i = 0; i < data.length; i++) {
+                            result.push(data[i])
+                        }
+
+                        // 배열에 인덱스 번호 매기기 (테이블에 인덱스 보여지게)
+                        for (let i = 0; i < data.length; i++) {
+                            data[i].index = i + 1
+                            // console.log(data[i])
+                        }
+                        return result
+                    }*/
+                },
+                columns: [
+                    // { data: null },
+                    { data: "key" },
+                    { data: "name" },
+                    { data: "description" },
+                    { data: "numberOfAgents" },
+                    { data: "numberOfVirtualGroups" },
+                    { data: "skillLevel" },
+                    { data: "preferenceLevel" }
+                ],
+                bInfo: true,
+                bPaginate: true,
+                scrollY: "536px",
+                scrollCollapse: true,
+                select: { style: "single"}
+            });
+            skillsTable.on('select', function(e, dt, type, indexes){ SELECTED_ROW = agentTable.row(indexes).data(); }).on('deselect', function(){ SELECTED_ROW = ""; });
+
+            const agentSkillTable = $('#agentSkillTable').DataTable({
+                data:[],
+                columns: [
+                    { "data": "description" },
+                    { "data": "key" },
+                    { "data": "name" },
+                    { "data": "numberOfAgents" },
+                    { "data": "numberOfVirtualGroups" },
+                    { "data": "preferenceLevel" },
+                    { "data": "skillLevel" },
+                ],
+                searching: false,
+                ordering: false,
+                bPaginate: false,
+                select: false,
+                scrollY: "536px",
+                scrollCollapse: true,
+            });
+
+        });
+    </script>
+</th:block>
+
+<th:block layout:fragment="breadcrumb">
+    <div class="content__wrap">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item">운영관리</li>
+                <li class="breadcrumb-item active" aria-current="page">CTI 관리</li>
+            </ol>
+        </nav>
+        <h1 class="page-title mb-0 mt-2">SKILL</h1>
+        <p class="lead">
+        </p>
+    </div>
+</th:block>
+
+<div layout:fragment="content" class="content__boxed">
+    <div class="content__wrap">
+        <div class="row">
+
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">AGENTS</h5>
+                        <div class="row">
+                            <div class="col-md-12 d-flex gap-1 align-items-center justify-content-md-end">
+                                <button class="btn btn-xs btn-dark" id="btn-on">LOGON</button>
+                                <button class="btn btn-xs btn-dark ml-1" id="btn-off">LOGOFF</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="agentTable" class="table table-sm table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="">agentId</th>
+                                    <th class="">agentIdentifier</th>
+                                    <th class="">averageTaskTime</th>
+                                    <th class="">extension</th>
+                                    <th class="">firstName</th>
+                                    <th class="">handledTasks</th>
+                                    <th class="">key</th>
+                                    <th class="">lastName</th>
+                                    <th class="">lastProfilePictureChange</th>
+                                    <th class="">routingStateReason</th>
+                                    <th class="">siteKey</th>
+                                    <th class="">skills</th>
+                                    <th class="d-none">skills</th>
+                                </tr>
+                                </thead>
+                                <tbody style="cursor: pointer;"></tbody>
+                            </table>
+
+                            <table id="agentSkillTable" class="table table-sm table-striped">
+                                <thead>
+                                <tr>
+<!--                                    <th><input type="checkbox" name="checkall" id="checkall"></th>-->
+                                    <th class="">description</th>
+                                    <th class="">key</th>
+                                    <th class="">name</th>
+                                    <th class="">numberOfAgents</th>
+                                    <th class="">numberOfVirtualGroups</th>
+                                    <th class="">preferenceLevel</th>
+                                    <th class="">skillLevel</th>
+                                </tr>
+                                </thead>
+                                <tbody style="cursor: pointer;"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">SKILLS</h5>
+                        <div class="row">
+                            <div class="col-md-12 d-flex gap-1 align-items-center justify-content-md-end">
+                                <button class="btn btn-xs btn-dark" id="get-skills">Get SKILLS</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="skillsTable" class="table table-sm table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="">Key</th>
+                                    <th class="">Name</th>
+                                    <th class="">Description</th>
+                                    <th class="">NumberOfAgents</th>
+                                    <th class="">NumberOfVirtualGroups</th>
+                                    <th class="">SkillLevel</th>
+                                    <th class="">PreferenceLevel</th>
+                                </tr>
+                                </thead>
+                                <tbody style="cursor: pointer;"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+</html>
